@@ -3,6 +3,8 @@ import { Outlet, Link } from 'react-router-dom';
 
 import { ReactComponent as CrwnLogo } from '../../assets/crown.svg';
 
+import { signInWithGoogle } from '../../firebase/firebase.utils';
+
 import './navigation.styles.scss';
 
 const Navigation = () => {
@@ -16,6 +18,9 @@ const Navigation = () => {
           <Link className='nav-link' to='/shop'>
             SHOP
           </Link>
+        </div>
+        <div className='nav-link' onClick={signInWithGoogle}>
+          Sign In With Google
         </div>
       </div>
       <Outlet />
