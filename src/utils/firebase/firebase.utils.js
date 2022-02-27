@@ -49,8 +49,10 @@ export const addCollectionAndDocuments = async (
 ) => {
   const batch = writeBatch(db);
   const collectionRef = collection(db, collectionKey);
-  await objectsToAdd.forEach(async (object) => {
-    await batch.set(doc(collectionRef, object.title.toLowerCase()), object);
+  
+  objectsToAdd.forEach((object) => {
+     const docRef = doc(collectionRef, object.title.toLowerCase());
+     batch.set(docRef, object);
   });
 
   await batch.commit();
