@@ -9,7 +9,14 @@ import {
   signOut,
   onAuthStateChanged,
 } from 'firebase/auth';
-import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  setDoc,
+  collection,
+  writeBatch,
+} from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDDU4V-_QV3M8GyhC9SVieRTDM4dbiT0Yk',
@@ -35,6 +42,20 @@ export const signInWithGoogleRedirect = () =>
   signInWithRedirect(auth, googleProvider);
 
 export const db = getFirestore();
+
+export const addCollectionAndDocuments = async (
+  collectionKey,
+  objectsToAdd
+) => {
+  const batch = writeBatch(db);
+  const collectionRef = collection(db, collectionKey);
+  await objectsToAdd.forEach(async (object) => {
+    await batch.set(doc(collectionRef, object.title.toLowerCase()), object);
+  });
+
+  await batch.commit();
+  console.log('done');
+};
 
 export const createUserDocumentFromAuth = async (
   userAuth,
