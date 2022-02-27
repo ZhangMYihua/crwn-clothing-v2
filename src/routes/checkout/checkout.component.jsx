@@ -31,11 +31,7 @@ const Checkout = () => {
       {cartItems.map((cartItem) => (
         <CheckoutItem key={cartItem.id} cartItem={cartItem} />
       ))}
-<<<<<<< HEAD
-      <span className='total'>Total: ${cartTotal}</span>
-=======
       <div className='total'>TOTAL: ${cartTotal}</div>
->>>>>>> creating checkout items and checkout page
     </div>
   );
 };
