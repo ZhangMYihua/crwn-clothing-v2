@@ -1,27 +1,23 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 import { getCategoriesAndDocuments } from '../utils/firebase/firebase.utils';
 
-export const CategoriesContext = createContext({
-  categoriesMap: {},
-});
+import { setCategoriesMap } from '../store/categories/categories.action';
+
+export const CategoriesContext = createContext();
 
 export const CategoriesProvider = ({ children }) => {
-  const [categoriesMap, setCategoriesMap] = useState({});
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const getCategoriesMap = async () => {
       const categoryMap = await getCategoriesAndDocuments('categories');
-      setCategoriesMap(categoryMap);
+      dispatch(setCategoriesMap(categoryMap));
     };
 
     getCategoriesMap();
   }, []);
 
-  const value = { categoriesMap };
-  return (
-    <CategoriesContext.Provider value={value}>
-      {children}
-    </CategoriesContext.Provider>
-  );
+  return <CategoriesContext.Provider>{children}</CategoriesContext.Provider>;
 };
