@@ -1,5 +1,6 @@
 import { compose, createStore, applyMiddleware } from 'redux';
 import logger from 'redux-logger';
+// import { loggerMiddleware as logger } from './middlewares/logger';
 
 import { rootReducer } from './root-reducer';
 
