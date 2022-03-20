@@ -1,4 +1,4 @@
-import { takeLatest, call, put } from 'redux-saga/effects';
+import { takeLatest, call, put, all } from 'redux-saga/effects';
 
 import { getCategoriesAndDocuments } from '../../utils/firebase/firebase.utils';
 
@@ -18,9 +18,13 @@ export function* fetchCategoriesAsync() {
   }
 }
 
-export function* fetchCategorieSaga() {
+export function* onFetchCategories() {
   yield takeLatest(
     CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_START,
     fetchCategoriesAsync
   );
+}
+
+export function* categoriesSaga() {
+  yield all([call(onFetchCategories)]);
 }
