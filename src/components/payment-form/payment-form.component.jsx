@@ -13,9 +13,9 @@ import { PaymentButton } from "./payment-form.styles";
 const PaymentForm = () => {
   const stripe = useStripe();
   const elements = useElements();
-  const [isProcessingPayment, setIsProcessingPayment] = useState(false);
   const amount = useSelector(selectCartTotal);
   const currentUser = useSelector(selectCurrentUser);
+  const [isProcessingPayment, setIsProcessingPayment] = useState(false);
 
   const paymentHandler = async (e) => {
     e.preventDefault();
