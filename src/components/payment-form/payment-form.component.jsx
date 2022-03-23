@@ -8,7 +8,7 @@ import { selectCurrentUser } from '../../store/user/user.selector';
 import { FormContainer } from './payment-form.styles';
 import { BUTTON_TYPE_CLASSES } from '../button/button.component';
 
-import { PaymentButton, PaymentContainer } from './payment-form.styles';
+import { PaymentButton, PaymentFormContainer } from './payment-form.styles';
 
 const PaymentForm = () => {
   const stripe = useStripe();
@@ -56,7 +56,7 @@ const PaymentForm = () => {
   };
 
   return (
-    <PaymentContainer>
+    <PaymentFormContainer>
       <FormContainer onSubmit={paymentHandler}>
         <h2>Credit Card Payment:</h2>
         <CardElement />
@@ -67,7 +67,7 @@ const PaymentForm = () => {
           Pay Now
         </PaymentButton>
       </FormContainer>
-    </PaymentContainer>
+    </PaymentFormContainer>
   );
 };
 export default PaymentForm;
