@@ -105,7 +105,7 @@ export type UserData = {
 export const createUserDocumentFromAuth = async (
   userAuth: User,
   additionalInformation: AdditionalInformation = {} as AdditionalInformation
-): Promise<QueryDocumentSnapshot<UserData>> => {
+): Promise<QueryDocumentSnapshot<UserData> | void> => {
   if (!userAuth) return;
 
   const userDocRef = doc(db, 'users', userAuth.uid);
@@ -134,7 +134,7 @@ export const createUserDocumentFromAuth = async (
 export const createAuthUserWithEmailAndPassword = async (
   email: string,
   password: string
-): Promise<UserCredential> => {
+): Promise<UserCredential | void> => {
   if (!email || !password) return;
 
   return await createUserWithEmailAndPassword(auth, email, password);
@@ -143,7 +143,7 @@ export const createAuthUserWithEmailAndPassword = async (
 export const signInAuthUserWithEmailAndPassword = async (
   email: string,
   password: string
-): Promise<UserCredential> => {
+): Promise<UserCredential | void> => {
   if (!email || !password) return;
 
   return await signInWithEmailAndPassword(auth, email, password);
@@ -154,7 +154,7 @@ export const signOutUser = async (): Promise<void> => await signOut(auth);
 export const onAuthStateChangedListener = (callback: NextOrObserver<User>) =>
   onAuthStateChanged(auth, callback);
 
-export const getCurrentUser = (): Promise<User> => {
+export const getCurrentUser = (): Promise<User | null> => {
   return new Promise((resolve, reject) => {
     const unsubscribe = onAuthStateChanged(
       auth,
