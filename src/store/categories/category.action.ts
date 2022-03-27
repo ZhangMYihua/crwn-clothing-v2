@@ -24,12 +24,12 @@ export const fetchCategoriesStart = (): FetchCategoriesStart =>
   createAction(CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_START);
 
 export const fetchCategoriesSuccess = (
-  categoriesArray
+  categoriesArray: Category[]
 ): FetchCategoriesSuccess =>
   createAction(
     CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_SUCCESS,
     categoriesArray
   );
 
-export const fetchCategoriesFailed = (error): FetchCategoriesFailed =>
+export const fetchCategoriesFailed = (error: Error): FetchCategoriesFailed =>
   createAction(CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_FAILED, error);
