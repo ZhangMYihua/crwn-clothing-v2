@@ -1,5 +1,11 @@
-import { USER_ACTION_TYPES } from './user.types';
-import { UserAction } from './user.action';
+import {
+  UserAction,
+  signInSuccess,
+  signOutSuccess,
+  signInFailed,
+  signUpFailed,
+  signOutFailed,
+} from './user.action';
 
 import { UserData } from '../../utils/firebase/firebase.utils';
 
@@ -19,18 +25,21 @@ export const userReducer = (
   state = INITIAL_STATE,
   action = {} as UserAction
 ) => {
-  const { type, payload } = action;
-
-  switch (type) {
-    case USER_ACTION_TYPES.SIGN_IN_SUCCESS:
-      return { ...state, currentUser: payload };
-    case USER_ACTION_TYPES.SIGN_OUT_SUCCESS:
-      return { ...state, currentUser: null };
-    case USER_ACTION_TYPES.SIGN_OUT_FAILED:
-    case USER_ACTION_TYPES.SIGN_IN_FAILED:
-    case USER_ACTION_TYPES.SIGN_UP_FAILED:
-      return { ...state, error: payload };
-    default:
-      return state;
+  if (signInSuccess.match(action)) {
+    return { ...state, currentUser: action.payload };
   }
+
+  if (signOutSuccess.match(action)) {
+    return { ...state, currentUser: null };
+  }
+
+  if (
+    signOutFailed.match(action) ||
+    signInFailed.match(action) ||
+    signUpFailed.match(action)
+  ) {
+    return { ...state, error: action.payload };
+  }
+
+  return state;
 };

@@ -1,4 +1,4 @@
-import { CartItem, CART_ACTION_TYPES } from './cart.types';
+import { CartItem } from './cart.types';
 import { CartAction, setIsCartOpen, setCartItems } from './cart.action';
 
 export type CartState = {
