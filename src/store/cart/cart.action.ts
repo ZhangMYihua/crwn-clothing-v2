@@ -1,5 +1,9 @@
 import { CART_ACTION_TYPES, CartItem } from './cart.types';
-import { createAction, Action } from '../../utils/reducer/reducer.utils';
+import {
+  createAction,
+  ActionWithPayload,
+  withMatcher,
+} from '../../utils/reducer/reducer.utils';
 import { CategoryItem } from '../categories/category.types';
 
 const addCartItem = (
@@ -46,35 +50,46 @@ const removeCartItem = (
 const clearCartItem = (cartItems: CartItem[], cartItemToClear: CartItem) =>
   cartItems.filter((cartItem) => cartItem.id !== cartItemToClear.id);
 
-export type SetCartIsOpen = Action<CART_ACTION_TYPES.SET_IS_CART_OPEN, boolean>;
+export type SetCartIsOpen = ActionWithPayload<
+  CART_ACTION_TYPES.SET_IS_CART_OPEN,
+  boolean
+>;
 
-export type SetCartItems = Action<CART_ACTION_TYPES.SET_CART_ITEMS, CartItem[]>;
+export type SetCartItems = ActionWithPayload<
+  CART_ACTION_TYPES.SET_CART_ITEMS,
+  CartItem[]
+>;
 
 export type CartAction = SetCartIsOpen | SetCartItems;
 
-export const setIsCartOpen = (boolean: boolean): SetCartIsOpen =>
-  createAction(CART_ACTION_TYPES.SET_IS_CART_OPEN, boolean);
+export const setIsCartOpen = withMatcher((boolean: boolean) =>
+  createAction(CART_ACTION_TYPES.SET_IS_CART_OPEN, boolean)
+);
+
+export const setCartItems = withMatcher((cartItems: CartItem[]) =>
+  createAction(CART_ACTION_TYPES.SET_CART_ITEMS, cartItems)
+);
 
 export const addItemToCart = (
   cartItems: CartItem[],
   productToAdd: CategoryItem
-): SetCartItems => {
+) => {
   const newCartItems = addCartItem(cartItems, productToAdd);
-  return createAction(CART_ACTION_TYPES.SET_CART_ITEMS, newCartItems);
+  return setCartItems(newCartItems);
 };
 
 export const removeItemFromCart = (
   cartItems: CartItem[],
   cartItemToRemove: CartItem
-): SetCartItems => {
+) => {
   const newCartItems = removeCartItem(cartItems, cartItemToRemove);
-  return createAction(CART_ACTION_TYPES.SET_CART_ITEMS, newCartItems);
+  return setCartItems(newCartItems);
 };
 
 export const clearItemFromCart = (
   cartItems: CartItem[],
   cartItemToClear: CartItem
-): SetCartItems => {
+) => {
   const newCartItems = clearCartItem(cartItems, cartItemToClear);
-  return createAction(CART_ACTION_TYPES.SET_CART_ITEMS, newCartItems);
+  return setCartItems(newCartItems);
 };
