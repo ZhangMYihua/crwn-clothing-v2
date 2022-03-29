@@ -55,19 +55,6 @@ export type SignOutFailed = ActionWithPayload<
   Error
 >;
 
-export type UserAction =
-  | CheckUserSession
-  | GoogleSignInStart
-  | EmailSignInStart
-  | SignInSuccess
-  | SignInFailed
-  | SignUpStart
-  | SignUpSuccess
-  | SignUpFailed
-  | SignOutStart
-  | SignOutSuccess
-  | SignOutFailed;
-
 export const checkUserSession = withMatcher(
   (): CheckUserSession => createAction(USER_ACTION_TYPES.CHECK_USER_SESSION)
 );
