@@ -14,7 +14,7 @@ import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component
 
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);
-  const { isDropdownOpen } = useContext(CartContext);
+  const { isDropdownOpen, itemCount } = useContext(CartContext);
 
   return (
     <Fragment>
@@ -38,7 +38,7 @@ const Navigation = () => {
               SIGN IN
             </Link>
           )}
-          <CartIcon />
+          <CartIcon itemCount={itemCount} />
         </div>
         {isDropdownOpen && <CartDropdown />}
       </div>
