@@ -9,20 +9,17 @@ export function withMatcher<AC extends () => AnyAction>(
   actionCreator: AC
 ): Matchable<AC>;
 
-export function withMatcher<
-  AC extends (...args: any[]) => AnyAction & { type: string }
->(actionCreator: AC): Matchable<AC>;
-
 export function withMatcher<AC extends (...args: any[]) => AnyAction>(
   actionCreator: AC,
   type: ReturnType<AC>['type']
 ): Matchable<AC>;
 
-export function withMatcher(
-  actionCreator: Function & { type?: string },
-  _type?: string
-) {
-  const type = _type ?? actionCreator.type ?? actionCreator().type;
+export function withMatcher<
+  AC extends (...args: any[]) => AnyAction & { type: string }
+>(actionCreator: AC): Matchable<AC>;
+
+export function withMatcher(actionCreator: Function & { type?: string }) {
+  const type = actionCreator.type ?? actionCreator().type;
   return Object.assign(actionCreator, {
     type,
     match(action: AnyAction) {
