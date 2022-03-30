@@ -11,13 +11,10 @@ import { CATEGORIES_ACTION_TYPES } from './category.types';
 
 export function* fetchCategoriesAsync() {
   try {
-    const categoriesArray = yield* call(
-      getCategoriesAndDocuments,
-      'categories'
-    );
+    const categoriesArray = yield* call(getCategoriesAndDocuments);
     yield* put(fetchCategoriesSuccess(categoriesArray));
   } catch (error) {
-    yield* put(fetchCategoriesFailed(error));
+    yield* put(fetchCategoriesFailed(error as Error));
   }
 }
 
