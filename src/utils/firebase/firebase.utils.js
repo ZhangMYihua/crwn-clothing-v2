@@ -1,5 +1,4 @@
-import { initializeApp } from "firebase/app";
-import {
+import { initializeApp } from "firebase/app";import {
   getAuth,
   signInWithRedirect,
   signInWithPopup,
@@ -9,7 +8,16 @@ import {
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
-import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  setDoc,
+  collection,
+  writeBatch,
+  query,
+  getDocs,
+} from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyA9knMG6h8o532jyUJEkn4oU6Z1s3RhGXU",
@@ -36,6 +44,41 @@ export const signInWithGoogleRedirect = () =>
   signInWithRedirect(auth, googleProvider);
 
 export const db = getFirestore();
+
+export const addCollectionAndDocuments = async (
+  collectionKey,
+  objectsToAdd
+) => {
+  const collectionRef = await collection(db, collectionKey);
+  const batch = writeBatch(db);
+  objectsToAdd.forEach((object) => {
+    const docRef = doc(collectionRef, object.title.toLowerCase());
+    batch.set(docRef, object);
+  });
+  await batch.commit();
+  console.log("done");
+};
+
+export const getCategoriesAndDocuments = async () => {
+  // get the reference of the categories collection.
+  const collectionRef = collection(db, "categories");
+
+  // create a query instance using the reference
+  const q = query(collectionRef);
+
+  // using the query object, we can now get an array with all the documentSnapshots that are in it
+  const querySnapshot = await getDocs(q);
+
+  // reduce the array to an object that holds an attribute for each docSnapshot, named after the docSnapshot title.
+  // The attribute will be equal to the array of items inside each docSnapshot
+  const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
+    const { title, items } = docSnapshot.data();
+    acc[title.toLowerCase()] = items;
+    return acc;
+  }, {});
+
+  return categoryMap;
+};
 
 export const createUserDocumentFromAuth = async (
   userAuth,
