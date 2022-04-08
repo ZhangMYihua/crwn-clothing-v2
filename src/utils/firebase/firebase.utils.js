@@ -1,19 +1,22 @@
+
+
 import { initializeApp } from 'firebase/app';
 import {
   getAuth,
   signInWithRedirect,
   signInWithPopup,
   GoogleAuthProvider,
+  createUserWithEmailAndPassword
 } from 'firebase/auth';
 import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyDDU4V-_QV3M8GyhC9SVieRTDM4dbiT0Yk',
-  authDomain: 'crwn-clothing-db-98d4d.firebaseapp.com',
-  projectId: 'crwn-clothing-db-98d4d',
-  storageBucket: 'crwn-clothing-db-98d4d.appspot.com',
-  messagingSenderId: '626766232035',
-  appId: '1:626766232035:web:506621582dab103a4d08d6',
+  apiKey: "AIzaSyDoazw1_Mxy_utAmBU8dQOO0ppwM2-mnSs",
+  authDomain: "home-chore-tracker-6e22a.firebaseapp.com",
+  projectId: "home-chore-tracker-6e22a",
+  storageBucket: "home-chore-tracker-6e22a.appspot.com",
+  messagingSenderId: "491040623592",
+  appId: "1:491040623592:web:4529ef492194298aaeb25d"
 };
 
 const firebaseApp = initializeApp(firebaseConfig);
@@ -26,11 +29,17 @@ provider.setCustomParameters({
 
 export const auth = getAuth();
 export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
+export const signInWithGoogleRedirect=()=> signInWithRedirect(auth, provider)
 
 export const db = getFirestore();
 
+
+
 export const createUserDocumentFromAuth = async (userAuth) => {
-  const userDocRef = doc(db, 'users', userAuth.uid);
+  if(!userAuth){
+    return
+  }
+  const userDocRef = doc(db, 'crownusers', userAuth.uid);
 
   const userSnapshot = await getDoc(userDocRef);
 
@@ -51,3 +60,11 @@ export const createUserDocumentFromAuth = async (userAuth) => {
 
   return userDocRef;
 };
+
+export const createAuthUserWithEmailAndPassword=async(email, password)=>{
+  if(!email || !password){
+    return
+  }
+createAuthUserWithEmailAndPassword(auth, email, password)
+
+}
