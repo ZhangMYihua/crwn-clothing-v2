@@ -1,11 +1,22 @@
 body {
   margin: 0;
-  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: 'Cantarell', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(24, 24, 24);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+
+*{
+  box-sizing: border-box;
 }
