@@ -1,6 +1,8 @@
+// Styles
 import './category-item.styles.scss';
 
 const CategoryItem = ({ category }) => {
+  // Destructring category
   const { imageUrl, title } = category;
   return (
     <div className='category-container'>
