@@ -1,4 +1,5 @@
-import { Fragment, useContext, useState } from "react";import { Outlet, Link } from "react-router-dom";
+import { Fragment, useContext, useState } from "react";
+import { Outlet, Link } from "react-router-dom";
 
 import { UserContext } from "../../contexts/user.context";
 import { CartContext } from "../../contexts/cart.context";
@@ -11,8 +12,8 @@ import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component
 import {
   NavigationContainer,
   LogoContainer,
-  NavLinks,
   NavLink,
+  NavLinks,
 } from "./navigation.styles";
 
 const Navigation = () => {
