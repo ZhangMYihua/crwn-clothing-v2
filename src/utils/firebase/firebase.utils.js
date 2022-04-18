@@ -1,4 +1,5 @@
-import { initializeApp } from "firebase/app";import {
+import { initializeApp } from "firebase/app";
+import {
   getAuth,
   signInWithRedirect,
   signInWithPopup,
@@ -70,14 +71,15 @@ export const getCategoriesAndDocuments = async () => {
   const querySnapshot = await getDocs(q);
 
   // reduce the array to an object that holds an attribute for each docSnapshot, named after the docSnapshot title.
-  // The attribute will be equal to the array of items inside each docSnapshot
-  const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
-    const { title, items } = docSnapshot.data();
-    acc[title.toLowerCase()] = items;
-    return acc;
-  }, {});
 
-  return categoryMap;
+  return querySnapshot.docs.map((docSnapshot) => docSnapshot.data());
+  // .reduce((acc, docSnapshot) => {
+  //   const { title, items } = docSnapshot.data();
+  //   acc[title.toLowerCase()] = items;
+  //   return acc;
+  // }, {});
+
+  // return categoryMap;
 };
 
 export const createUserDocumentFromAuth = async (
