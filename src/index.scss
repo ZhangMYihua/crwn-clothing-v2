@@ -4,6 +4,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: #0f172a;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    color: #7c3aed;
 }
 
 code {
@@ -13,7 +18,7 @@ code {
 
 a {
     text-decoration: none;
-    color: #333;
+    color: #7c3aed;
 }
 
 * {
