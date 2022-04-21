@@ -1,5 +1,4 @@
-import {
-  CategoryPreviewContainer,
+import {  CategoryPreviewContainer,
   Title,
   Preview,
 } from "./category-preview.styles";
