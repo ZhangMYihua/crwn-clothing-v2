@@ -1,6 +1,7 @@
 .navigation {
 	height: 70px;
-	width: 100%;
+	width: 90%;
+    margin: 0 auto;
 	display: flex;
 	justify-content: space-between;
 	margin-bottom: 25px;
@@ -21,6 +22,27 @@
 		.nav-link {
 			padding: 10px 15px;
 			cursor: pointer;
+            font-weight: 700;
+            position: relative;
+
+            &::after {
+                content: '';
+                width: 0;
+                height: 3px;
+                border-radius: 1px;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                transition: width .4s;
+                background-color: #7c3aed;
+            }
+            &:hover::after {
+                width: 100%;
+            }
+
+            &:not(:last-child) {
+                margin-right: 30px;
+            }
 		}
 	}
 }

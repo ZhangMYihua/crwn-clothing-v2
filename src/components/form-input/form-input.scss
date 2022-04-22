@@ -27,6 +27,7 @@ $main-color: #7c3aed;
 
 		&:focus {
 			outline: none;
+            border-color: $main-color;
 		}
 
 		&:focus ~ .form-input-label {
