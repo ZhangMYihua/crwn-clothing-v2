@@ -4,18 +4,16 @@ import CategoryItem from '../category-item/category-item.component';
 
 import './categories-list.styles.scss';
 
-import categoriesJson from './categories.json';
-
-const CategoriesList = () => {
+const CategoriesList = ({ newCategories }) => {
     const [categories, setCategories] = useState([]);
 
-    useEffect(() => setCategories(categoriesJson), []);
+    useEffect(() => setCategories(newCategories), []); // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <div className="categories-container">
             {
                 categories.map(category => {
-                    return (< CategoryItem key={category.id} category={category} />);
+                    return <CategoryItem key={category.id} category={category} />;
                 })
             }
         </div>
