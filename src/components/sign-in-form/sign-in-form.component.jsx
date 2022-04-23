@@ -65,7 +65,7 @@ const SignInForm = () => {
                 <FormInput label='Password' type="password" required onChange={handleChange} name="password" value={password} />
                 <div className='buttons-container'>
                     <Button>Sign in</Button>
-                    <Button type='button' onClick={signInWithGoogleRedirect} buttonType='google-sign-in'>Sign in with Google</Button>
+                    <Button type='button' onClick={signInWithGoogleRedirect} buttonType='google'>Sign in with Google</Button>
                 </div>
             </form>
         </div>
