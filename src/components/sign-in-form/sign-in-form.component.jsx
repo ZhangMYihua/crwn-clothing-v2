@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { getRedirectResult } from 'firebase/auth';
 
-import { auth, signInWithGoogleRedirect, createUserDocumentFromAuth, signInAuthUserWithEmailAndPassword } from '../../utils/firebase/firebase.utils'
+import { auth, signInWithGoogleRedirect, signInAuthUserWithEmailAndPassword } from '../../utils/firebase/firebase.utils'
 
 import FormInput from '../form-input/form-input.component';
 import Button from '../button/button.component';
@@ -28,15 +28,15 @@ const SignInForm = () => {
         setFormFields({ ...formFields, [name]: value });
     };
 
+    // Email and Password Sign In Function
     const handleSubmit = async event => {
         event.preventDefault();
 
         if (!email || !password) return;
 
         try {
-            const { user } = await signInAuthUserWithEmailAndPassword(email, password);
+            await signInAuthUserWithEmailAndPassword(email, password);
             resetFormField();
-            console.log(user);
         } catch (error) {
             switch (error.code) {
                 case 'auth/wrong-password':
@@ -49,12 +49,10 @@ const SignInForm = () => {
         }
     };
 
+    // Google Auth Redirect Sign In
     useEffect(() => {
         (async () => {
-            const response = await getRedirectResult(auth);
-            if (response) {
-                const userDocRef = await createUserDocumentFromAuth(response.user);
-            }
+            await getRedirectResult(auth);
         })();
     }, []);
 
