@@ -35,7 +35,11 @@ const Checkout = () => {
                     );
                 })
             }
-            <div className='total'>TOTAL: ${cartTotal}</div>
+            {
+                cartItems.length === 0 ?
+                    <h2 className='empty'>Your cart is empty</h2> :
+                    <div className='total'>TOTAL: ${cartTotal}</div>
+            }
         </div>
     );
 }
