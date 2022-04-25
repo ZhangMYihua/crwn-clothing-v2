@@ -2,7 +2,6 @@ import { useState } from 'react';
 import {
 	signInAuthUserWithemailAndPassword,
 	signInWithGooglePopup,
-	createUserDocumentFromAuth
 } from '../../utils/firebase/firebase.utils';
 import Button from '../button/Button';
 import FormInput from '../form-input/FormInput';
@@ -16,6 +15,7 @@ const defaultFormFields = {
 const SignInForm = () => {
 	const [formFields, setFormFields] = useState(defaultFormFields);
 	const { email, password } = formFields;
+
 
 	const resetFormFields = () => {
 		setFormFields(defaultFormFields);
@@ -31,8 +31,7 @@ const SignInForm = () => {
 		const { email, password } = formFields;
 		if (!email || !password) return;
 		try {
-			const response = await signInAuthUserWithemailAndPassword(email, password);
-			console.log(response);
+			await signInAuthUserWithemailAndPassword(email, password);
 			resetFormFields();
 		} catch (error) {
 			switch (error.code) {
@@ -49,8 +48,7 @@ const SignInForm = () => {
 	};
 
 	const logGoogleUser = async () => {
-		const { user } = await signInWithGooglePopup(); //Returns a response object with a nested 'user' object which contains data needed for creating user document in firestore
-		await createUserDocumentFromAuth(user);
+		await signInWithGooglePopup(); //Returns a response object with a nested 'user' object which contains data needed for creating user document in firestore
 	};
 
 	return (

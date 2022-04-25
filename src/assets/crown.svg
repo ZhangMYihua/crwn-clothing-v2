@@ -6,11 +6,11 @@
     <g id="WiP" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="Artboard" transform="translate(-90.000000, -38.000000)">
             <g id="Group" transform="translate(90.000000, 38.000000)">
-                <polygon id="Rectangle" fill="#7c3aed" points="3 14 25 26.5 47 14 40.855176 39 9.08421785 39"></polygon>
-                <polygon id="Triangle" fill-opacity="0.262838724" fill="#7c3aed" points="25 8 40 39 10 39"></polygon>
-                <circle id="Oval" fill="#7c3aed" cx="2" cy="9" r="2"></circle>
-                <circle id="Oval" fill="#7c3aed" cx="25" cy="2" r="2"></circle>
-                <circle id="Oval" fill="#7c3aed" cx="48" cy="9" r="2"></circle>
+                <polygon id="Rectangle" fill="#4f46e5" points="3 14 25 26.5 47 14 40.855176 39 9.08421785 39"></polygon>
+                <polygon id="Triangle" fill-opacity="0.262838724" fill="#4f46e5" points="25 8 40 39 10 39"></polygon>
+                <circle id="Oval" fill="#4f46e5" cx="2" cy="9" r="2"></circle>
+                <circle id="Oval" fill="#4f46e5" cx="25" cy="2" r="2"></circle>
+                <circle id="Oval" fill="#4f46e5" cx="48" cy="9" r="2"></circle>
             </g>
         </g>
     </g>

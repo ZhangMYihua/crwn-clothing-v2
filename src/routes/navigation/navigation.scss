@@ -24,6 +24,7 @@
 			cursor: pointer;
             font-weight: 700;
             position: relative;
+            color: #4f46e5;
 
             &::after {
                 content: '';
@@ -34,7 +35,7 @@
                 bottom: 0;
                 left: 0;
                 transition: width .4s;
-                background-color: #7c3aed;
+                background-color: #4f46e5;
             }
             &:hover::after {
                 width: 100%;

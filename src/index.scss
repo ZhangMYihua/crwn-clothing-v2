@@ -494,15 +494,32 @@ table {
 
 body {
   margin: 0;
-  font-family: 'Poppins',
+  font-family: 'Inter',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #0f172a;
+  background-color: #f1f5f9;
+  background-color: #fff;
+  padding: 20px 40px;
 }
 
 h1,h2,h3,h4,h5,h6 {
-    color: #7c3aed;
+    color: #4f46e5;
+    font-weight: 700;
+}
+
+h1 {
+    font-size: 60px;
+    line-height: 70px;
+}
+h2 {
+    font-size: 50px;
+    line-height: 60px;
+}
+h3 {
+    font-size: 40px;
+    line-height: 50px;
 }
 
 code {
@@ -512,7 +529,7 @@ code {
 
 a {
     text-decoration: none;
-    color: #7c3aed;
+    color: #4f46e5;
 }
 
 * {
