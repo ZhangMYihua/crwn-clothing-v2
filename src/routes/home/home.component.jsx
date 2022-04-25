@@ -1,9 +1,9 @@
-import CategoriesList from '../../components/categories-list/categories-list.component';
+import DirectoriesList from '../../components/directory-list/directory-list.component';
 
-import categoriesJson from '../../categories.json';
+import directoriesJson from '../../directories.json';
 
 const Home = () => {
-    return <CategoriesList newCategories={categoriesJson} />;
+    return <DirectoriesList newDirectories={directoriesJson} />;
 }
 
 export default Home;
