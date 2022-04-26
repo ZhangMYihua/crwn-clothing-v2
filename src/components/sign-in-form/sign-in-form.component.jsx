@@ -78,12 +78,12 @@ const SignInForm = () => {
                     value={password} 
                 />
                 <ButtonsContainer>
-                    <Button>Sign in</Button>
+                    <Button>Sign In</Button>
                     <Button 
                         buttonType={BUTTON_TYPE_CLASSES.google} 
                         onClick={signInWithGoogleRedirect} 
                     >
-                        Sign in with Google
+                        Google Sign In
                     </Button>
                 </ButtonsContainer>
             </form>
