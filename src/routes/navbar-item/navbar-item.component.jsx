@@ -11,32 +11,39 @@ import { CartContext } from '../../context/cart.context';
 
 import { signOutUser } from '../../utils/firebase/firebase.utils';
 
-import './navbar-item.styles.scss';
+import { 
+    NavigationContainer, 
+    LogoContainer, 
+    NavigationLinks, 
+    NavigationLink 
+} from './navbar-item.styles.jsx';
 
 const NavBar = () => {
     const { currentUser } = useContext(UserContext);
     const { cart, setCart } = useContext(CartContext);
 
+    const exitCartDropdownMenu = () => setCart(false);
+
     return (
         <Fragment>
-            <div className='navigation'>
-                <Link className='logo-container' to='/'>
+            <NavigationContainer>
+                <LogoContainer to='/' onClick={exitCartDropdownMenu}>
                     <CrwnLogo className='logo' />
-                </Link>
-                <div className='nav-links-container'>
-                    <Link className='nav-link' to='/shop'>SHOP</Link>
-                    <Link className='nav-link' to='/contact'>CONTACT</Link>
+                </LogoContainer>
+                <NavigationLinks>
+                    <NavigationLink to='/shop' onClick={exitCartDropdownMenu}>Shop</NavigationLink>
+                    <NavigationLink to='/contact' onClick={exitCartDropdownMenu}>Contact</NavigationLink>
                     {
                         currentUser ? (
-                            <span className='nav-link' onClick={signOutUser}>SIGN OUT</span>
+                            <NavigationLink as='span' onClick={signOutUser}>Sign Out</NavigationLink>
                         ) : (
-                            <Link className='nav-link' to='/sign-in'>SIGN IN</Link>
+                            <NavigationLink to='/sign-in' onClick={exitCartDropdownMenu}>Sign In</NavigationLink>
                         )
                     }
                     <CartIcon />
-                </div>
+                </NavigationLinks>
                 { cart && <CartDropdown /> }
-            </div>
+            </NavigationContainer>
             <Outlet />
         </Fragment>
     );

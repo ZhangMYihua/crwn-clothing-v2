@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import DirectoryItem from '../directory-item/directory-item.component';
 
-import './directory-list.styles.scss';
+import { DirectoriesContainer } from './directory-list.styles.jsx';
 
 const DirectoryList = ({ newDirectories }) => {
     const [directories, setDirectories] = useState([]);
@@ -10,13 +10,13 @@ const DirectoryList = ({ newDirectories }) => {
     useEffect(() => setDirectories(newDirectories), []); // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
-        <div className="directories-container">
+        <DirectoriesContainer>
             {
                 directories.map(directory => {
                     return <DirectoryItem key={directory.id} directory={directory} />;
                 })
             }
-        </div>
+        </DirectoriesContainer>
     );
 }
 

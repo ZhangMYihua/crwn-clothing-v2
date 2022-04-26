@@ -1,23 +1,35 @@
-import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+
+import { CartContext } from '../../context/cart.context';
 
 import { properCapitalization } from '../../utils/javascript/string.utils';
 
 import ProductCard from '../../components/product-card/product-card.component';
 
-import './category-preview.styles.scss';
+import {
+    CategoryPreviewContainer,
+    Title,
+    Preview,
+} from './category-preview.styles';
 
 const CategoryPreview = ({ products, title }) => {
+    const { cart, setCart } = useContext(CartContext);
+
+    const exitCartDropdownMenu = () => setCart(false);
+
     return (
-        <div className='category-preview-container'>
-            <Link className='title' to={`/shop/${title}`}>{properCapitalization(title)}</Link>
-            <div className='preview'>
+        <CategoryPreviewContainer>
+            <h2>
+                <Title to={`/shop/${title}`} onClick={exitCartDropdownMenu}>{properCapitalization(title)}</Title>
+            </h2>
+            <Preview>
                 {
                     products.map(product => (
                         <ProductCard key={product.id} product={product} />
                     ))
                 }
-            </div>
-        </div>
+            </Preview>
+        </CategoryPreviewContainer>
     );
 }
 

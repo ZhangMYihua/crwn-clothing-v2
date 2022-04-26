@@ -1,21 +1,30 @@
-import { Link } from 'react-router-dom';
+import { useContext } from 'react';
 
-import './directory-item.styles.scss';
+import { CartContext } from '../../context/cart.context';
+
+import { properCapitalization } from '../../utils/javascript/string.utils';
+
+import { BackgroundImage, Body, DirectoryItemContainer } from './directory-item.styles.jsx';
 
 const DirectoryItem = ({ directory }) => {
-    const { imageUrl, title } = directory;
-    const displayTitle = title.toUpperCase();
+    const { imageUrl, title, route } = directory;
+    const { cart, setCart } = useContext(CartContext);
+    
+    const displayTitle = properCapitalization(title);
+
+    const exitCartDropdownMenu = () => setCart(false);
 
     return (
-        <Link className="directory-item-container" to={`/shop/${title}`}>
-            <div className='background-image' style={{
-                backgroundImage: `url(${imageUrl})`
-            }} />
-            <div className="directory-body-container">
+        <DirectoryItemContainer to={route} onClick={exitCartDropdownMenu}>
+            <BackgroundImage 
+                className='background-image'
+                imageUrl={imageUrl} 
+            />
+            <Body>
                 <h2>{displayTitle}</h2>
-                <p>SHOP NOW</p>
-            </div>
-        </Link>
+                <p>Shop Now</p>
+            </Body>
+        </DirectoryItemContainer>
     );
 }
 
