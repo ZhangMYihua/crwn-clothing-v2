@@ -35,6 +35,8 @@ const categoriesCollection = 'categories';
 
 const firebaseApp = initializeApp(firebaseConfig);
 
+console.log(firebaseApp);
+
 const provider = new GoogleAuthProvider();
 
 provider.setCustomParameters({
@@ -65,14 +67,7 @@ export const getCategoriesAndDocuments = async () => {
     const q = query(collectionRef);
 
     const querySnapshot = await getDocs(q);
-    const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
-        const { title, items } = docSnapshot.data();
-        const newTitle = title.toLowerCase();
-        acc[newTitle] = items;
-        return acc;
-    }, {});
-
-    return categoryMap;
+    return querySnapshot.docs.map(docSnapshot => docSnapshot.data());
 };
 
 export const createUserDocumentFromAuth = async (userAuth, otherAttributes = {}) => {

@@ -1,6 +1,6 @@
-import { useContext } from 'react';
+import { useDispatch } from 'react-redux';
 
-import { CartContext } from '../../context/cart.context';
+import { setIsCartOpen } from '../../store/cart/cart.action';
 
 import { properCapitalization } from '../../utils/javascript/string.utils';
 
@@ -13,9 +13,9 @@ import {
 } from './category-preview.styles';
 
 const CategoryPreview = ({ products, title }) => {
-    const { cart, setCart } = useContext(CartContext);
+    const dispatch = useDispatch();
 
-    const exitCartDropdownMenu = () => setCart(false);
+    const exitCartDropdownMenu = () => dispatch(setIsCartOpen(false));
 
     return (
         <CategoryPreviewContainer>

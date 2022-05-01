@@ -1,18 +1,19 @@
-import { useContext } from 'react';
+import { useDispatch } from 'react-redux';
 
-import { CartContext } from '../../context/cart.context';
+import { setIsCartOpen } from '../../store/cart/cart.action';
 
 import { properCapitalization } from '../../utils/javascript/string.utils';
 
 import { BackgroundImage, Body, DirectoryItemContainer } from './directory-item.styles.jsx';
 
 const DirectoryItem = ({ directory }) => {
+    const dispatch = useDispatch();
+
     const { imageUrl, title, route } = directory;
-    const { cart, setCart } = useContext(CartContext);
     
     const displayTitle = properCapitalization(title);
 
-    const exitCartDropdownMenu = () => setCart(false);
+    const exitCartDropdownMenu = () => dispatch(setIsCartOpen(false));
 
     return (
         <DirectoryItemContainer to={route} onClick={exitCartDropdownMenu}>

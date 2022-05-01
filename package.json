@@ -9,8 +9,12 @@
     "firebase": "^9.6.11",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
+    "react-redux": "^8.0.1",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
+    "redux": "^4.2.0",
+    "redux-logger": "^3.0.6",
+    "reselect": "^4.1.5",
     "sass": "^1.50.1",
     "styled-components": "^5.3.5",
     "web-vitals": "^2.1.4"
