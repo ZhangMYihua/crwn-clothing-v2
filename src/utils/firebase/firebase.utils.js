@@ -35,7 +35,7 @@ const categoriesCollection = 'categories';
 
 const firebaseApp = initializeApp(firebaseConfig);
 
-console.log(firebaseApp);
+process.env.NODE_ENV === 'development' && console.log(firebaseApp);
 
 const provider = new GoogleAuthProvider();
 
