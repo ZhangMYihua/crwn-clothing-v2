@@ -13,7 +13,7 @@ import { selectIsCartOpen } from '../../store/cart/cart.selector';
 
 import { setIsCartOpen } from '../../store/cart/cart.action';
 
-import { signOutUser } from '../../utils/firebase/firebase.utils';
+import { signOutStart } from '../../store/user/user.action';
 
 import { 
     NavigationContainer, 
@@ -27,7 +27,9 @@ const NavBar = () => {
 
     const currentUser = useSelector(selectCurrentUser);
     const isCartOpen = useSelector(selectIsCartOpen);
+
     const exitCartDropdownMenu = () => dispatch(setIsCartOpen(false));
+    const signOutUserDispatch = () => dispatch(signOutStart());
 
     return (
         <Fragment>
@@ -40,7 +42,7 @@ const NavBar = () => {
                     <NavigationLink to='/contact' onClick={exitCartDropdownMenu}>Contact</NavigationLink>
                     {
                         currentUser ? (
-                            <NavigationLink as='span' onClick={signOutUser}>Sign Out</NavigationLink>
+                            <NavigationLink as='span' onClick={signOutUserDispatch}>Sign Out</NavigationLink>
                         ) : (
                             <NavigationLink to='/sign-in' onClick={exitCartDropdownMenu}>Sign In</NavigationLink>
                         )

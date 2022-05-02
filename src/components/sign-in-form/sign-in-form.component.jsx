@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 
-import { getRedirectResult } from 'firebase/auth';
-
-import { auth, signInWithGoogleRedirect, signInAuthUserWithEmailAndPassword } from '../../utils/firebase/firebase.utils'
+import { signInWithGoogleRedirect } from '../../utils/firebase/firebase.utils'
 
 import FormInput from '../form-input/form-input.component';
 import Button, {BUTTON_TYPE_CLASSES} from '../button/button.component';
 
 import { SignInContainer, ButtonsContainer } from './sign-in-form.styles.jsx';
+
+import { googleSignInStart, emailSignInStart } from '../../store/user/user.action';
 
 const userDefaults = {
     email: '',
@@ -15,6 +16,8 @@ const userDefaults = {
 };
 
 const SignInForm = () => {
+    const dispatch = useDispatch();
+
     const [formFields, setFormFields] = useState(userDefaults);
     const { email, password } = formFields;
 
@@ -35,7 +38,7 @@ const SignInForm = () => {
         if (!email || !password) return;
 
         try {
-            await signInAuthUserWithEmailAndPassword(email, password);
+            dispatch(emailSignInStart(email, password));
             resetFormField();
         } catch (error) {
             switch (error.code) {
@@ -51,10 +54,10 @@ const SignInForm = () => {
 
     // Google Auth Redirect Sign In
     useEffect(() => {
-        (async () => {
-            await getRedirectResult(auth);
-        })();
-    }, []);
+        (async () => 
+            dispatch(googleSignInStart())
+        )();
+    }, [dispatch]);
 
     return (
         <SignInContainer>

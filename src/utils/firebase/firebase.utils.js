@@ -7,7 +7,8 @@ import {
     createUserWithEmailAndPassword, 
     signInWithEmailAndPassword, 
     signOut, 
-    onAuthStateChanged 
+    onAuthStateChanged,
+    getRedirectResult
 } from 'firebase/auth';
 
 import { 
@@ -108,9 +109,24 @@ export const signInAuthUserWithEmailAndPassword = async (email, password) => {
     return await signInWithEmailAndPassword(auth, email, password);
 };
 
+export const signInAuthUserWithGoogleRedirect = async () => await getRedirectResult(auth);
+
 export const signOutUser = async () => await signOut(auth);
 
 export const onAuthStateChangedListener = callback => {
     if (!callback) return;
     return onAuthStateChanged(auth, callback);
 }
+
+export const getCurrentUser = () => {
+    return new Promise((resolve, reject) => {
+        const unsubscribe = onAuthStateChanged(
+            auth,
+            (userAuth) => {
+                unsubscribe();
+                resolve(userAuth);
+            },
+            reject
+        );
+    });
+};
