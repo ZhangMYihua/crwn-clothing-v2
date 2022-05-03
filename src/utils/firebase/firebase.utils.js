@@ -71,7 +71,10 @@ export const getCategoriesAndDocuments = async () => {
     return querySnapshot.docs.map(docSnapshot => docSnapshot.data());
 };
 
-export const createUserDocumentFromAuth = async (userAuth, otherAttributes = {}) => {
+export const createUserDocumentFromAuth = async (
+    userAuth,
+    additionalInformation = {}
+) => {
     if (!userAuth) return;
 
     const userDocRef = doc(db, userCollectionName, userAuth.uid);
@@ -87,14 +90,14 @@ export const createUserDocumentFromAuth = async (userAuth, otherAttributes = {})
                 displayName,
                 email,
                 createdAt,
-                ...otherAttributes
+                ...additionalInformation,
             });
         } catch (error) {
-            console.error(`ERR: ERROR CREATING THE USER ${error}`);
+            console.log('error creating the user', error.message);
         }
     }
 
-    return userDocRef;
+    return userSnapshot;
 };
 
 export const createAuthUserWithEmailAndPassword = async (email, password) => {
