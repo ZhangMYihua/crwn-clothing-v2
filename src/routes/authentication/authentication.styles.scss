@@ -1,0 +1,15 @@
+.authentication-container {
+  width: 50%;
+  margin: 3rem auto;
+
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+@media only screen and (max-width: 1200px) {
+  .authentication-container {
+    width: 80%;
+    gap: 2rem;
+  }
+}
