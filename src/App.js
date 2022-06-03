@@ -12,7 +12,7 @@ const App = () => {
             <div className="background-image"/>
             <div className="category-body-container">
               <h2>{title}</h2>
-              <p>Shop Now</p>
+              <p>Shops Now</p>
             </div>
           </div>)
       })}
