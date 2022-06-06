@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './CategoryItem.scss';
 const CategoryItem = (props) => {
 	const { category } = props;
