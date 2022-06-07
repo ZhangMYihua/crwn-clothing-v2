@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { getRedirectResult } from 'firebase/auth';
 import { signInWithGoogleRedirect, createUserDocumentFromAuth, signInWithGooglePopup, auth, signInWithGoogleEmailAndPassword } from '../../utils/firebase/firebase.js';
 import FormInput from '../../components/FormInput/FormInput';
 import Button from '../Button/Button';
 import './SignIn.scss';
+import { UserContext } from '../../contexts/user.context';
 const defaultFormFields = {
 	email: '',
 	password: '',
@@ -35,6 +36,7 @@ const SignIn = () => {
 	const [formFields, setFormFields] = useState(defaultFormFields);
 	const { email, password } = formFields;
 
+	const { setCurrentUser } = useContext(UserContext);
 	const handleChange = (event) => {
 		const { name, value } = event.target;
 		setFormFields({ ...formFields, [name]: value });
@@ -47,7 +49,8 @@ const SignIn = () => {
 		event.preventDefault();
 
 		try {
-			await signInWithGoogleEmailAndPassword(email, password);
+			const { user } = await signInWithGoogleEmailAndPassword(email, password);
+			setCurrentUser(user);
 			resetFormFields();
 		} catch (error) {
 			console.log(error.message);
@@ -58,14 +61,12 @@ const SignIn = () => {
 			<h2>Already have an account?</h2>
 			<span>Sign up with your email and password</span>
 			<form onSubmit={handleSubmit}>
-				<FormInput label='Email' type='email' required onChange={handleChange} name='email' value={email} />
-				<FormInput label='Password' type='password' required onChange={handleChange} name='password' value={password} />
+				<FormInput label='Email' type='email' onChange={handleChange} name='email' value={email} />
+				<FormInput label='Password' type='password' onChange={handleChange} name='password' value={password} />
 
 				<div className='buttons-container'>
 					{/* <button onClick={logGoogleUser}>SignIn with google</button> */}
-					<Button buttonType='google' onClick={signInWithGoogleRedirect}>
-						SignIn with google
-					</Button>
+
 					{/* <Button buttonType='google' onClick={signInWithGoogleRedirect}>
 				SignIn with google redirect
 			</Button> */}
@@ -75,6 +76,9 @@ const SignIn = () => {
 					</Button>
 				</div>
 			</form>
+			<Button buttonType='google' onClick={logGoogleUser}>
+				SignIn with google
+			</Button>
 		</div>
 	);
 };
