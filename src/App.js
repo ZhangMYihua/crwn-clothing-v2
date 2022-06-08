@@ -1,9 +1,9 @@
-import CategoriesMenu from "./components/categories-menu/CategoriesMenu";
+import DirectoryMenu from "./components/directory/DirectoryMenu";
 
 const App = () => {
 
   return (
-    <CategoriesMenu/>
+    <DirectoryMenu/>
   );
 };
 

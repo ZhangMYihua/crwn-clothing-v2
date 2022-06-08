@@ -1,10 +1,10 @@
-import "./category-menu.styles.scss"
+import "./directory-menu.styles.scss"
 import CategoryItem from "../category-item/CategoryItem"
 import categories from "../../constants/categories"
 
-const CategoriesMenu = () => {
+const DirectoryMenu = () => {
   return (
-    <div className="categories-container">
+    <div className="directory-container">
       {categories.map((category) => {
         return <CategoryItem key={category.id} category={category}/>
       })}
@@ -13,4 +13,4 @@ const CategoriesMenu = () => {
   )
 }
 
-export default CategoriesMenu
+export default DirectoryMenu
