@@ -1,10 +1,7 @@
-import DirectoryMenu from "./components/directory/DirectoryMenu";
+import DirectoryMenu from "./components/directory/DirectoryMenu"
 
 const App = () => {
+  return <DirectoryMenu />
+}
 
-  return (
-    <DirectoryMenu/>
-  );
-};
-
-export default App;
+export default App
