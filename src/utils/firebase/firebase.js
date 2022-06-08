@@ -10,7 +10,7 @@ import {
 	signOut,
 	onAuthStateChanged,
 } from 'firebase/auth';
-import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
+import { getFirestore, doc, getDoc, setDoc, collection, writeBatch, query, getDocs } from 'firebase/firestore';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -37,6 +37,34 @@ export const signInWithGoogleRedirect = () => signInWithRedirect(auth, googlePro
 
 export const db = getFirestore();
 
+//batch adding data
+export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
+	const collectionRef = collection(db, collectionKey);
+	const batch = writeBatch(db);
+
+	objectsToAdd.forEach((object) => {
+		//checking the referance value of the database
+		//if the ref not found firebase will automatically create the feild
+		const docRef = doc(collectionRef, object.title.toLowerCase());
+		//adding the data to the relevent docRef ex Hats
+		batch.set(docRef, object);
+	});
+	await batch.commit();
+	console.log('done');
+};
+
+export const getCategoriesAndDocuments = async () => {
+	const collectionRef = collection(db, 'categories');
+	const q = query(collectionRef);
+	const querySnapShop = await getDocs(q);
+	const categoryMap = querySnapShop.docs.reduce((acc, docSnapshot) => {
+		const { title, items } = docSnapshot.data();
+		acc[title.toLowerCase()] = items;
+		return acc;
+	}, {});
+
+	return categoryMap;
+};
 export const createUserDocumentFromAuth = async (userAuth, additionalInformation = {}) => {
 	const userDocRef = doc(db, 'users', userAuth.uid);
 	const userSnapShot = await getDoc(userDocRef);

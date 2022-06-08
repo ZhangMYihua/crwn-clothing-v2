@@ -10,7 +10,7 @@ const App = () => {
 			{/* here we are persisting the navigation and with index we match the compoentn to home */}
 			<Route path='/' element={<Navigation />}>
 				<Route index element={<Home />} />
-				<Route path='shop' element={<Shop />} />
+				<Route path='shop/*' element={<Shop />} />
 				<Route path='auth' element={<Authentication />} />
 				<Route path='checkout' element={<Checkout />} />
 			</Route>
