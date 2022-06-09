@@ -1,21 +1,7 @@
-.sign-in-and-sign-up {
+.authentication-container {
     display: flex;
     justify-content: space-between;
     margin: 30px auto;
-    width: 850px;
-    
-    .sign-in {
-        display: flex;
-        flex-direction: column;
-        width: 380px;
-    
-        h2 {
-            margin: 10px 0;
-        }
-    
-        .buttons {
-            display: flex;
-            justify-content: space-between;
-        }
-    }
+    width: 900px;
 }
+
