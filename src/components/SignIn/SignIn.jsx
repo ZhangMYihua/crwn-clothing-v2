@@ -1,6 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { getRedirectResult } from 'firebase/auth';
-import { signOut, signInWithGoogleRedirect, createUserDocumentFromAuth, signInWithGooglePopup, auth, signInWithGoogleEmailAndPassword } from '../../utils/firebase/firebase.js';
+import {
+	signOut,
+	signInWithGoogleRedirect,
+	createUserDocumentFromAuth,
+	signInWithGooglePopup,
+	auth,
+	signInWithGoogleEmailAndPassword,
+} from '../../utils/firebase/firebase.js';
 import FormInput from '../../components/FormInput/FormInput';
 import Button from '../Button/Button';
 import './SignIn.scss';
@@ -72,7 +79,7 @@ const SignIn = () => {
 				SignIn with google redirect
 			</Button> */}
 					{/* <button onClick={signInWithGoogleRedirect}>SignIn with google redirect</button> */}
-					<Button type='submit' buttonType=''>
+					<Button type='submit' buttonType='base'>
 						Sign In
 					</Button>
 				</div>
