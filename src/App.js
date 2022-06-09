@@ -1,38 +1,30 @@
-import CategoryItem from './components/category-item/category-item.component';
-
-import './categories.styles.scss';
+import Directory from './components/directory/directory.component';
 
 const App = () => {
   const categories = [
     {
       id: 1,
-      title: 'Hats',
+      title: 'hats',
     },
     {
       id: 2,
-      title: 'Jackets',
+      title: 'jackets',
     },
     {
       id: 3,
-      title: 'Sneakers',
+      title: 'sneakers',
     },
     {
       id: 4,
-      title: 'Womens',
+      title: 'womens',
     },
     {
       id: 5,
-      title: 'Mens',
+      title: 'mens',
     },
   ];
 
-  return (
-    <div className='categories-container'>
-      {categories.map((category) => (
-        <CategoryItem key={category.id} category={category} />
-      ))}
-    </div>
-  );
+  return <Directory categories={categories} />;
 };
 
 export default App;
