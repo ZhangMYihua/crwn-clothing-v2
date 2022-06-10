@@ -1,14 +1,14 @@
 import "./directory-menu.styles.scss"
 import CategoryItem from "../category-item/CategoryItem"
 import categories from "../../constants/categories"
+import { Outlet } from "react-router-dom"
 
 const DirectoryMenu = () => {
   return (
     <div className="directory-container">
       {categories.map((category) => {
-        return <CategoryItem key={category.id} category={category}/>
+        return <CategoryItem key={category.id} category={category} />
       })}
-
     </div>
   )
 }
