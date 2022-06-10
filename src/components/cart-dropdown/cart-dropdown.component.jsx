@@ -1,10 +1,11 @@
 import { useContext } from "react";
 import { CartContext } from "../../context/cart.context";
 import Button from "../button/button.component";
+import CartItem from "../cart-item/cart-item.component";
 import "./cart-dropdown.styles.scss";
 
 const CartDropdown = () => {
-  const { setIsCartOpen } = useContext(CartContext);
+  const { setIsCartOpen, cartItems } = useContext(CartContext);
 
   const close = () => {
     setIsCartOpen(false);
@@ -13,7 +14,11 @@ const CartDropdown = () => {
   return (
     <div onMouseLeave={close} className="cart-dropdown-container">
       <div className="cart-items">
-        <span className="Your cart is empty">Your cart is empty</span>
+        {cartItems.length ? (
+          cartItems.map((item) => <CartItem cartItem={item} key={item.id} />)
+        ) : (
+          <span className="Your cart is empty">Your cart is empty</span>
+        )}
       </div>
       <Button buttonType="default">CHECKOUT</Button>
     </div>
