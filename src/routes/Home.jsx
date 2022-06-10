@@ -2,14 +2,14 @@ import { Routes, Route } from "react-router-dom"
 import React from "react"
 
 import DirectoryMenu from "../components/directory/DirectoryMenu"
-import TestComponent from "../components/tests/TestComponent"
+import Navigation from "../components/navigation/Navigation"
 
 const Home = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={<DirectoryMenu />}>
-          <Route path="/test" element={<TestComponent />}></Route>
+        <Route path="/" element={<Navigation />}>
+          <Route index element={<DirectoryMenu />} />
         </Route>
       </Routes>
     </>
