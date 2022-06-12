@@ -2,7 +2,7 @@ import CheckoutHeader from "../checkout-header/header-block.component";
 import "./checkout.styles.scss";
 
 const CheckOut = () => {
-  sampleProduct = {
+  const sampleProduct = {
     imgUrl: "https://i.ibb.co/QdJwgmp/brown-cowboy.png",
     name: "Brown Cowboy",
     price: 35,
