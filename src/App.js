@@ -2,7 +2,7 @@ const App = () => {
   return (
     <div className="categories-container">
       <div className="category-container">
-        {console.log("new")}
+        {console.log("newfeature")}
         {/* <img /> */}
         <div className="category-body-container">
           <h2>Hats</h2>
