@@ -5,7 +5,7 @@ import {
   signInWithGooglePopup,
 } from "../../utils/firebase/firebase.utils";
 import FormInput from "../form-input/form-input.component";
-import Button from "../button/button.component";
+import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
 import { useNavigate } from "react-router-dom";
 
 const defaultFormFields = {
@@ -76,10 +76,14 @@ const SignInForm = () => {
           required
         />
         <div className="buttons-container">
-          <Button buttonType="default" type="submit">
+          <Button buttonType={BUTTON_TYPE_CLASSES.base} type="submit">
             SIGN IN
           </Button>
-          <Button type="button" buttonType="google" onClick={signInWithGoogle}>
+          <Button
+            type="button"
+            buttonType={BUTTON_TYPE_CLASSES.google}
+            onClick={signInWithGoogle}
+          >
             GOOGLE SIGN IN
           </Button>
         </div>
