@@ -6,14 +6,16 @@ import {
   NavLinks,
 } from "./navigation.styles.jsx";
 import { ReactComponent as Logo } from "../../../assets/crown.svg";
-import { UserContext } from "../../../context/user.context";
 import { useContext } from "react";
 import { signOutUser } from "../../../utils/firebase/firebase.utils";
 import CartIcon from "../../cart-icon/cart-icon.component";
 import CartDropdown from "../../cart-dropdown/cart-dropdown.component";
 import { CartContext } from "../../../context/cart.context";
+import { useSelector } from "react-redux";
+import { selectCurrentUser } from "../../../store/user/user.selector.js";
 const Navigation = () => {
-  const { currentUser } = useContext(UserContext);
+  const currentUser = useSelector(selectCurrentUser);
+
   const { isCartOpen } = useContext(CartContext);
 
   const signOutHandler = async () => {

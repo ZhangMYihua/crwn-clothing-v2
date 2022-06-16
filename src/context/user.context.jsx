@@ -1,58 +1,58 @@
-import { createContext, useReducer } from "react";
-// import { createAction } from "../utils/reducer/reducer.utils.js";
+// import { createContext, useReducer } from "react";
+// // import { createAction } from "../utils/reducer/reducer.utils.js";
 
-export const UserContext = createContext({
-  currentUser: null,
-  setCurrentUser: () => null,
-});
+// export const UserContext = createContext({
+//   currentUser: null,
+//   setCurrentUser: () => null,
+// });
 
-const INITIAL_STATE = {
-  currentUser: null,
-};
-
-// export const USER_ACTION_TYPES = {
-//   SET_CURRENT_USER: "SET_CURRENT_USER",
+// const INITIAL_STATE = {
+//   currentUser: null,
 // };
 
-const userReducer = (state, action) => {
-  const { type, payload } = action;
+// // export const USER_ACTION_TYPES = {
+// //   SET_CURRENT_USER: "SET_CURRENT_USER",
+// // };
 
-  switch (type) {
-    case "SET_CURRENT_USER":
-      return {
-        ...state,
-        currentUser: payload,
-      };
+// const userReducer = (state, action) => {
+//   const { type, payload } = action;
 
-    default:
-      throw new Error(`Unhandled type ${type} in userReducer`);
-  }
-};
+//   switch (type) {
+//     case "SET_CURRENT_USER":
+//       return {
+//         ...state,
+//         currentUser: payload,
+//       };
 
-export const UserProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(userReducer, INITIAL_STATE);
+//     default:
+//       throw new Error(`Unhandled type ${type} in userReducer`);
+//   }
+// };
 
-  const { currentUser } = state;
+// export const UserProvider = ({ children }) => {
+//   const [state, dispatch] = useReducer(userReducer, INITIAL_STATE);
 
-  // const setCurrentUser = (user) => {
-  //   dispatch(createAction(USER_ACTION_TYPES.SET_CURRENT_USER, user));
-  // };
+//   // const { currentUser } = state;
 
-  // const value = { currentUser, setCurrentUser };
+//   // const setCurrentUser = (user) => {
+//   //   dispatch(createAction(USER_ACTION_TYPES.SET_CURRENT_USER, user));
+//   // };
 
-  // useEffect(() => {
-  //   const unsubscribe = onAuthStateChangedListener(async (user) => {
-  //     if (user) {
-  //       try {
-  //         await createUserDocFromAuth(user);
-  //       } catch (err) {
-  //         console.log(err);
-  //       }
-  //     }
-  //     setCurrentUser(user);
-  //   });
-  //   return unsubscribe;
-  // }, []);
+//   // const value = { currentUser, setCurrentUser };
 
-  // return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
-};
+//   // useEffect(() => {
+//   //   const unsubscribe = onAuthStateChangedListener(async (user) => {
+//   //     if (user) {
+//   //       try {
+//   //         await createUserDocFromAuth(user);
+//   //       } catch (err) {
+//   //         console.log(err);
+//   //       }
+//   //     }
+//   //     setCurrentUser(user);
+//   //   });
+//   //   return unsubscribe;
+//   // }, []);
+
+//   // return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
+// };
