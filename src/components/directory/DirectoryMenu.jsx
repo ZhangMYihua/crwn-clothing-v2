@@ -1,7 +1,6 @@
 import "./directory-menu.styles.scss"
 import CategoryItem from "../category-item/CategoryItem"
 import categories from "../../constants/categories"
-import { Outlet } from "react-router-dom"
 
 const DirectoryMenu = () => {
   return (
