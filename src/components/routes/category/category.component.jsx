@@ -7,11 +7,14 @@ import "./category.styles.jsx";
 import { CategoryContainer, CategoryTitle } from "./category.styles.jsx";
 
 const Category = () => {
+  console.log("Render/re-rendering category component");
+
   const categoriesMap = useSelector(selectCategoriesMap);
   const { category } = useParams();
   const [products, setProducts] = useState(categoriesMap[category]);
 
   useEffect(() => {
+    console.log("Effect firing set products");
     setProducts(categoriesMap[category]);
   }, [category, categoriesMap]);
 
