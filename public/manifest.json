@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Crwn Clothing",
+  "name": "Crwn Clothing by Yihua",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,14 +8,16 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "crwn-192x192.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "192x192",
+      "purpose": "any maskable"
     },
     {
-      "src": "logo512.png",
+      "src": "crwn-512x512.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "purpose": "any maskable"
     }
   ],
   "start_url": ".",
