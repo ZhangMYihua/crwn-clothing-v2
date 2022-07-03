@@ -1,8 +1,13 @@
-import React from "react";
-import Home from "./routes/home/home.component";
+import { Routes, Route } from 'react-router-dom';
+
+import Home from './routes/home/home.componentt';
 
 const App = () => {
-  return <Home />;
+  return (
+    <Routes>
+      <Route path='/' index element={<Home />} />
+    </Routes>
+  );
 };
 
 export default App;
