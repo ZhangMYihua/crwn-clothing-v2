@@ -1,7 +1,7 @@
 const App = () => {
-  console.log('Test2')
   return (
     <div className='categories-container'>
+      <h2>Clothing</h2>
       <div className='category-container'>
         {/* <img /> */}
         <div className='category-body-container'>
