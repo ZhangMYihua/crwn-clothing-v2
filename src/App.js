@@ -1,5 +1,5 @@
 const App = () => {
-  console.log('Test')
+  console.log('Test2')
   return (
     <div className='categories-container'>
       <div className='category-container'>
