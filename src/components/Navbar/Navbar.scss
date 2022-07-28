@@ -1,0 +1,10 @@
+.nav-container {
+    display: flex;
+    margin-bottom: 20px;
+
+    .nav-comp {
+        display: flex;
+        flex-direction: column;
+        
+    }
+}
