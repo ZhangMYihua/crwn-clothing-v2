@@ -31,7 +31,7 @@ export const RegisterFormInputData = [
         label: "Confirm Password",
         required: true,
         type: "password",
-        name: "password",
-        value: "password",
+        name: "confirmPassword",
+        value: "confirmPassword",
     }
 ]
