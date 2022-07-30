@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Home from "./routes/Home/Home";
 import Contact from "./routes/Contact/Contact";
 import SignIn from "./routes/SignIn/SignIn";
+import SignUp from "./routes/SignUp/SignUp";
 
 const Shop = () => {
   return <div>Shop</div>;
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="shop" element={<Shop />} />
         <Route path="contact" element={<Contact />} />
         <Route path="signIn" element={<SignIn />} />
+        <Route path="signUp" element={<SignUp />} />
       </Route>
     </Routes>
   );

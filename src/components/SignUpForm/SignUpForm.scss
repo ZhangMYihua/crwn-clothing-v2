@@ -1,0 +1,77 @@
+.sign-up-form-container {
+    border: 1px solid #e6e6e6;
+    border-radius: 5px;
+    box-shadow: #e6e6e6 0px 0px 10px;
+    width: 40%;
+    position: absolute;
+    left: 30%;
+    background-color: white;
+    margin-top: 20px;
+    margin-bottom: 40px;
+
+    form {
+        display: flex;
+        flex-direction: column;
+
+        .labels {
+            font-size: 18px;
+            font-weight: bold;
+            align-self: start;
+            margin-left: 80px;
+            margin-bottom: 10px;
+        }
+
+        .inputs {
+            font-size: 18px;
+            width: 70%;
+            height: 40px;
+            align-self: center;
+            text-indent: 7px;
+        }
+
+
+        .submit-btn {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            width: 70%;
+            height: 50px;
+            align-self: center;
+            border: 0.5px solid #e6e6e6;
+            border-radius: 8px;
+            background-color: aqua;
+            cursor: pointer;
+        }
+    }
+
+    @media (max-width: 768px) {
+        width: 80%;
+        left: 10%;
+    }
+
+    @media (max-width: 480px) {
+        width: 90%;
+        left: 5%;
+    }
+
+    @media (max-width: 320px) {
+        width: 95%;
+        left: 2%;
+    }
+
+    @media (max-width: 240px) {
+        width: 100%;
+        left: 0%;
+    }
+
+    @media (max-width: 160px) {
+        width: 100%;
+        left: 0%;
+    }
+
+    @media (max-width: 120px) {
+        width: 100%;
+        left: 0%;
+    }
+}
