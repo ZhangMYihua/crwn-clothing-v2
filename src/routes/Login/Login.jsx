@@ -1,4 +1,4 @@
-import "./SignIn.scss";
+import "./Login.scss";
 import {
     // auth,
     signInWithGooglePopup,
@@ -7,8 +7,9 @@ import {
 } from "../../utils/firebase/firebase";
 // import { useEffect } from "react";
 // import { getRedirectResult } from "firebase/auth";
+import LoginForm from "../../components/LoginForm/LoginForm";
 
-const SignIn = () => {
+const Login = () => {
     // useEffect(async () => {
     //     const response = await getRedirectResult(auth);
     //     if (response) {
@@ -22,13 +23,14 @@ const SignIn = () => {
     };
 
     return (
-        <div>
-            <h2>SignIn</h2>
-            <button onClick={logGooglePopupUser}>Sign In With Google Popup</button>
+        <div  className='login-page-container'>
+            {/* <h2>Login</h2> */}
+            <LoginForm />
+            {/* <button onClick={logGooglePopupUser}>Login With Google Popup</button> */}
             {/* <br />
-            <button onClick={signInWithGoogleRedirect}>Sign In With Google Redirect</button> */}
+            <button onClick={signInWithGoogleRedirect}>Login With Google Redirect</button> */}
         </div>
     );
 };
 
-export default SignIn;
+export default Login;
