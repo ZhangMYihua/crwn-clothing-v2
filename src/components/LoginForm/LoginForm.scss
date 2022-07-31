@@ -13,6 +13,20 @@
         display: flex;
         flex-direction: column;
 
+        .msg-logged-in {
+            align-self: start;
+            color: green;
+            margin-left: 80px;
+            font-weight: bold;
+        }
+
+        .error-login {
+            align-self: start;
+            color: red;
+            margin-left: 80px;
+            font-weight: bold;
+        }
+
         .google-logo {
             margin-right: 10px;
         }

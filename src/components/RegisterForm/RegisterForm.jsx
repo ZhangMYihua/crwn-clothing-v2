@@ -14,10 +14,12 @@ import { Link } from "react-router-dom";
 const RegisterForm = () => {
     const [formFields, setFormFields] = useState(defaultRegisterFormFields);
     const { displayName, email, password, confirmPassword } = formFields;
+    const [error, setError] = useState('');
+    const [regMsg, setRegMsg] = useState('');
 
     const logGooglePopupUser = async () => {
-        const { user } = await signInWithGooglePopup();
-        const userDocRef = await createUserDocFromAuth(user);
+        await signInWithGooglePopup();
+        setRegMsg("Successfully registered");
     };
 
     const resetFormFields = () => {
@@ -28,23 +30,24 @@ const RegisterForm = () => {
         e.preventDefault();
 
         if (password != confirmPassword) {
-            alert("Passwords do not match");
+            setError("Passwords do not match");
             return;
         }
 
         try {
-            const { user } = await createAuthUserWithEmailAndPassword(
-                email,
-                password
-            );
-
+            const { user } = await createAuthUserWithEmailAndPassword(email, password);
             await createUserDocFromAuth(user, { displayName });
             resetFormFields();
-
-            alert("Successfully created account");
+            setRegMsg("Successfully created account");
 
         } catch (error) {
-            alert(error.message);
+            if (error.code === 'auth/email-already-in-use') {
+                setError('Email already in use')
+            } else if (error.code === 'auth/weak-password') {
+                setError('Password is too weak')
+            } else {
+                setError(error.message)
+            }
         }
     };
 
@@ -60,6 +63,7 @@ const RegisterForm = () => {
                 <br />
                 to get started
             </h2>
+
             <form onSubmit={handleSubmit}>
                 {RegisterFormInputData.map((inputData) => (
                     <FormInput
@@ -72,6 +76,26 @@ const RegisterForm = () => {
                     />
                 ))}
 
+                <span className='msg-reg'>
+                    {
+                        regMsg ? (
+                            <p>{regMsg}</p>
+                        ) : (
+                            <p></p>
+                        )
+                    }
+                </span>
+
+                <span className='error-reg'>
+                    {
+                        error ? (
+                            <p>{error}</p>
+                        ) : (
+                            <p></p>
+                        )
+                    }
+                </span>
+
                 <Button
                     btnType="loginRegister"
                     type="submit"
@@ -81,11 +105,13 @@ const RegisterForm = () => {
 
                 <Button
                     btnType="google"
+                    type="button"
                     onClick={logGooglePopupUser}
                 >
                     <img src={GoogleLogo} className='google-logo' />
                     Register with Google
                 </Button>
+
                 <div className="have-account">
                     Already have an account?
                     <Link to="/login">
