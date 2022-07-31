@@ -8,7 +8,6 @@
 
     &.btn-login-register {
         margin-top: 20px;
-        // margin-bottom: 30px;
         width: 70%;
         height: 50px;
         align-self: center;
@@ -32,9 +31,27 @@
         justify-content: center;
         border: 0.5px solid #000000;
         border-radius: 8px;
-        
+
         &:hover {
             background-color: #d1d1d1;
+        }
+    }
+
+    &.btn-add-to-cart {
+        margin-top: 20px;
+        margin-bottom: 30px;
+        width: 70%;
+        height: 50px;
+        align-self: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        background: transparent;
+        color: transparent;
+
+        &:hover {
+            background-image: linear-gradient(to right, #3f8ee1, #8ed4de);
         }
     }
 }

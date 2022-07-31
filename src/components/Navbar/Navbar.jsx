@@ -2,7 +2,7 @@ import './Navbar.scss'
 import { Outlet, Link } from 'react-router-dom';
 import { ReactComponent as CrownLogo } from '../../assets/crown-logo.svg';
 import { useContext } from 'react';
-import { UserContext } from '../../context/userContext';
+import { UserContext } from '../../context/UserContext';
 import { logoutUser } from '../../utils/firebase/firebase';
 
 const Navbar = () => {
