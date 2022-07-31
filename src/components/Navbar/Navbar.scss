@@ -3,12 +3,13 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
+  background: linear-gradient(to right, #ff9900, #ff5e62);
+  border-radius: 0px 15px;
 
   .logo-container {
     height: 100%;
     width: 70px;
-    padding: 25px;
+    padding: 15px 0px 0px 25px;
   }
 
   .nav-links-container {
@@ -21,11 +22,20 @@
     .nav-link {
       padding: 10px 15px;
       cursor: pointer;
+      border: 1px solid transparent;
+      border-radius: 5px;
+      font-size: 18px;
+      font-weight: bold;
+
+      &:hover {
+        background: linear-gradient(to right, #3f8ee1, #8ed4de);
+        color: #fff;
+        font-style: italic;
+      }
     }
 
     &:last-child {
-      margin-right: 40px;
+      margin-right: 20px;
     }
   }
-
 }

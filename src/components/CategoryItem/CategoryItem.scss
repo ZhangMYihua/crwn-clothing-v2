@@ -30,12 +30,12 @@
         background-color: white;
         opacity: 0.6;
         position: absolute;
+        background: linear-gradient(to right, #8ed4de, #3f8ee1);
 
         h2 {
             font-weight: bold;
             margin: 0 6px 0;
             font-size: 22px;
-            color: black;
         }
 
         p {
@@ -45,7 +45,7 @@
             padding: 2px 6px;
             font-style: italic;
             border-radius: 5px;
-            background-color: aqua;
+            background: linear-gradient(to right, #ff9900, #ff5e62);
         }
     }
 

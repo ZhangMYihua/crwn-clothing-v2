@@ -97,7 +97,7 @@ const RegisterForm = () => {
                 </span>
 
                 <Button
-                    btnType="loginRegister"
+                    btnType="primaryBtn"
                     type="submit"
                 >
                     Register

@@ -1,10 +1,13 @@
+import './Home.scss'
 import Categories from "../../components/Categories/Categories";
 import { categoriesTypes } from "../../components/Categories/CategoriesTypes";
 
 const Home = () => {
 
     return (
-        <Categories categories={categoriesTypes} />
+        <div className="home-container">
+            <Categories categories={categoriesTypes} />
+        </div>
     );
 };
 

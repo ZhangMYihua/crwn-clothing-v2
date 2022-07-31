@@ -88,7 +88,7 @@ const LoginForm = () => {
                 </span>
 
                 <Button
-                    btnType="loginRegister"
+                    btnType="primaryBtn"
                     type="submit"
                 >
                     Login
