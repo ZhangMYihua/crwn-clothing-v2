@@ -1,3 +1,5 @@
+@import '../../utils/sass/variables';
+
 .register-form-container {
     border: 1px solid #e6e6e6;
     border-radius: 5px;
@@ -38,7 +40,7 @@
             .login-link {
                 margin-left: 10px;
                 text-decoration: underline;
-                color: #3f8ee1
+                color: $dark-blue
             }
         }
     }

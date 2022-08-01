@@ -1,3 +1,5 @@
+@import '../../utils/sass/variables';
+
 .prod-card-container {
     width: 100%;
     display: flex;
@@ -15,7 +17,7 @@
         margin-bottom: 5px;
     }
 
-    .prod-card-footer {
+    .prod-card-details {
         width: 100%;
         display: flex;
         justify-content: space-between;
@@ -28,7 +30,7 @@
         .prod-name {
             border: 0.5px solid transparent;
             border-radius: 10px 0px 10px 0px;
-            background: linear-gradient(to right, #8ed4de, #fff);
+            background: linear-gradient(to right, $light-blue, #fff);
             align-self: center;
             padding: 5px;
         }
@@ -36,27 +38,25 @@
         .prod-price {
             border: 0.5px solid transparent;
             border-radius: 0px 10px 0px 10px;
-            background: linear-gradient(to right, #ff9900, #ff5e62);
+            background: linear-gradient(to right, $yellow, $orange );
             align-self: center;
             padding: 5px;
         }
     }
 
     button {
-        width: 80%;
-        opacity: 0.7;
         position: absolute;
         top: 255px;
     }
 
     &:hover {
         img {
-            opacity: 0.8;
+            opacity: 0.9;
         }
 
         button {
-            background-image: linear-gradient(to right, #8ed4de, #3f8ee1);
-            border: 1px solid #8ed4de;
+            background: linear-gradient(to right, $light-blue, $dark-blue);
+            border: 1px solid $light-blue;
             border-radius: 8px;
             color: black;
             opacity: 0.85;

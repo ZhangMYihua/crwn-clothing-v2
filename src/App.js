@@ -5,6 +5,7 @@ import Shop from "./routes/Shop/Shop";
 import Contact from "./routes/Contact/Contact";
 import Login from "./routes/Login/Login";
 import Register from "./routes/Register/Register";
+import Checkout from "./routes/Checkout/Checkout";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="contact" element={<Contact />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
+        <Route path="checkout" element={<Checkout />} />
       </Route>
     </Routes>
   );

@@ -1,7 +1,7 @@
 import './Button.scss'
 
 const BUTTON_TYPE_CLASSES = {
-    primaryBtn: "btn-login-register",
+    primaryBtn: "btn-primary",
     google: "btn-google",
     addToCart: "btn-add-to-cart",
 };

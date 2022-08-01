@@ -1,0 +1,43 @@
+.checkout-item-container {
+    width: 100%;
+    display: flex;
+    min-height: 100px;
+    border-bottom: 1px solid darkgrey;
+    padding: 15px 0;
+    font-size: 20px;
+    align-items: center;
+
+    .checkout-item-img {
+        width: 23%;
+        padding-right: 15px;
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .checkout-item-name,
+    .checkout-item-quantity,
+    .checkout-item-price {
+        width: 23%;
+    }
+
+    .checkout-item-quantity {
+        display: flex;
+
+        .checkout-arrow {
+            cursor: pointer;
+        }
+
+        .checkout-item-value {
+            margin: 0 10px;
+        }
+    }
+
+    .remove-from-cart-btn {
+        padding-left: 12px;
+        cursor: pointer;
+        color: red;
+    }
+}

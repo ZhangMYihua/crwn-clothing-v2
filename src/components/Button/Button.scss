@@ -1,3 +1,5 @@
+@import '../../utils/sass/variables';
+
 .btn-container {
     cursor: pointer;
     text-transform: uppercase;
@@ -6,17 +8,17 @@
     font-size: 18px;
     letter-spacing: 0.5px;
 
-    &.btn-login-register {
-        margin-top: 20px;
+    &.btn-primary {
+        margin-top: 10px;
         width: 70%;
         height: 50px;
         align-self: center;
         border: 0.5px solid #e6e6e6;
         border-radius: 8px;
-        background-image: linear-gradient(to right, #8ed4de, #3f8ee1);
+        background-image: linear-gradient(to right, $light-blue, $dark-blue);
 
         &:hover {
-            background-image: linear-gradient(to right, #3f8ee1, #8ed4de);
+            background-image: linear-gradient(to right, $dark-blue, $light-blue);
         }
     }
 
@@ -51,7 +53,7 @@
         color: transparent;
 
         &:hover {
-            background-image: linear-gradient(to right, #3f8ee1, #8ed4de);
+            background-image: linear-gradient(to right, $dark-blue, $light-blue);
         }
     }
 }

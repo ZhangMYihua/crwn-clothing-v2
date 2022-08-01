@@ -1,3 +1,5 @@
+@import '../../utils/sass/variables';
+
 .category-container {
     min-width: 30%;
     height: 240px;
@@ -19,9 +21,8 @@
     }
 
     .inner-container {
-        height: 90px;
+        height: 50px;
         padding: 0 25px;
-        display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
@@ -30,22 +31,17 @@
         background-color: white;
         opacity: 0.6;
         position: absolute;
-        background: linear-gradient(to right, #8ed4de, #3f8ee1);
+        background: linear-gradient(to right, $light-blue, $dark-blue);
+        display: none;
+
+        &:hover {
+            background: linear-gradient(to right, $yellow , $orange);
+        }
 
         h2 {
             font-weight: bold;
             margin: 0 6px 0;
             font-size: 22px;
-        }
-
-        p {
-            font-size: 18px;
-            margin: 7px 6px 0;
-            border: 2px solid black;
-            padding: 2px 6px;
-            font-style: italic;
-            border-radius: 5px;
-            background: linear-gradient(to right, #ff9900, #ff5e62);
         }
     }
 
@@ -59,11 +55,8 @@
 
         & .inner-container {
             opacity: 0.9;
+            display: flex;
         }
-    }
-
-    &.large {
-        height: 380px;
     }
 
     &:first-child {

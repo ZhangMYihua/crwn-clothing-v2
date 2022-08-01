@@ -1,9 +1,11 @@
+@import '../../utils/sass/variables';
+
 .nav-container {
   height: 70px;
   width: 100%;
   display: flex;
   justify-content: space-between;
-  background: linear-gradient(to right, #ff9900, #ff5e62);
+  background: linear-gradient(to right, $yellow , $orange );
   border-radius: 0px 15px;
 
   .logo-container {
@@ -28,7 +30,7 @@
       font-weight: bold;
 
       &:hover {
-        background: linear-gradient(to right, #3f8ee1, #8ed4de);
+        background: linear-gradient(to right, $dark-blue , $light-blue );
         color: #fff;
         font-style: italic;
       }

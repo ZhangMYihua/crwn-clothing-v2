@@ -65,16 +65,20 @@ const RegisterForm = () => {
             </h2>
 
             <form onSubmit={handleSubmit}>
-                {RegisterFormInputData.map((inputData) => (
-                    <FormInput
-                        label={inputData.label}
-                        required={inputData.required}
-                        type={inputData.type}
-                        name={inputData.name}
-                        value={formFields[inputData.name]}
-                        onChange={handleChange}
-                    />
-                ))}
+                {RegisterFormInputData.map((inputData) => {
+                    const { label, required, type, name, value } = inputData;
+
+                    return (
+                        <FormInput
+                            label={label}
+                            required={required}
+                            type={type}
+                            name={name}
+                            value={formFields[name]}
+                            onChange={handleChange}
+                        />
+                    )
+                })}
 
                 <span className='msg-reg'>
                     {
