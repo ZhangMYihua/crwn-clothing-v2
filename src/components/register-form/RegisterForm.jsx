@@ -1,45 +1,52 @@
-import './LoginForm.scss'
-import FormInput from "../FormInput/FormInput";
-import Button from "../Button/Button";
-import GoogleLogo from "../../assets/google-logo.png";
-import { Link, useNavigate } from "react-router-dom";
-import { defaultLoginFormFields, LoginFormInputData } from "../../database/LoginFormInputData";
-import { useState } from 'react';
-import { loginAuthUserWithEmailAndPassword } from '../../utils/firebase/firebase'
+import "./RegisterForm.scss";
+import { useState } from "react";
 import {
     signInWithGooglePopup,
+    createAuthUserWithEmailAndPassword,
+    createUserDocFromAuth,
 } from "../../utils/firebase/firebase";
+import FormInput from "../form-input/FormInput";
+import { defaultRegisterFormFields, RegisterFormInputData } from "../../database/register-form-input-data";
+import Button from "../button/Button";
+import GoogleLogo from "../../assets/google-logo.png";
+import { Link, useNavigate } from "react-router-dom";
 
-const LoginForm = () => {
-    const [formFields, setFormFields] = useState(defaultLoginFormFields);
-    const { email, password } = formFields;
+const RegisterForm = () => {
+    const [formFields, setFormFields] = useState(defaultRegisterFormFields);
+    const { displayName, email, password, confirmPassword } = formFields;
     const [error, setError] = useState('');
-    const [loggedInMsg, setLoggedInMsg] = useState('');
+    const [regMsg, setRegMsg] = useState('');
     const navigate = useNavigate();
 
     const logGooglePopupUser = async () => {
         await signInWithGooglePopup();
-        setLoggedInMsg("Successfully logged in");
+        setRegMsg("Successfully registered");
         setTimeout(() => { navigate('/') }, 2000);
     };
 
     const resetFormFields = () => {
-        setFormFields(defaultLoginFormFields);
+        setFormFields(defaultRegisterFormFields);
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        if (password !== confirmPassword) {
+            setError("Passwords do not match");
+            return;
+        }
+
         try {
-            await loginAuthUserWithEmailAndPassword(email, password);
-            setLoggedInMsg("Successfully logged in");
+            const { user } = await createAuthUserWithEmailAndPassword(email, password);
+            await createUserDocFromAuth(user, { displayName });
             resetFormFields();
+            setRegMsg("Successfully created account");
             setTimeout(() => { navigate('/') }, 2000);
         } catch (error) {
-            if (error.code === 'auth/user-not-found') {
-                setError('User not found')
-            } else if (error.code === 'auth/wrong-password') {
-                setError('Wrong password')
+            if (error.code === 'auth/email-already-in-use') {
+                setError('Email already in use')
+            } else if (error.code === 'auth/weak-password') {
+                setError('Password is too weak')
             } else {
                 setError(error.message)
             }
@@ -52,14 +59,15 @@ const LoginForm = () => {
     };
 
     return (
-        <div className="login-form-container">
+        <div className="register-form-container">
             <h2 className="register-title">
-                Login to your account
+                Create your account
                 <br />
-                to buy awesome clothes
+                to get started
             </h2>
+
             <form onSubmit={handleSubmit}>
-                {LoginFormInputData.map((inputData) => {
+                {RegisterFormInputData.map((inputData) => {
                     const { label, required, type, name } = inputData;
 
                     return (
@@ -74,17 +82,17 @@ const LoginForm = () => {
                     )
                 })}
 
-                <span className='msg-logged-in'>
+                <span className='msg-reg'>
                     {
-                        loggedInMsg ? (
-                            <p>{loggedInMsg}</p>
+                        regMsg ? (
+                            <p>{regMsg}</p>
                         ) : (
                             <p></p>
                         )
                     }
                 </span>
 
-                <span className='error-login'>
+                <span className='error-reg'>
                     {
                         error ? (
                             <p>{error}</p>
@@ -98,7 +106,7 @@ const LoginForm = () => {
                     btnType="primaryBtn"
                     type="submit"
                 >
-                    Login
+                    Register
                 </Button>
 
                 <Button
@@ -106,20 +114,19 @@ const LoginForm = () => {
                     type="button"
                     onClick={logGooglePopupUser}
                 >
-                    <img src={GoogleLogo} alt='Google Logo' className='google-logo' />
-                    Login with Google
+                    <img src={GoogleLogo} alt='GOogle Logo' className='google-logo' />
+                    Register with Google
                 </Button>
 
-                <div className="no-account">
-                    Don't have an account?
-                    <Link to="/register">
-                        <span className="register-link">Register</span>
+                <div className="have-account">
+                    Already have an account?
+                    <Link to="/login">
+                        <span className="login-link">Login</span>
                     </Link>
                 </div>
-
             </form>
         </div>
-    )
-}
+    );
+};
 
-export default LoginForm
+export default RegisterForm;

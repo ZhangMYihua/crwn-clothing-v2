@@ -1,8 +1,8 @@
 import './CartDropdown.scss';
-import Button from '../Button/Button';
-import CartItem from '../CartItem/CartItem';
+import Button from '../button/Button';
+import CartItem from '../cart-item/CartItem';
 import { useContext } from 'react';
-import { CartContext } from '../../context/CartContext';
+import { CartContext } from '../../context/cart.context';
 import { Link } from 'react-router-dom'
 import EmptyCart from '../../assets/empty-cart.png';
 

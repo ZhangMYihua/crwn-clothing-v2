@@ -1,7 +1,7 @@
 import "./Login.scss";
 // import { useEffect } from "react";
 // import { getRedirectResult } from "firebase/auth";
-import LoginForm from "../../components/LoginForm/LoginForm";
+import LoginForm from "../../components/login-form/LoginForm";
 
 const Login = () => {
     // useEffect(async () => {

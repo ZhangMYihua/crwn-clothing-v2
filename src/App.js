@@ -1,11 +1,11 @@
 import { Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar/Navbar";
-import Home from "./routes/Home/Home";
-import Shop from "./routes/Shop/Shop";
-import Contact from "./routes/Contact/Contact";
-import Login from "./routes/Login/Login";
-import Register from "./routes/Register/Register";
-import Checkout from "./routes/Checkout/Checkout";
+import Navbar from "./components/navbar/Navbar";
+import Home from "./routes/home/Home";
+import Shop from "./routes/shop/Shop";
+import Contact from "./routes/contact/Contact";
+import Login from "./routes/login/Login";
+import Register from "./routes/register/Register";
+import Checkout from "./routes/checkout/Checkout";
 
 const App = () => {
   return (

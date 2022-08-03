@@ -1,6 +1,6 @@
 import './Home.scss'
-import Categories from "../../components/Categories/Categories";
-import { categoriesTypes } from "../../database/CategoriesTypes";
+import Categories from "../../components/categories/Categories";
+import { categoriesTypes } from "../../database/categories-types";
 import { ReactComponent as CrownLogo } from '../../assets/crown-logo.svg';
 
 const Home = () => {

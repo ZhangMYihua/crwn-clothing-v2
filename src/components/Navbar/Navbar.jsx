@@ -5,8 +5,8 @@ import { useContext } from 'react';
 import { UserContext } from '../../context/user.context';
 import { CartContext } from '../../context/cart.context';
 import { logoutUser } from '../../utils/firebase/firebase';
-import CartIcon from '../CartIcon/CartIcon';
-import CartDropdown from '../CartDropdown/CartDropdown';
+import CartIcon from '../cart-icon/CartIcon';
+import CartDropdown from '../cart-dropdown/CartDropdown';
 
 const Navbar = () => {
     const { user } = useContext(UserContext);
