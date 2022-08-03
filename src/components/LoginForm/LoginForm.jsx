@@ -31,7 +31,7 @@ const LoginForm = () => {
         e.preventDefault();
 
         try {
-            const { user } = await loginAuthUserWithEmailAndPassword(email, password);
+            await loginAuthUserWithEmailAndPassword(email, password);
             setLoggedInMsg("Successfully logged in");
             resetFormFields();
             setTimeout(() => { navigate('/') }, 2000);
@@ -60,7 +60,7 @@ const LoginForm = () => {
             </h2>
             <form onSubmit={handleSubmit}>
                 {LoginFormInputData.map((inputData) => {
-                    const { label, required, type, name, value } = inputData;
+                    const { label, required, type, name } = inputData;
 
                     return (
                         <FormInput
@@ -106,7 +106,7 @@ const LoginForm = () => {
                     type="button"
                     onClick={logGooglePopupUser}
                 >
-                    <img src={GoogleLogo} className='google-logo' />
+                    <img src={GoogleLogo} alt='Google Logo' className='google-logo' />
                     Login with Google
                 </Button>
 

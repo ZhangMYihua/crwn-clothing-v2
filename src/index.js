@@ -3,9 +3,9 @@ import "./index.scss";
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
-import { UserProvider } from "./context/UserContext";
-import { CategoriesProvider } from "./context/CategoriesContext";
-import { CartProvider } from "./context/CartContext";
+import { UserProvider } from "./context/user.context"
+import { CategoriesProvider } from "./context/categories.context";
+import { CartProvider } from "./context/cart.context";
 
 ReactDOM.render(
   <React.StrictMode>

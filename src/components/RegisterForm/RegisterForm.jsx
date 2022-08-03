@@ -31,7 +31,7 @@ const RegisterForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (password != confirmPassword) {
+        if (password !== confirmPassword) {
             setError("Passwords do not match");
             return;
         }
@@ -68,7 +68,7 @@ const RegisterForm = () => {
 
             <form onSubmit={handleSubmit}>
                 {RegisterFormInputData.map((inputData) => {
-                    const { label, required, type, name, value } = inputData;
+                    const { label, required, type, name } = inputData;
 
                     return (
                         <FormInput
@@ -114,7 +114,7 @@ const RegisterForm = () => {
                     type="button"
                     onClick={logGooglePopupUser}
                 >
-                    <img src={GoogleLogo} className='google-logo' />
+                    <img src={GoogleLogo} alt='GOogle Logo' className='google-logo' />
                     Register with Google
                 </Button>
 
