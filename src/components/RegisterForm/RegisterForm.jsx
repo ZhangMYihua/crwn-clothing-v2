@@ -6,7 +6,7 @@ import {
     createUserDocFromAuth,
 } from "../../utils/firebase/firebase";
 import FormInput from "../FormInput/FormInput";
-import { defaultRegisterFormFields, RegisterFormInputData } from "../../Database/RegisterFormInputData";
+import { defaultRegisterFormFields, RegisterFormInputData } from "../../database/RegisterFormInputData";
 import Button from "../Button/Button";
 import GoogleLogo from "../../assets/google-logo.png";
 import { Link } from "react-router-dom";

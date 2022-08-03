@@ -3,7 +3,7 @@ import FormInput from "../FormInput/FormInput";
 import Button from "../Button/Button";
 import GoogleLogo from "../../assets/google-logo.png";
 import { Link } from "react-router-dom";
-import { defaultLoginFormFields, LoginFormInputData } from "../../Database/LoginFormInputData";
+import { defaultLoginFormFields, LoginFormInputData } from "../../database/LoginFormInputData";
 import { useState } from 'react';
 import { loginAuthUserWithEmailAndPassword } from '../../utils/firebase/firebase'
 import {

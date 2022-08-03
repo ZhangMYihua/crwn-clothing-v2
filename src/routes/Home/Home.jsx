@@ -1,6 +1,6 @@
 import './Home.scss'
 import Categories from "../../components/Categories/Categories";
-import { categoriesTypes } from "../../components/Categories/CategoriesTypes";
+import { categoriesTypes } from "../../database/CategoriesTypes";
 import { ReactComponent as CrownLogo } from '../../assets/crown-logo.svg';
 
 const Home = () => {
@@ -8,7 +8,7 @@ const Home = () => {
     return (
         <div className="home-container">
             <h2>
-                CROWN <CrownLogo /> SHOPPING
+                CROWN <CrownLogo /> CLOTHING
             </h2>
             <Categories categories={categoriesTypes} />
         </div>
