@@ -1,12 +1,12 @@
-import './Navbar.scss'
+import './navbar.scss'
 import { Outlet, Link } from 'react-router-dom';
 import { ReactComponent as CrownLogo } from '../../assets/crown-logo.svg';
 import { useContext } from 'react';
 import { UserContext } from '../../context/user.context';
 import { CartContext } from '../../context/cart.context';
 import { logoutUser } from '../../utils/firebase/firebase';
-import CartIcon from '../cart-icon/CartIcon';
-import CartDropdown from '../cart-dropdown/CartDropdown';
+import CartIcon from '../cart-icon/cart-icon';
+import CartDropdown from '../cart-dropdown/cart-dropdown';
 
 const Navbar = () => {
     const { user } = useContext(UserContext);

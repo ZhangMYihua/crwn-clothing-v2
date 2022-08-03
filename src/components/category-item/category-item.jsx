@@ -1,4 +1,4 @@
-import './CategoryItem.scss'
+import './category-item.scss'
 import { useNavigate } from 'react-router-dom'
 
 const CategoryItem = ({ category }) => {

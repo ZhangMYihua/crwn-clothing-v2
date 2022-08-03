@@ -1,7 +1,7 @@
-import "./CategoriesPreview.scss";
+import "./categories-preview.scss";
 import { useContext } from "react";
 import { CategoriesContext } from "../../context/categories.context";
-import CategoryPreview from "../../components/category-preview/CategoryPreview";
+import CategoryPreview from "../../components/category-preview/category-preview";
 import { ReactComponent as CrownLogo } from "../../assets/crown-logo.svg";
 
 const CategoriesPreview = () => {

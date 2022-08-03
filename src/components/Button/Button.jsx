@@ -1,4 +1,4 @@
-import './Button.scss'
+import './button.scss'
 
 const BtnTypeClasses = {
     primaryBtn: "btn-primary",
