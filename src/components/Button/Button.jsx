@@ -1,6 +1,6 @@
 import './Button.scss'
 
-const BUTTON_TYPE_CLASSES = {
+const BtnTypeClasses = {
     primaryBtn: "btn-primary",
     google: "btn-google",
     addToCart: "btn-add-to-cart",
@@ -8,7 +8,7 @@ const BUTTON_TYPE_CLASSES = {
 const Button = ({ children, btnType, ...otherProps }) => {
     return (
         <button
-            className={`btn-container ${BUTTON_TYPE_CLASSES[btnType]}`}
+            className={`btn-container ${BtnTypeClasses[btnType]}`}
             {...otherProps}
         >
             {children}

@@ -2,7 +2,7 @@ import './LoginForm.scss'
 import FormInput from "../FormInput/FormInput";
 import Button from "../Button/Button";
 import GoogleLogo from "../../assets/google-logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { defaultLoginFormFields, LoginFormInputData } from "../../database/LoginFormInputData";
 import { useState } from 'react';
 import { loginAuthUserWithEmailAndPassword } from '../../utils/firebase/firebase'
@@ -15,10 +15,12 @@ const LoginForm = () => {
     const { email, password } = formFields;
     const [error, setError] = useState('');
     const [loggedInMsg, setLoggedInMsg] = useState('');
+    const navigate = useNavigate();
 
     const logGooglePopupUser = async () => {
         await signInWithGooglePopup();
         setLoggedInMsg("Successfully logged in");
+        setTimeout(() => { navigate('/') }, 2000);
     };
 
     const resetFormFields = () => {
@@ -32,6 +34,7 @@ const LoginForm = () => {
             const { user } = await loginAuthUserWithEmailAndPassword(email, password);
             setLoggedInMsg("Successfully logged in");
             resetFormFields();
+            setTimeout(() => { navigate('/') }, 2000);
         } catch (error) {
             if (error.code === 'auth/user-not-found') {
                 setError('User not found')

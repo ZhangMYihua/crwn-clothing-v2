@@ -9,17 +9,19 @@ import FormInput from "../FormInput/FormInput";
 import { defaultRegisterFormFields, RegisterFormInputData } from "../../database/RegisterFormInputData";
 import Button from "../Button/Button";
 import GoogleLogo from "../../assets/google-logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const RegisterForm = () => {
     const [formFields, setFormFields] = useState(defaultRegisterFormFields);
     const { displayName, email, password, confirmPassword } = formFields;
     const [error, setError] = useState('');
     const [regMsg, setRegMsg] = useState('');
+    const navigate = useNavigate();
 
     const logGooglePopupUser = async () => {
         await signInWithGooglePopup();
         setRegMsg("Successfully registered");
+        setTimeout(() => { navigate('/') }, 2000);
     };
 
     const resetFormFields = () => {
@@ -39,7 +41,7 @@ const RegisterForm = () => {
             await createUserDocFromAuth(user, { displayName });
             resetFormFields();
             setRegMsg("Successfully created account");
-
+            setTimeout(() => { navigate('/') }, 2000);
         } catch (error) {
             if (error.code === 'auth/email-already-in-use') {
                 setError('Email already in use')
