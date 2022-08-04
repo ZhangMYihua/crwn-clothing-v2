@@ -1,0 +1,149 @@
+@import '../../utils/sass/variables';
+
+.prod-card-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 350px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+
+    img {
+        width: 100%;
+        height: 95%;
+        object-fit: cover;
+        margin-bottom: 5px;
+    }
+
+    .prod-card-details {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        position: absolute;
+        font-size: 20px;
+        font-family: 'Roboto', sans-serif;
+        font-style: italic;
+
+        .prod-name {
+            border: 0.5px solid transparent;
+            border-radius: 10px 0px 10px 0px;
+            background: linear-gradient(to right, $light-blue, #fff);
+            align-self: center;
+            padding: 5px;
+        }
+
+        .prod-price {
+            border: 0.5px solid transparent;
+            border-radius: 0px 10px 0px 10px;
+            background: linear-gradient(to right, $yellow, $orange );
+            align-self: center;
+            padding: 5px;
+        }
+    }
+
+    button {
+        position: absolute;
+        top: 255px;
+    }
+
+    &:hover {
+        img {
+            opacity: 0.9;
+        }
+
+        button {
+            background: linear-gradient(to right, $light-blue, $dark-blue);
+            border: 1px solid $light-blue;
+            border-radius: 8px;
+            color: black;
+            opacity: 0.85;
+            display: flex;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        height: 300px;
+
+        img {
+            height: 90%;
+        }
+
+        .prod-card-footer {
+            top: 250px;
+        }
+    }
+
+    @media screen and (max-width: 576px) {
+        height: 300px;
+
+        img {
+            height: 90%;
+        }
+
+        .prod-card-footer {
+            top: 250px;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        height: 300px;
+
+        img {
+            height: 90%;
+        }
+
+        .prod-card-footer {
+            top: 250px;
+        }
+    }
+
+    @media screen and (max-width: 360px) {
+        height: 300px;
+
+        img {
+            height: 90%;
+        }
+
+        .prod-card-footer {
+            top: 250px;
+        }
+    }
+
+    @media screen and (max-width: 320px) {
+        height: 300px;
+
+        img {
+            height: 90%;
+        }
+
+        .prod-card-footer {
+            top: 250px;
+        }
+    }
+
+    @media screen and (max-width: 240px) {
+        height: 300px;
+
+        img {
+            height: 90%;
+        }
+
+        .prod-card-footer {
+            top: 250px;
+        }
+    }
+
+    @media screen and (max-width: 200px) {
+        height: 300px;
+
+        img {
+            height: 90%;
+        }
+
+        .prod-card-footer {
+            top: 250px;
+        }
+    }
+}

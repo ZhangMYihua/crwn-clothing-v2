@@ -1,0 +1,77 @@
+@import '../../utils/sass/variables';
+
+.register-form-container {
+    border: 1px solid #e6e6e6;
+    border-radius: 5px;
+    box-shadow: #e6e6e6 0px 0px 10px;
+    width: 40%;
+    position: absolute;
+    left: 30%;
+    background-color: white;
+    margin-top: 20px;
+    margin-bottom: 40px;
+
+    form {
+        display: flex;
+        flex-direction: column;
+
+        .msg-reg {
+            align-self: start;
+            color: green;
+            margin-left: 80px;
+            font-weight: bold;
+        }
+
+        .error-reg {
+            align-self: start;
+            color: red;
+            margin-left: 80px;
+            font-weight: bold;
+        }
+
+        .google-logo {
+            margin-right: 10px;
+        }
+
+        .have-account {
+            margin-bottom: 25px;
+            font-size: 18px;
+
+            .login-link {
+                margin-left: 10px;
+                text-decoration: underline;
+                color: $dark-blue
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        width: 80%;
+        left: 10%;
+    }
+
+    @media (max-width: 480px) {
+        width: 90%;
+        left: 5%;
+    }
+
+    @media (max-width: 320px) {
+        width: 95%;
+        left: 2%;
+    }
+
+    @media (max-width: 240px) {
+        width: 100%;
+        left: 0%;
+    }
+
+    @media (max-width: 160px) {
+        width: 100%;
+        left: 0%;
+    }
+
+    @media (max-width: 120px) {
+        width: 100%;
+        left: 0%;
+    }
+}

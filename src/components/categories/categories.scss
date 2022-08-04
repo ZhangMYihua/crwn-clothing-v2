@@ -1,0 +1,20 @@
+.categories-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    @media screen and (max-width: 600px) {
+        flex-direction: column;
+    }
+        
+    @media screen and (max-width: 800px) {
+        flex-direction: column;
+    }
+        
+    @media screen and (max-width: 1000px) {
+        flex-direction: column;
+    }
+
+    
+}

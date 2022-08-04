@@ -1,0 +1,30 @@
+@import '../../utils/sass/variables';
+
+.cart-dropdown-container {
+    position: absolute;
+    width: 240px;
+    height: 340px;
+    display: flex;
+    flex-direction: column;
+    padding: 7px;
+    border: 1px solid black;
+    border-top: none;
+    background-color: white;
+    // background: linear-gradient(to right, $yellow, $orange);
+    top: 90px;
+    right: 40px;
+    z-index: 5;
+
+    .empty-cart {
+        align-self: center;
+        width: 200px;
+        height: 250px;
+    }
+
+    .cart-items {
+        height: 270px;
+        display: flex;
+        flex-direction: column;
+        overflow-y: scroll;
+    }
+}

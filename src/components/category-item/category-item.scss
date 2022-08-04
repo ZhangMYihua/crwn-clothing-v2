@@ -1,0 +1,69 @@
+@import '../../utils/sass/variables';
+
+.category-item-container {
+    min-width: 30%;
+    height: 240px;
+    flex: 1 1 auto;
+    display: flex;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    margin: 0 7.5px 15px;
+    overflow: hidden;
+
+    .category-item-bg-img {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .category-item-inner-container {
+        height: 50px;
+        padding: 0 25px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid black;
+        border-radius: 0.7rem;
+        background-color: white;
+        opacity: 0.6;
+        position: absolute;
+        background: linear-gradient(to right, $light-blue, $dark-blue);
+        display: none;
+
+        &:hover {
+            background: linear-gradient(to right, $yellow , $orange);
+        }
+
+        .category-item-title {
+            font-weight: bold;
+            margin: 0 6px 0;
+            font-size: 22px;
+        }
+    }
+
+    &:hover {
+        cursor: pointer;
+
+        & .category-item-bg-img {
+            transform: scale(1.1);
+            transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+        }
+
+        & .category-item-inner-container {
+            opacity: 0.9;
+            display: flex;
+        }
+    }
+
+    &:first-child {
+        margin-right: 7.5px;
+    }
+
+    &:last-child {
+        margin-left: 7.5px;
+    }
+}

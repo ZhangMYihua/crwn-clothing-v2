@@ -1,0 +1,42 @@
+@import '../../utils/sass/variables';
+
+.nav-container {
+  height: 70px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background: linear-gradient(to right, $yellow , $orange );
+  border-radius: 0px 15px;
+
+  .logo-container {
+    height: 100%;
+    width: 70px;
+    padding: 15px 0px 0px 25px;
+  }
+
+  .nav-links-container {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    .nav-link {
+      padding: 10px 15px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      border-radius: 5px;
+      font-size: 18px;
+      font-weight: bold;
+
+      &:hover {
+        background: linear-gradient(to right, $dark-blue , $light-blue );
+        color: #fff;
+      }
+    }
+
+    &:last-child {
+      margin-right: 20px;
+    }
+  }
+}

@@ -1,0 +1,58 @@
+@import '../../utils/sass/variables';
+
+.btn-container {
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+
+    &.btn-primary {
+        margin-top: 10px;
+        width: 70%;
+        height: 50px;
+        align-self: center;
+        border: 0.5px solid #e6e6e6;
+        border-radius: 8px;
+        background-image: linear-gradient(to right, $light-blue, $dark-blue);
+
+        &:hover {
+            background-image: linear-gradient(to right, $dark-blue, $light-blue);
+        }
+    }
+
+    &.btn-google {
+        margin-top: 20px;
+        margin-bottom: 30px;
+        width: 70%;
+        height: 50px;
+        align-self: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 0.5px solid #000000;
+        border-radius: 8px;
+
+        &:hover {
+            background-color: #d1d1d1;
+        }
+    }
+
+    &.btn-add-to-cart {
+        margin-top: 20px;
+        margin-bottom: 30px;
+        width: 70%;
+        height: 50px;
+        align-self: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        background: transparent;
+        color: transparent;
+
+        &:hover {
+            background-image: linear-gradient(to right, $dark-blue, $light-blue);
+        }
+    }
+}
