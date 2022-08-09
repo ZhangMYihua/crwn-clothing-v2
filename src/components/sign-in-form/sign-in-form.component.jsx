@@ -45,14 +45,6 @@ export const SignInForm = () => {
       <h2>Already have an account?</h2>
       <span>Sign Up with your email and password</span>
       <form onSubmit={handleSubmit}>
-        <FormInput
-          label="Display Name"
-          type="text"
-          required
-          onChange={handleChange}
-          name="displayName"
-          value={displayName}
-        />
 
         <FormInput
           label="Email"
@@ -72,14 +64,6 @@ export const SignInForm = () => {
           value={password}
         />
 
-        <FormInput
-          label="Confirm Password"
-          type="password"
-          required
-          onChange={handleChange}
-          name="confirmPassword"
-          value={confirmPassword}
-        />
         <Button type="submit">Sign Up</Button>
       </form>
     </div>
