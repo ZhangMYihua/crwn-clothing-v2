@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithRedirect, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+
+import { getAuth, signInWithRedirect, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword } from "firebase/auth";
 
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 
@@ -14,46 +15,54 @@ const firebaseConfig = {
   appId: "1:31342630333:web:4c6131b77326a450bb6ed4",
 };
 
-// Initialize Firebase
+//=============== Initialize Firebase=================================
+
 const app = initializeApp(firebaseConfig);
 
-const provider = new GoogleAuthProvider();
+//==============Auth and Provider======================
+export const auth = getAuth();
 
+const provider = new GoogleAuthProvider();
 provider.setCustomParameters({
   prompt: "select_account",
 });
 
-export const auth = getAuth();
+//=======================================
+
 export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
 
+//==================Writing User details to DB  -  FireStore ==========================================================================================
+
 export const db = getFirestore();
-
-export const createUserDocumentFromAuth = async (userAuth) => {
-  //getting document ref from the firestore DB ==>getting column
+export const createUserDocumentFromAuth = async (userAuth, additionalInfo) => {
+  //=============== Fetching the Data =====================
   const userDocRef = doc(db, "users", userAuth.uid);
-
-  //Getting the columns data
   const userSnapshot = await getDoc(userDocRef);
 
-  //if user data does not exist
+  //New USER   -   if user data does not exist
   if (!userSnapshot.exists()) {
-    console.log("inside if block ");
-
     const { displayName, email } = userAuth;
     const createdAt = new Date();
 
     try {
-      console.log({
+      await setDoc(userDocRef, {
         displayName,
         email,
         createdAt,
+        ...additionalInfo,
       });
-      await setDoc(userDocRef, { displayName, email, createdAt });
     } catch (error) {
       console.log(error.message);
     }
   }
-
-  return userDocRef;
   //return userDoc
+  return userDocRef;
+};
+
+//==================Creating Auth in Firebase using email and password=====================================================================
+
+export const createAuthUserWithEmailAndPassword = async (email, password) => {
+  if (!email || !password) return;
+
+  return await createUserWithEmailAndPassword(auth, email, password);
 };
