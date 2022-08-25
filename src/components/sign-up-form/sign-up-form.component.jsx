@@ -65,7 +65,7 @@ const SignUpForm = ()=>{
     <FormInput label="Email" type="email" required  name="email" onChange={hadleChange} value={email}/>
     <FormInput   label="Password" type="password" required name="password" onChange={hadleChange} value={password}/>
     <FormInput label="Confirm Password" type="password" required name="confirmPassword" onChange={hadleChange} value={confirmPassword}/>
-    <Button   type="submit">Sign Up</Button>
+    <Button  type="submit">Sign Up</Button>
     </form>
     </div>
   )
