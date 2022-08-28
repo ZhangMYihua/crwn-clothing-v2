@@ -19,6 +19,7 @@ const Authentication = lazy(() =>
 
 const App = () => {
   const dispatch = useDispatch();
+  console.log('test')
 
   useEffect(() => {
     dispatch(checkUserSession());
