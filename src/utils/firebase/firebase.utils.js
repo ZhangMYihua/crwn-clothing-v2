@@ -26,7 +26,7 @@ googleProvider.setCustomParameters({
   prompt: 'select_account',
 });
 
-console.log("here")
+console.log("here or here")
 
 export const auth = getAuth();
 export const signInWithGooglePopup = () =>
