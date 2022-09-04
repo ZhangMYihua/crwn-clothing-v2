@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import './nav.styles.scss';
+import '../navigation/nav.styles.scss';
 import { Outlet, Link } from 'react-router-dom';
 import { ReactComponent as CrwnLogo } from '../../assets/crown.svg';
 const Nav = () => {

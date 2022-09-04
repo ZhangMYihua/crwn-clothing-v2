@@ -1,16 +1,20 @@
 import { Routes, Route } from 'react-router-dom';
-import Nav from './routes/navigation/nav.component';
+
 import Home from './routes/home/home.component';
-import SignIn from './routes/sign-in/sign-In.component';
-import Shop from './routes/shop/shop.component';
+import Navigation from './routes/navigation/navigation.component';
+import SignIn from './routes/sign-in/sign-in.component';
+
+const Shop = () => {
+  return <h1>I am the shop page</h1>;
+};
 
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<Nav />}>
+      <Route path="/" element={<Navigation />}>
         <Route index element={<Home />} />
-        <Route path="sign-in" element={<SignIn />} />
         <Route path="shop" element={<Shop />} />
+        <Route path="sign-in" element={<SignIn />} />
       </Route>
     </Routes>
   );
