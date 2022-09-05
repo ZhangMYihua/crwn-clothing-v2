@@ -7,11 +7,11 @@ const App = () => {
   ];
   return (
     <div className="categories-container">
-      {categories.map((title) => (
+      {categories.map(({ title }) => (
         <div className="category-container">
           {/* <img src="" alt="" /> */}
           <div className="category-body-container">
-            <h2>Hats</h2>
+            <h2>{title}</h2>
             <p>Shop now</p>
           </div>
         </div>
