@@ -2,7 +2,23 @@ const App = () => {
   const categories = [
     {
       id: 1,
-      title: "Hat",
+      title: "Hats",
+    },
+    {
+      id: 2,
+      title: "Jackets",
+    },
+    {
+      id: 3,
+      title: "Sneaker",
+    },
+    {
+      id: 4,
+      title: "Womens",
+    },
+    {
+      id: 5,
+      title: "Mens",
     },
   ];
   return (
