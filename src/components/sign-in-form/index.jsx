@@ -28,16 +28,7 @@ const SignInForm = () => {
       await signInAuthUserWithEmailAndPassword(email, password);
       resetFormFields();
     } catch (error) {
-      switch (error.code) {
-        case "auth/wrong-password":
-          alert("incorrect password");
-          break;
-        case "auth/user-not-found":
-          alert("User not found. Sign up to continue");
-          break;
-        default:
-          console.log(error);
-      }
+      console.log("user sign in failed", error);
     }
   };
   const handleInputChange = ({ target }) => {
