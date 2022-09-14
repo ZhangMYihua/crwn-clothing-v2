@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 import { useEffect, lazy, Suspense } from 'react';
 import { useDispatch } from 'react-redux';
 
@@ -39,22 +38,5 @@ const App = () => {
     </Suspense>
   );
 };
-=======
-import './App.css';
-import Home from './routes/home/home.component';
-import { Routes,Route } from 'react-router-dom';
-import Navigation from './routes/navigation/navigation.component';
-
-const App = () => {    
-  return (
-    <Routes>
-        <Route path='/' element={<Navigation></Navigation>}>{/*Nested Route example*/}
-            <Route index element={<Home></Home>}></Route>{/* Index shows if the URL matches '/' react will 
-            instantly render the Home component. */}          
-        </Route>
-    </Routes>     
-  );    
-}
->>>>>>> Stashed changes
 
 export default App;
