@@ -1,7 +1,7 @@
-import { identifier, importNamespaceSpecifier } from '@babel/types';
 import { initializeApp } from 'firebase/app'
-import { getAuth, signInWithRedirect, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword } from 'firebase/auth'
+import { getAuth, signInWithRedirect, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword,signInWithEmailAndPassword } from 'firebase/auth'
 import { getFirestore,doc,getDoc,setDoc} from 'firebase/firestore'
+
 const firebaseConfig = {
     apiKey: "AIzaSyAePusKt8RyYcxmJqfSWNfPMYCBBoQHf7c",
     authDomain: "crwn-clothing-db-4b6cb.firebaseapp.com",
@@ -57,4 +57,10 @@ export const createAuthUserWithEmailAndPassword = async (email, password) => {
   if(!email || !password) return;
 
   return await createUserWithEmailAndPassword(auth, email, password)
+}
+
+export const signInAuthUserWithEmailAndPassword = async (email, password) => {
+  if(!email || !password) return;
+
+  return await signInAuthUserWithEmailAndPassword(auth, email, password)
 }
