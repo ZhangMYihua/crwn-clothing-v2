@@ -6,7 +6,7 @@ import CheckoutItem from "../../components/checkout-item/checkout-item.component
 const headerBlocks = ["Product", "Description", "Quantity", "Price", "Remove"];
 
 const Checkout = () => {
-  const { cartItems } = useContext(CartContext);
+  const { cartItems, cartTotal } = useContext(CartContext);
 
   return (
     <div className="checkout-container">
@@ -22,7 +22,7 @@ const Checkout = () => {
         return <CheckoutItem key={item.id} cartItem={item} />;
       })}
 
-      <span className="total">Total : 0</span>
+      <span className="total">Total : {cartTotal}</span>
     </div>
   );
 };
