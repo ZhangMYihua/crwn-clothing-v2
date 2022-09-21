@@ -1,18 +1,17 @@
-import { Fragment, useContext } from "react";
+import { useContext, Fragment } from 'react';
 
-import CategoryPreview from "../../components/category-preview/category-preview.component";
-
-import { CategoriesContext } from "../../contexts/categories.context";
+import { CategoriesContext } from '../../contexts/categories.context';
+import CategoryPreview from '../../components/category-preview/category-preview.component';
 
 const CategoriesPreview = () => {
   const { categoriesMap } = useContext(CategoriesContext);
-  console.log("log from preview", categoriesMap);
+
   return (
     <Fragment>
       {Object.keys(categoriesMap).map((title) => {
         const products = categoriesMap[title];
         return (
-          <CategoryPreview key={title} products={products} title={title} />
+          <CategoryPreview key={title} title={title} products={products} />
         );
       })}
     </Fragment>
