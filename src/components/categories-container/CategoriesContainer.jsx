@@ -1,5 +1,5 @@
 import React from 'react'
-import CategoryItem from '../category-item/CategoryItem';
+import CategoryCard from '../category-item/CategoryCard';
 import './categories-container.scss'
 
 export default function CategoriesContainer() {
@@ -33,7 +33,7 @@ export default function CategoriesContainer() {
   return (
    <div className="categories-container">
       {categories.map(({ category: id, title, imageUrl }) => (
-        <CategoryItem key={id} imageUrl={imageUrl} title={title} />
+        <CategoryCard key={id} imageUrl={imageUrl} title={title} />
       ))}
     </div>
   )
