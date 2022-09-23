@@ -1,43 +1,41 @@
+import './categories.scss';
+
 const App = () => {
-  return (
-    <div className='categories-container'>
-      <div className='category-container'>
-        {/* <img /> */}
-        <div className='category-body-container'>
-          <h2>Hats</h2>
-          <p>Shop Now</p>
-        </div>
-      </div>
-      <div className='category-container'>
-        {/* <img /> */}
-        <div className='category-body-container'>
-          <h2>Jackets</h2>
-          <p>Shop Now</p>
-        </div>
-      </div>
-      <div className='category-container'>
-        {/* <img /> */}
-        <div className='category-body-container'>
-          <h2>Sneakers</h2>
-          <p>Shop Now</p>
-        </div>
-      </div>
-      <div className='category-container'>
-        {/* <img /> */}
-        <div className='category-body-container'>
-          <h2>Womens</h2>
-          <p>Shop Now</p>
-        </div>
-      </div>
-      <div className='category-container'>
-        {/* <img /> */}
-        <div className='category-body-container'>
-          <h2>Mens</h2>
-          <p>Shop Now</p>
-        </div>
+  const categories = [
+    {
+      id: 1,
+      title: 'Hats',
+    },
+    {
+      id: 2,
+      title: 'Shoes',
+    },
+    {
+      id: 3,
+      title: 'Jackets',
+    },
+    {
+      id: 4,
+      title: 'Womens',
+    },
+    {
+      id: 5,
+      title: 'Mens',
+    },
+  ];
+
+  const categoriesEl = categories.map(({ title, id }) => (
+    <div key={id} className="category-container">
+      <div className="background-image"></div>
+      {/* <img /> */}
+      <div className="category-body-container">
+        <h2>{title}</h2>
+        <p>Shop Now</p>
       </div>
     </div>
-  );
+  ));
+
+  return <div className="categories-container">{categoriesEl}</div>;
 };
 
 export default App;
