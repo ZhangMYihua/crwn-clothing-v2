@@ -3,6 +3,7 @@ import './nav.scss'
 import { ReactComponent as CrownLogo } from '../../assets/crown.svg'
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
+import { CartContext } from "../../contexts/CartContext";
 import { signOutUser } from "../../utils/firebase/firebase";
 import { CartIcon } from "../../components/cart-icon/CartIcon";
 import { CartDropdown } from "../../components/cart-dropdown/CartDropdown";
@@ -10,6 +11,7 @@ import { CartDropdown } from "../../components/cart-dropdown/CartDropdown";
 export const Nav = () => {
   // useContext rerenders the component whenever a value inside its context is updated
   const {currentUser} = useContext(UserContext)
+  const {isCartOpen} = useContext(CartContext)
 
 
   return (
@@ -31,7 +33,7 @@ export const Nav = () => {
           }
           <CartIcon/>
         </div>
-        <CartDropdown/>
+        {isCartOpen && <CartDropdown/>}
       </div>
       <Outlet />
     </>

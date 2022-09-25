@@ -20,11 +20,11 @@
     height: 240px;
     display: flex;
     flex-direction: column;
-    overflow: scroll;
+    // overflow: scroll;
   }
 
   button {
-    margin-top: auto;
-    // margin-top: 250px;
+    // margin-top: auto;
+    margin-top: 250px;
   }
 }
