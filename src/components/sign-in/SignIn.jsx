@@ -2,9 +2,8 @@ import { useState } from "react";
 import { FormInput } from "../../components/form-input/FormInput";
 import { Button } from "../../components/button/Button";
 import { 
-  // auth, 
-  signInWithGooglePopup, 
-  // signInWithGoogleRedirect, 
+  signInWithGooglePopup,
+  signInAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth } from "../../utils/firebase/firebase"
 import './sign-in.scss'
   
@@ -27,23 +26,37 @@ export default function SignIn() {
   }
   const resetFormField = () => setFormField(defaultFormField);
 
-  const logGoogleUser = async () => {
+  const signInWithGoogle = async () => {
     const response = await signInWithGooglePopup();
-    const userDocRef = await createUserDocumentFromAuth(response.user)
+    await createUserDocumentFromAuth(response.user)
+    if (email.length || password.length) {
+      resetFormField()
+    };
   }
-  const handleSubmit = async(event) => {
+
+  const handleSignIn = async(event) => {
     event.preventDefault();
     try {
-    
-    //   resetFormField();
+      const response = await signInAuthUserWithEmailAndPassword(email, password)
+      // console.log(response)
+      resetFormField();
     } catch (error) {
-    
+      switch (error.code) {
+        case 'auth/wrong-password':
+          alert("Incorrect password.")
+          break;
+        case 'auth/user-not-found':
+          alert('Email not found.');
+          break;
+        default: 
+          console.log('An error occurred:', error.message)
+      } 
     }
   }
 
   return (
     <div className='sign-in-container'>
-      <h2>I already have an account</h2>
+      <h2>Already have an account?</h2>
       <span>Sign in with your email and password</span>
       <form>
         <FormInput 
@@ -60,15 +73,20 @@ export default function SignIn() {
           type="password" 
           required 
           onChange={handleChange}/>
-        <Button 
-          buttonType='google' 
-          onClick={logGoogleUser}
-          >Sign in with Google
-        </Button>
-        <Button 
-        onClick={handleSubmit}
-          >Sign in
-        </Button>
+        <div className="buttons-container">
+          <Button 
+            type="button"
+            onClick={handleSignIn}
+            >
+              Sign in
+          </Button>
+          <Button 
+            buttonType='google' 
+            onClick={signInWithGoogle}
+            type="button">
+              Sign in with Google
+          </Button>
+        </div>
       </form>
     </div>
   )
