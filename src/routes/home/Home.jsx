@@ -1,6 +1,6 @@
-import CategoriesContainer from '../../components/categories-container/CategoriesContainer'
+import { CategoriesContainer } from '../../components/categories-container/CategoriesContainer'
 
-const Home = () => {
+export const Home = () => {
   return (
     <div>
       <CategoriesContainer />
@@ -8,4 +8,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+

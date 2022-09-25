@@ -1,8 +1,7 @@
-import React from 'react'
-import CategoryCard from '../category-card/CategoryCard';
+import { CategoryCard } from '../category-card/CategoryCard';
 import './categories-container.scss'
 
-export default function CategoriesContainer() {
+export const CategoriesContainer = () => {
   const categories = [
     {
       id: 1,

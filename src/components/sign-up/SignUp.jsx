@@ -49,10 +49,34 @@ export const SignUp = () => {
       <h2>Don't have an account?</h2>
       <span>Sign up with your email and password</span>
       <form onSubmit={handleSubmit} >
-        <FormInput label="Display Name" name="displayName" value={displayName} type="text" required onChange={handleChange}/>
-        <FormInput label="Email" name="email" value={email} type="email" required  onChange={handleChange}/>
-        <FormInput label="Password" name="password" value={password} type="password" required onChange={handleChange}/>
-        <FormInput label="Confirm Password" name="confirmPassword" value={confirmPassword} type="password" required onChange={handleChange}/>
+        <FormInput 
+          label="Display Name" 
+          name="displayName" 
+          value={displayName} 
+          type="text" 
+          required 
+          onChange={handleChange}/>
+        <FormInput 
+          label="Email" 
+          name="email" 
+          value={email} 
+          type="email" 
+          required  
+          onChange={handleChange}/>
+        <FormInput 
+          label="Password" 
+          name="password" 
+          value={password} 
+          type="password" 
+          required 
+          onChange={handleChange}/>
+        <FormInput 
+          label="Confirm Password" 
+          name="confirmPassword" 
+          value={confirmPassword} 
+          type="password" 
+          required 
+          onChange={handleChange}/>
 
         <Button type="submit">Sign up</Button>
       </form>

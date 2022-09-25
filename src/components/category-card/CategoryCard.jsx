@@ -1,7 +1,6 @@
-import React from 'react'
 import './category-card.scss'
 
-const CategoryCard = ({id, imageUrl, title}) => {
+export const CategoryCard = ({id, imageUrl, title}) => {
   return (
     <div key={id} className="category-card">
       <div
@@ -18,4 +17,3 @@ const CategoryCard = ({id, imageUrl, title}) => {
   )
 }
 
-export default CategoryCard;

@@ -2,7 +2,7 @@ import { Outlet, Link } from "react-router-dom";
 import './nav.scss'
 import {ReactComponent as CrwnLogo} from '../../assets/crown.svg'
 
-const Nav = () => {
+export const Nav = () => {
   return (
     <>
       <div className='nav'>
@@ -23,4 +23,3 @@ const Nav = () => {
   );
 };
 
-export default Nav;

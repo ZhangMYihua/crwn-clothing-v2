@@ -13,7 +13,7 @@ const defaultFormField = {
   password: ''
 }
 
-export default function SignIn() {
+export const SignIn = () => {
   const [formField, setFormField] = useState(defaultFormField);
   const {email, password} = formField;
 
@@ -76,14 +76,13 @@ export default function SignIn() {
         <div className="buttons-container">
           <Button 
             type="button"
-            onClick={handleSignIn}
-            >
+            onClick={handleSignIn}>
               Sign in
           </Button>
           <Button 
-            buttonType='google' 
-            onClick={signInWithGoogle}
-            type="button">
+            buttonType='google'
+            type="button"
+            onClick={signInWithGoogle}>
               Sign in with Google
           </Button>
         </div>
