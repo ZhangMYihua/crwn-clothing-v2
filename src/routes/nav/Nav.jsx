@@ -7,13 +7,9 @@ import { signOutUser } from "../../utils/firebase/firebase";
 
 export const Nav = () => {
   // useContext rerenders the component whenever a value inside its context is updated
-  const {currentUser, setCurrentUser} = useContext(UserContext)
-  // console.log('nav', currentUser)
+  const {currentUser} = useContext(UserContext)
+  
 
-  const handleSignOut = async () => {
-    await signOutUser();
-    setCurrentUser(null);
-  }
 
   return (
     <>
@@ -26,7 +22,7 @@ export const Nav = () => {
             Shop
           </Link>
           { currentUser ? (
-            <span className="nav-link" onClick={handleSignOut} >Sign Out</span> )
+            <span className="nav-link" onClick={signOutUser} >Sign Out</span> )
             : (<Link className='nav-link' to='/auth'>
             Sign In
           </Link>)
