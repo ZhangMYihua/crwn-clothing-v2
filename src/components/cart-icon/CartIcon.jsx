@@ -11,8 +11,6 @@ export const CartIcon = () => {
     setIsCartOpen(!isCartOpen)
   }
 
-  // const total = cartItems.reduce((prev, curr) => prev += curr.quantity, 0)
-
   return (
     <div className='cart-icon-container'
     onClick={toggleIsCartOpen} >
