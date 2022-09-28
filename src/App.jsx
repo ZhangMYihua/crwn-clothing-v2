@@ -1,3 +1,4 @@
+import './'
 const App = () => {
   const categories = [
     { 
