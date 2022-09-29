@@ -32,8 +32,7 @@ const App = () => {
   }
 ]
 
-
-  return <Directory key={categories.id} category={categories}
+  return <Directory key={categories.id} categories={categories}
   />
 };
 export default App;
