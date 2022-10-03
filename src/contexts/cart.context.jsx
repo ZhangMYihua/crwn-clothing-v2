@@ -1,4 +1,4 @@
-import { createContext,useState} from "react";
+import { createContext,useState,useEffect} from "react";
 
 export const addCartItem = (itemToAdd,cartItems) => {
   const existingCartItem = cartItems.find(
@@ -43,19 +43,62 @@ export const CartContext = createContext({
   cartItems:[],
   // setCartItems: ()=>{},
   addItemToCart: ()=>{},
+  itemsCount: 0,
+  totalPrice: 0,
+  removeItemFromCheckout: ()=>{},
+  decQuantity: ()=>{},
 
 });
 export const CartProvider =({children}) =>{
 
 const [cartItems,setCartItems] = useState([]);
 const [isCartOpen,setIsCartOpen] = useState(false);
+const [itemsCount, setItemsCount] = useState(0);
+const [totalPrice, setTotalPrice] = useState(0);
+
+useEffect(()=>{ 
+  const newTotal = cartItems.reduce((total,item)=> total + (item.price * item.quantity) ,0);
+  setTotalPrice(newTotal);
+},[cartItems])
+
+const deleteItem =(currentItem,cartItems)=>{
+ return cartItems.filter(item => item.id !== currentItem.id)  
+ 
+  // setCartItems(newCartItems);
+  
+};
+const decItemQuantity =(currentItem,cartItems)=>{
+  if (currentItem.quantity <= 1) return cartItems.filter(item => item.id !== currentItem.id);
+    else{
+      return cartItems.map(item => {
+        if (item.id ===currentItem.id) return {...currentItem,quantity: currentItem.quantity-1};
+          else return item; 
+      })
+      
+      };
+  
+}; 
+
+const removeItemFromCheckout = (currentItem)=>{
+  setCartItems(deleteItem(currentItem,cartItems))
+}
+
+const decQuantity = (currentItem)=>{
+  setCartItems(decItemQuantity(currentItem,cartItems))
+}
+
 const addItemToCart = (itemToAdd) =>{
   
   setCartItems(addCartItem(itemToAdd,cartItems))
   
 }
 
-const value = {isCartOpen,setIsCartOpen,cartItems,addItemToCart};
+useEffect(()=>{
+  const newCount = cartItems.reduce((total,item)=> total + item.quantity,0);
+  setItemsCount(newCount);
+}, [cartItems])
+
+const value = {isCartOpen,setIsCartOpen,cartItems,addItemToCart,itemsCount,totalPrice,removeItemFromCheckout,decQuantity};
 
 return <CartContext.Provider value= {value}>{children}</CartContext.Provider>
 }
