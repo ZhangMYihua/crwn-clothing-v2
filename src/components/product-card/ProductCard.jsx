@@ -3,7 +3,7 @@ import { useContext } from 'react'
 import { CartContext } from '../../contexts/CartContext'
 import './product-card.scss'
 
-export const ProductCard = ({product}) => {
+export const ProductCard = ({product, category}) => {
   const { addItemToCart } = useContext(CartContext)
   const {name, price, imageUrl} = product;
 
