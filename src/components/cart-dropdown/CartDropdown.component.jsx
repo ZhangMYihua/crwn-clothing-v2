@@ -1,5 +1,5 @@
 import "./cartDropdown.styles.scss";
-import CartItem from "../cart-item.component/CartItem.component";
+import CartItem from "../cart-item/CartItem.component";
 import { useContext } from "react";
 import { CartContext } from "../../contexts/cart.context";
 import Button from "../button/Button.component"
