@@ -2,7 +2,7 @@ import { useState,useContext } from "react";
 import { userContext } from "../../../contexts/user.context";
 import { signInWithGooglePopup,signInAuthUserWithEmailAndPassword,createUserDocumentFromAuth } from "../../../utils/firebase/firebase.utils";
 import FormInput from "../../form-input/Form-input.component";
-import '../sign-in-form/sign-in-form.styles.scss';
+import {ButtonContainer,SignupContainer} from './sign-in-form.styles.jsx';
 import Button from "../../button/Button.component";
 
 
@@ -67,7 +67,7 @@ const SignInForm = ()=>{
     const {email,password} = inputFileds
 
     return(
-        <div className = "sign-up-container">
+        <SignupContainer>
             <h2>Already have an acount?</h2>
             <span>Sign in with your email and password</span>
             <form onSubmit={handleSubmit}>
@@ -86,13 +86,13 @@ const SignInForm = ()=>{
                     value={password}
                     onChange={onChangeHandler}/>
 
-                <div className='buttons-container'>
+                <ButtonContainer>
                     <Button type='submit'>Sign In</Button>
                     <Button type='button' buttonType='google' onClick={signInWithGoogle}>Google sign In</Button>
-                </div>
+                </ButtonContainer>
                 
             </form>
-        </div>
+        </SignupContainer>
     )
 
 }

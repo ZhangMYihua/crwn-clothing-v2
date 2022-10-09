@@ -1,4 +1,4 @@
-import "./cartCheck.styles.scss";
+import {CheckhoutContainer,Total} from "./cartCheck.styles.jsx";
 import { useContext } from "react";
 import { CartContext } from "../../../contexts/cart.context";
 import CartCheckItem from "../../cart-check-item/CartCheckItem.component";
@@ -6,22 +6,22 @@ import CartCheckItem from "../../cart-check-item/CartCheckItem.component";
 const CartCheck = ()=>{
     const {cartItems,totalPrice} = useContext(CartContext);
     return(
-        <div className="checkout-container">
+        <CheckhoutContainer>
             
-            <ul className="checkout-header">
-                <li className="header-block">Product</li>
-                <li className="header-block">Description</li>
-                <li className="header-block">Quantity</li>
-                <li className="header-block">Price</li>
-                <li className="header-block">Remove</li>
+            <ul>
+                <li>Product</li>
+                <li>Description</li>
+                <li>Quantity</li>
+                <li>Price</li>
+                <li>Remove</li>
             </ul>
             
                 
                 {cartItems.map( item => <CartCheckItem key= {item.id} cartItem = {item} />)}
                 
             
-            <span className="total">TOTAL: {totalPrice}</span>
-        </div>
+            <Total>TOTAL: {totalPrice}</Total>
+        </CheckhoutContainer>
     )
 }
 

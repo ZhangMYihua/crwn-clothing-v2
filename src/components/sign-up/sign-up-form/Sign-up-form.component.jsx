@@ -2,7 +2,7 @@ import { useState,useContext } from "react";
 import { userContext } from "../../../contexts/user.context";
 import { createAuthUserWithEmailAndPassword,createUserDocumentFromAuth } from "../../../utils/firebase/firebase.utils";
 import FormInput from "../../form-input/Form-input.component";
-import '../sign-up-form/sign-up-form.styles.scss';
+import {SignupContainer} from '../sign-up-form/sign-up-form.styles';
 import Button from "../../button/Button.component";
 const SignUpForm = ()=>{
     
@@ -49,7 +49,7 @@ const SignUpForm = ()=>{
     const {displayName,email,password,passwordConfirmation} = inputFileds
 
     return(
-        <div className = "sign-up-container">
+        <SignupContainer>
             <h2>Do you have an account?</h2>
             <span>Sign up wirh your email and password</span>
             <form onSubmit={handleSubmit}>
@@ -83,7 +83,7 @@ const SignUpForm = ()=>{
                     onChange={onChangeHandler}/>
                 <Button type='submit'>Sign Up</Button>
             </form>
-        </div>
+        </SignupContainer>
     )
 
 }
