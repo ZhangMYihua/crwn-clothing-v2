@@ -5,7 +5,8 @@ import {
   signInWithGooglePopup,
   signInAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth } from "../../utils/firebase/firebase"
-import './sign-in.scss'
+
+import { SignInContainer, Header, ButtonsContainer } from "./sign-in.styles";
   
 
 const defaultFormField = {
@@ -54,8 +55,8 @@ export const SignIn = () => {
   }
 
   return (
-    <div className='sign-in-container'>
-      <h2>Already have an account?</h2>
+    <SignInContainer>
+      <Header>Already have an account?</Header>
       <span>Sign in with your email and password</span>
       <form>
         <FormInput 
@@ -72,7 +73,7 @@ export const SignIn = () => {
           type="password" 
           required 
           onChange={handleChange}/>
-        <div className="buttons-container">
+        <ButtonsContainer>
           <Button 
             type="button"
             onClick={handleSignIn}>
@@ -84,8 +85,8 @@ export const SignIn = () => {
             onClick={signInWithGoogle}>
               Sign in with Google
           </Button>
-        </div>
+        </ButtonsContainer>
       </form>
-    </div>
+    </SignInContainer>
   )
 }
