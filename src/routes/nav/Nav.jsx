@@ -1,4 +1,4 @@
-import { Outlet, Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { NavContainer, LogoContainer, NavLink, NavLinks } from './nav.styles'
 import { ReactComponent as CrownLogo } from '../../assets/crown.svg'
 import { useContext } from "react";
