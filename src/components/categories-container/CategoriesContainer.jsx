@@ -1,5 +1,5 @@
 import { CategoryCard } from '../category-card/CategoryCard';
-import { StyledCategoriesContainer } from './categories-container.styles';
+import { Container } from './categories-container.styles';
 
 export const CategoriesContainer = () => {
   const categories = [
@@ -30,13 +30,13 @@ export const CategoriesContainer = () => {
     },
   ];
   return (
-   <StyledCategoriesContainer>
+   <Container>
       {categories.map((category) => {
         const {id, imageUrl, title} = category;
         return (
           <CategoryCard key={id} imageUrl={imageUrl} title={title} />
         )
       })}
-    </StyledCategoriesContainer>
+    </Container>
   )
 }
