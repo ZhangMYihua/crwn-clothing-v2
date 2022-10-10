@@ -11,8 +11,7 @@ export const CartIcon = () => {
   }
 
   return (
-    <CartIconContainer
-    onClick={toggleIsCartOpen} >
+    <CartIconContainer onClick={toggleIsCartOpen} >
       <ShoppingIcon />
       <ItemCount>{cartCount}</ItemCount>
     </CartIconContainer>
