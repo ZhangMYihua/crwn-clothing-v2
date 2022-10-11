@@ -11,14 +11,14 @@ export const UserContext = createContext({
   setCurrentUser: () => null
 })
 
-// USE REDUCER
+// ACTIONS FOR USER REDUCER
 export const USER_ACTION_TYPES = {
   "SET_CURRENT_USER": "SET_CURRENT_USER"
 }
 
+
 const userReducer = (state, action) => {
   const {type, payload} = action;
-  
   switch(type) {
     case USER_ACTION_TYPES.SET_CURRENT_USER:
       return {
@@ -30,6 +30,7 @@ const userReducer = (state, action) => {
   }
 }
 
+// INITIAL STATE VAR
 const INITIAL_STATE = {
   currentUser: null
 }
@@ -38,7 +39,7 @@ const INITIAL_STATE = {
 export const UserProvider = ({children}) => {
   // const [currentUser, setCurrentUser] = useState(null);
   // useReducer takes two args, a reducer and the initial value for the state
-  // the dispatch function receives an action object, and then passes it into userReducer
+  // the dispatch function receives an action object as a parameter, and then passes it into userReducer
   const [ state, dispatch ] = useReducer(userReducer, INITIAL_STATE)
 
   const { currentUser } = state;
