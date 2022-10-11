@@ -1,19 +1,19 @@
 import { useNavigate } from 'react-router-dom';
 import {BackgroundImage, Body, CardItemContainer} from './category-card.styles'
 
-export const CategoryCard = ({imageUrl, title}) => {
+export const CategoryCard = ({imageUrl, title, route}) => {
   const navigate = useNavigate();
 
   const goToCategory = () => {
-    navigate(`/shop/${title}`)
+    navigate(route)
   }
   return (
-    <CardItemContainer >
+    <CardItemContainer onClick={goToCategory} >
       <BackgroundImage
       // able to access this prop in the styling
         imageUrl={imageUrl}
       />
-      <Body onClick={goToCategory}>
+      <Body>
         <h2>{title}</h2>
         <p>Shop Now</p>
       </Body>
