@@ -34,7 +34,7 @@ export const Body = styled.div`
   }
 `
 
-export const DirectoryItemContainer = styled.div`
+export const CardItemContainer = styled.div`
   min-width: 30%;
   height: 240px;
   flex: 1 1 auto;

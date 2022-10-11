@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import {BackgroundImage, Body, DirectoryItemContainer} from './category-card.styles'
+import {BackgroundImage, Body, CardItemContainer} from './category-card.styles'
 
 export const CategoryCard = ({imageUrl, title}) => {
   const navigate = useNavigate();
@@ -8,7 +8,7 @@ export const CategoryCard = ({imageUrl, title}) => {
     navigate(`/shop/${title}`)
   }
   return (
-    <DirectoryItemContainer >
+    <CardItemContainer >
       <BackgroundImage
       // able to access this prop in the styling
         imageUrl={imageUrl}
@@ -17,7 +17,7 @@ export const CategoryCard = ({imageUrl, title}) => {
         <h2>{title}</h2>
         <p>Shop Now</p>
       </Body>
-    </DirectoryItemContainer>
+    </CardItemContainer>
   )
 }
 
