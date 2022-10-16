@@ -1,0 +1,1 @@
+export const sellectCurrentUser = (state) => state.user.currentUser;
