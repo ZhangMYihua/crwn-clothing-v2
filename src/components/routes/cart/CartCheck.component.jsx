@@ -1,10 +1,15 @@
 import {CheckhoutContainer,Total} from "./cartCheck.styles.jsx";
-import { useContext } from "react";
-import { CartContext } from "../../../contexts/cart.context";
+// import { useContext } from "react";
+// import { CartContext } from "../../../contexts/cart.context";
+import { useSelector } from "react-redux";
+import { selectCartItems,newTotal } from "../../../store/cart/cart.selector.js";
 import CartCheckItem from "../../cart-check-item/CartCheckItem.component";
 
 const CartCheck = ()=>{
-    const {cartItems,totalPrice} = useContext(CartContext);
+
+    const cartItems = useSelector(selectCartItems);
+    const totalPrice = useSelector(newTotal);
+    // const {cartItems,totalPrice} = useContext(CartContext);
     return(
         <CheckhoutContainer>
             
