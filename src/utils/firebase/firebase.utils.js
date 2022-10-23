@@ -1,9 +1,8 @@
 import { initializeApp } from 'firebase/app';
 import { 
   getAuth, 
-  signInWithRedirect, 
   signInWithPopup, 
-  GoogleAuthProvider 
+  GoogleAuthProvider
 } from 'firebase/auth';
 
 import {
@@ -26,6 +25,7 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig);
 
 const provider = new GoogleAuthProvider();
+
 provider.setCustomParameters({
   prompt: "select_account"
 });
