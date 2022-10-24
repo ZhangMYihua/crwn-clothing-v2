@@ -7,8 +7,8 @@ import CartCheck from "./components/routes/cart/CartCheck.component";
 
 
 import {useEffect} from 'react';
-import { createUserDocumentFromAuth, onAuthStateChangedListener } from './utils/firebase/firebase.utils';
-import { setCurrentUser } from "./store/user/user.action";
+import { checkUserSession } from "./store/user/user.action";
+
 import {useDispatch} from 'react-redux';
 
 
@@ -22,15 +22,7 @@ const App = () => {
 
     
     useEffect ( ()=>{
-        const unSubscribe = onAuthStateChangedListener((user)=>{
-            if(user){
-                createUserDocumentFromAuth(user);
-            }
-            dispatch(setCurrentUser(user))
-            
-        })
-        
-        return unSubscribe
+      dispatch (checkUserSession());
     } ,[]);
 
 

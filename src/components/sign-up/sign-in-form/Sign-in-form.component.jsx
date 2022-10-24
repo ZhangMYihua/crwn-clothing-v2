@@ -1,18 +1,20 @@
 import { useState,useContext } from "react";
-import { userContext } from "../../../contexts/user.context";
+// import { userContext } from "../../../contexts/user.context";
 import { signInWithGooglePopup,signInAuthUserWithEmailAndPassword,createUserDocumentFromAuth } from "../../../utils/firebase/firebase.utils";
 import FormInput from "../../form-input/Form-input.component";
 import {ButtonContainer,SignupContainer} from './sign-in-form.styles.jsx';
 import Button from "../../button/Button.component";
+import { useDispatch } from "react-redux";
+import { googleSignInStart, emailSignInStart } from "../../../store/user/user.action";
 
 
 
 const SignInForm = ()=>{
 
-   
+   const dispatch = useDispatch();
 
     const signInWithGoogle = async()=> {
-        await signInWithGooglePopup();
+        dispatch(googleSignInStart());
         
     
     }
@@ -25,7 +27,7 @@ const SignInForm = ()=>{
         
        
     try{
-        const {user} = await signInAuthUserWithEmailAndPassword(email,password);
+        dispatch(emailSignInStart(email,password));
         
         resetInputFields();
     }catch(error){

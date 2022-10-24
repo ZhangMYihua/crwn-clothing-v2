@@ -4,8 +4,13 @@ import { createAuthUserWithEmailAndPassword,createUserDocumentFromAuth } from ".
 import FormInput from "../../form-input/Form-input.component";
 import {SignupContainer} from '../sign-up-form/sign-up-form.styles';
 import Button from "../../button/Button.component";
+import { useDispatch } from "react-redux";
+import { signUpStart } from "../../../store/user/user.action";
+
+
+
 const SignUpForm = ()=>{
-    
+    const dispatch = useDispatch();
     const resetInputFields =()=>{
         setInputFields(defultInputFields);
     }
@@ -18,8 +23,7 @@ const SignUpForm = ()=>{
             return
         }
     try{
-        const {user} = await createAuthUserWithEmailAndPassword(email, password);
-        await createUserDocumentFromAuth(user, {displayName});
+        dispatch(signUpStart(email,password,displayName))
         
         resetInputFields();
     }catch(error){
