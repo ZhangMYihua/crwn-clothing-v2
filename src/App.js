@@ -15,7 +15,7 @@ import { Shop } from './routes/shop/Shop';
 import { Checkout } from './routes/checkout/Checkout';
 
 export const App = () => {
-  // this dispatch never changes. There is only one dispatch in redux. Don't need to pass into dependency array
+  // this dispatch never changes. There is only one dispatch in redux. Don't need to pass into dependency array but will do it to silence linting
   const dispatch = useDispatch();
   useEffect(() => {
     console.log('running effect');
@@ -26,7 +26,7 @@ export const App = () => {
       dispatch(setCurrentUser(user));
     });
     return unsubscribe;
-  }, []);
+  }, [dispatch]);
 
   return (
     <Routes>
