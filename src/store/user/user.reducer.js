@@ -1,7 +1,4 @@
-// ACTIONS FOR USER REDUCER - reduces human error
-export const USER_ACTION_TYPES = {
-  SET_CURRENT_USER: 'SET_CURRENT_USER',
-};
+import { USER_ACTION_TYPES } from './user.types';
 
 // INITIAL STATE VAR
 const INITIAL_STATE = {
