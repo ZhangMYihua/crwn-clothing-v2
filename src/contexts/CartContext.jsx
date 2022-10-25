@@ -73,7 +73,7 @@ const cartReducer = (state, action) => {
     case CART_ACTION_TYPES.TOGGLE_CART_IS_OPEN:
       return {
         ...state,
-        isCartOpen: !state.isCartOpen
+        isCartOpen: payload
       }
     default: 
     throw new Error(`Unhandled type of ${type} in cartReducer.`)
@@ -85,15 +85,16 @@ export const CartProvider = ({children}) => {
 const [state, dispatch] = useReducer(cartReducer, INITIAL_STATE)
 const {isCartOpen, cartCount, cartTotal, cartItems} = state;
 
-// defining setCurrentUser function since no longer given by useState
+// defining setIsCartOpen function since no longer given by useState
   const setIsCartOpen = (isCartOpen) => {
     dispatch({ 
       type: CART_ACTION_TYPES.TOGGLE_CART_IS_OPEN,
-      // payload: !isCartOpen
+      payload: isCartOpen
     })
   }
 
   // REPLACING USESTATE AND USEEFFECTS WITH CARTREDUCER
+  // USE REDUCERS WHEN ONE UPDATE MODIFIES MULTIPLE PIECES OF STATE
   // const [isCartOpen, setIsCartOpen] = useState(false)
   // const [cartItems, setCartItems] = useState([])
   // const [cartCount, setCartCount] = useState(0);
