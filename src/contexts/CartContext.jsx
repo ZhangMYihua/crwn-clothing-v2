@@ -176,3 +176,21 @@ const {isCartOpen, cartCount, cartTotal, cartItems} = state;
     <CartContext.Provider value={value}>{children}</CartContext.Provider>
   )
 }
+
+/**
+ * Context API vs Redux
+ * Accessibility
+ * With Context, we can give access to the entire app or only to certain parts of the app that require access to the data in a certain context. For example, we can wrap the Shop component with the CategoriesProvider since only that part of the app needs access to it instead of wrapping the entire app with CategoriesProvider as it is now.
+ * 
+ * With Redux, the store store wraps around the entire app like we currently have our context architecture to give access to all the app components. Redux is a GLOBAL state management library.
+ * 
+ * Flow of Data
+ * Context & Reducers
+ * The components trigger actions (setCurrentUser, setIsCartOpen) for the reducers, through dispatches, then the reducers updated their corresponding state, which is consumed by those components, which are then rerendered with updated state. 
+ * 
+ * Redux Store
+ * All reducers combine into a root reducer (one giant reducer). From this reducer, the entire state object is passed into various UI components. These components have access to one dispatch function, and all those reducers get updated by the dispatch action. We have to determine which pieces of state to update in each reducer. 
+ * 
+ * There is a single source of truth. Single store, single dispatch. Whereas Context & Reducers allow for state to be spread out over various contexts, Redux has all the state in one place. 
+ * 
+ */

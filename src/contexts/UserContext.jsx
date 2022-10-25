@@ -17,8 +17,6 @@ export const USER_ACTION_TYPES = {
 
 // USING REDUCERS (NOT STATE) TO STORE VALUES OF CONTEXT
 const userReducer = (state, action) => {
-  console.log('dispatched')
-  console.log('this is the action', action)
   const {type, payload} = action;
   switch(type) {
     case USER_ACTION_TYPES.SET_CURRENT_USER:
@@ -44,7 +42,6 @@ export const UserProvider = ({children}) => {
   const [ state, dispatch ] = useReducer(userReducer, INITIAL_STATE)
 
   const { currentUser } = state;
-  console.log(currentUser)
 
   // defining setCurrentUser function since no longer given by useState
   const setCurrentUser = (user) => {
