@@ -1,6 +1,7 @@
 import { createContext, useEffect, useReducer } from "react"
 // think of useContext as a glorified storage component that is leveraging useState. We are exposing the value and setter function of this context externally.
 import { onAuthStateChangedListener, createUserDocumentFromAuth } from "../utils/firebase/firebase";
+import { createAction } from "../utils/reducer/reducer.utils";
 
 // the actual storage/value you want to access
 export const UserContext = createContext({
@@ -50,10 +51,11 @@ export const UserProvider = ({children}) => {
 
   // defining setCurrentUser function since no longer given by useState
   const setCurrentUser = (user) => {
-    dispatch({ 
-      type: USER_ACTION_TYPES.SET_CURRENT_USER,
-      payload: user
-    })
+    // dispatch({ 
+    //   type: USER_ACTION_TYPES.SET_CURRENT_USER,
+    //   payload: user
+    // })
+    dispatch(createAction(USER_ACTION_TYPES.SET_CURRENT_USER, user))
   }
 
   const value = {currentUser, setCurrentUser}

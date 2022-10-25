@@ -1,4 +1,5 @@
-import { createContext, useState, useEffect, useReducer } from "react";
+import { createContext, useReducer } from "react";
+import { createAction } from "../utils/reducer/reducer.utils";
 
 // this function increases the quantity of the item in the cart by one
 const addCartItem = (cartItems, productToAdd) => {
@@ -87,10 +88,11 @@ const {isCartOpen, cartCount, cartTotal, cartItems} = state;
 
 // defining setIsCartOpen function since no longer given by useState
   const setIsCartOpen = (isCartOpen) => {
-    dispatch({ 
-      type: CART_ACTION_TYPES.TOGGLE_CART_IS_OPEN,
-      payload: isCartOpen
-    })
+    // dispatch({ 
+    //   type: CART_ACTION_TYPES.TOGGLE_CART_IS_OPEN,
+    //   payload: isCartOpen
+    // })
+    dispatch(createAction(CART_ACTION_TYPES.TOGGLE_CART_IS_OPEN, isCartOpen))
   }
 
   // REPLACING USESTATE AND USEEFFECTS WITH CARTREDUCER
@@ -125,14 +127,19 @@ const {isCartOpen, cartCount, cartTotal, cartItems} = state;
      
     //  dispatch new action with payload = {
     //  newCartItems, newCartTotal, newCartCount}
-    dispatch({
-      type: CART_ACTION_TYPES.SET_CART_ITEMS,
-      payload: {
+    // dispatch({
+    //   type: CART_ACTION_TYPES.SET_CART_ITEMS,
+    //   payload: {
+    //     cartTotal: newCartTotal,
+    //     cartCount: newCartCount, 
+    //     cartItems: newCartItems
+    //   }
+    // })
+    dispatch(createAction(CART_ACTION_TYPES.SET_CART_ITEMS, {
         cartTotal: newCartTotal,
         cartCount: newCartCount, 
         cartItems: newCartItems
-      }
-    })
+      }))
      
   }
 
