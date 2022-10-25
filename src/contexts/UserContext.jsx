@@ -39,9 +39,6 @@ const INITIAL_STATE = {
 
 // this is the component we'll use in our app that will allow any of its children to access the values of its useState 
 export const UserProvider = ({children}) => {
-  
-  // const [currentUser, setCurrentUser] = useState(null);
-  // -------------
   // useReducer takes two args, a reducer and the initial value for the state
   // the dispatch function receives an action object as a parameter, and then passes it into userReducer. Dispatch invokes userReducer
   const [ state, dispatch ] = useReducer(userReducer, INITIAL_STATE)
@@ -51,12 +48,12 @@ export const UserProvider = ({children}) => {
 
   // defining setCurrentUser function since no longer given by useState
   const setCurrentUser = (user) => {
+    // using createAction func here to generate actions for dispatch func
+    dispatch(createAction(USER_ACTION_TYPES.SET_CURRENT_USER, user))
     // dispatch({ 
     //   type: USER_ACTION_TYPES.SET_CURRENT_USER,
     //   payload: user
     // })
-    // using createAction func here to generate actions for dispatch func
-    dispatch(createAction(USER_ACTION_TYPES.SET_CURRENT_USER, user))
   }
 
   const value = {currentUser, setCurrentUser}

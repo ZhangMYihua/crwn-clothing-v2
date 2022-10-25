@@ -56,7 +56,7 @@ const INITIAL_STATE = {
   cartTotal: 0,
 }
 
-// ACTIONS FOR USER REDUCER - reduces human error
+// ACTIONS FOR CART REDUCER - reduces human error
 export const CART_ACTION_TYPES = {
   SET_CART_ITEMS: "SET_CART_ITEMS",
   TOGGLE_CART_IS_OPEN: "TOGGLE_CART_IS_OPEN"
@@ -88,15 +88,15 @@ const {isCartOpen, cartCount, cartTotal, cartItems} = state;
 
 // defining setIsCartOpen function since no longer given by useState
   const setIsCartOpen = (isCartOpen) => {
+    dispatch(createAction(CART_ACTION_TYPES.TOGGLE_CART_IS_OPEN, isCartOpen))
     // dispatch({ 
     //   type: CART_ACTION_TYPES.TOGGLE_CART_IS_OPEN,
     //   payload: isCartOpen
     // })
-    dispatch(createAction(CART_ACTION_TYPES.TOGGLE_CART_IS_OPEN, isCartOpen))
   }
 
-  // REPLACING USESTATE AND USEEFFECTS WITH CARTREDUCER
   // USE REDUCERS WHEN ONE UPDATE MODIFIES MULTIPLE PIECES OF STATE
+  // REPLACING USESTATE AND USEEFFECTS WITH CARTREDUCER
   // const [isCartOpen, setIsCartOpen] = useState(false)
   // const [cartItems, setCartItems] = useState([])
   // const [cartCount, setCartCount] = useState(0);
@@ -124,7 +124,12 @@ const {isCartOpen, cartCount, cartTotal, cartItems} = state;
     //  generate newCartCount
      const newCartCount = newCartItems.reduce(
       (total, cartItem) => total + cartItem.quantity, 0);
-     
+
+    dispatch(createAction(CART_ACTION_TYPES.SET_CART_ITEMS, {
+      cartTotal: newCartTotal,
+      cartCount: newCartCount, 
+      cartItems: newCartItems
+    }))
     //  dispatch new action with payload = {
     //  newCartItems, newCartTotal, newCartCount}
     // dispatch({
@@ -135,11 +140,7 @@ const {isCartOpen, cartCount, cartTotal, cartItems} = state;
     //     cartItems: newCartItems
     //   }
     // })
-    dispatch(createAction(CART_ACTION_TYPES.SET_CART_ITEMS, {
-        cartTotal: newCartTotal,
-        cartCount: newCartCount, 
-        cartItems: newCartItems
-      }))
+    
      
   }
 
