@@ -55,6 +55,7 @@ export const UserProvider = ({children}) => {
     //   type: USER_ACTION_TYPES.SET_CURRENT_USER,
     //   payload: user
     // })
+    // using createAction func here to generate actions for dispatch func
     dispatch(createAction(USER_ACTION_TYPES.SET_CURRENT_USER, user))
   }
 
