@@ -179,12 +179,12 @@ const {isCartOpen, cartCount, cartTotal, cartItems} = state;
 
 /**
  * Context API vs Redux
- * Accessibility
+ * -------Accessibility---------
  * With Context, we can give access to the entire app or only to certain parts of the app that require access to the data in a certain context. For example, we can wrap the Shop component with the CategoriesProvider since only that part of the app needs access to it instead of wrapping the entire app with CategoriesProvider as it is now.
  * 
  * With Redux, the store store wraps around the entire app like we currently have our context architecture to give access to all the app components. Redux is a GLOBAL state management library.
  * 
- * Flow of Data
+ * ---------Flow of Data---------
  * Context & Reducers
  * The components trigger actions (setCurrentUser, setIsCartOpen) for the reducers, through dispatches, then the reducers updated their corresponding state, which is consumed by those components, which are then rerendered with updated state. 
  * 
