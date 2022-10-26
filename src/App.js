@@ -18,7 +18,6 @@ export const App = () => {
   // this dispatch never changes. There is only one dispatch in redux. Don't need to pass into dependency array but will do it to silence linting
   const dispatch = useDispatch();
   useEffect(() => {
-    console.log('running effect');
     const unsubscribe = onAuthStateChangedListener((user) => {
       if (user) {
         createUserDocumentFromAuth(user);
