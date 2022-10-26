@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import {useSelector} from 'react-redux' 
+import { useSelector } from 'react-redux' 
 // this is a hook that allows a component to extract state from the Redux store
 import { NavContainer, LogoContainer, NavLink, NavLinks } from './nav.styles'
 import { ReactComponent as CrownLogo } from '../../assets/crown.svg'

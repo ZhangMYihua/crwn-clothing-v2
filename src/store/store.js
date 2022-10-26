@@ -9,8 +9,9 @@ import { rootReducer } from './root-reducer';
 const middleWares = [logger];
 
 const composedEnhancers = compose(applyMiddleware(...middleWares));
-// compose is a functional programming concept. It lets us pass multiple functions left to right.
+// compose is a functional programming concept. It lets us pass multiple functions right to left.
 
+// stores facilitate the movement and passing of actions through these reducers. All the store really needs is the rootReducer
 export const store = legacy_createStore(
   rootReducer,
   undefined,

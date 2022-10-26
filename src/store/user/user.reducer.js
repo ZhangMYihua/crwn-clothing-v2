@@ -15,7 +15,7 @@ export const userReducer = (state = INITIAL_STATE, action) => {
         ...state,
         currentUser: payload,
       };
-    // if action doesn't apply to this reducer, simply return the same state, no update
+    // actions pass to every reducer. If an action doesn't apply to this reducer, simply return the previous state, no update. The action may apply to another reducer.
     default:
       return state;
   }

@@ -2,7 +2,7 @@ import { createContext, useState, useEffect } from "react"
 import { getCategoriesAndDocuments } from "../utils/firebase/firebase.js"
 
 export const CategoriesContext = createContext({
-  categoriesMap: [],
+  categoriesMap: {},
   // setProducts: () => null
 })
 
