@@ -4,6 +4,7 @@ import {CheckhoutContainer,Total} from "./cartCheck.styles.jsx";
 import { useSelector } from "react-redux";
 import { selectCartItems,newTotal } from "../../../store/cart/cart.selector.js";
 import CartCheckItem from "../../cart-check-item/CartCheckItem.component";
+import PaymentForm from "../../payment-form/payment-form.component.jsx";
 
 const CartCheck = ()=>{
 
@@ -26,6 +27,8 @@ const CartCheck = ()=>{
                 
             
             <Total>TOTAL: {totalPrice}</Total>
+
+            <PaymentForm/>
         </CheckhoutContainer>
     )
 }
