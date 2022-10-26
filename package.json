@@ -15,6 +15,7 @@
     "redux": "^4.2.0",
     "redux-logger": "^3.0.6",
     "redux-persist": "^6.0.0",
+    "redux-saga": "^1.2.1",
     "redux-thunk": "^2.4.1",
     "reselect": "^4.1.6",
     "sass": "^1.55.0",
