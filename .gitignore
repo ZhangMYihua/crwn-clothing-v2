@@ -4,9 +4,11 @@
 /node_modules
 /.pnp
 .pnp.js
-
+.env
 # testing
 /coverage
+/src/utils/firebase
+
 
 # production
 /build
