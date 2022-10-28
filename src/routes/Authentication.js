@@ -6,26 +6,20 @@ import {
   signInWithGoogleRedirect,
 } from "../utils/firebase";
 import SignUpForm from "../components/SignUpForm";
-const SignIn = () => {
+import SignInForm from "../components/SignInForm";
+
+const Authentication = () => {
   const logGoogleuser = async () => {
     const { user } = await signInWithGooglePopup();
-    // console.log(response);
     const userDocRef = await createUserDocumentFromAuth(user);
-  };
-  const logGoogleRedirectUser = async () => {
-    const { user } = await signInWithGoogleRedirect();
-    console.log(user);
   };
   return (
     <div>
       <h1>Sign In Page</h1>
-      <button onClick={logGoogleuser}>Sign In With Google</button>
-      <button onClick={signInWithGoogleRedirect}>
-        Sign In With GoogleRedirect
-      </button>
+      <SignInForm />
       <SignUpForm />
     </div>
   );
 };
 
-export default SignIn;
+export default Authentication;
