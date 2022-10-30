@@ -7,7 +7,7 @@ import CartDropDown from '../../components/cart-dropdown/cart-dropsown'
 import { selectIsCartOpen } from '../../store/cart/cart-selector'
 import { selectCurrentUser } from "../../store/user/user-selector";
 import { NavigationContainer, LogoConainer, NavLinks, NavLink } from "./navigation-style";
-import { signOurStart } from "../../store/user/user-action";
+import { signOutStart } from "../../store/user/user-action";
 
 
 const Navigation = () => {
@@ -15,7 +15,7 @@ const Navigation = () => {
     const isCartOpen = useSelector(selectIsCartOpen);
     const dispatch = useDispatch();
 
-    const signOutUser = () => dispatch(signOurStart());
+    const signOutUser = () => dispatch(signOutStart());
 
     return (
       <Fragment>
