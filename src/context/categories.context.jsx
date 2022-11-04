@@ -6,11 +6,11 @@ export const CategoriesContext = createContext({
 });
 
 export const CategoriesProvider = ({children}) => {
-    const [categoriesMap, setCategoriesMap] = useState({});
+    const [categoriesMap, setCategoriesArray] = useState({});
     useEffect(() => {
         const getCategoriesMap = async() => {
           const categoriesMap =  await getCategoriesAndDocuments();
-          setCategoriesMap(categoriesMap);
+          setCategoriesArray(categoriesMap);
         };
         getCategoriesMap();
     }, [])
