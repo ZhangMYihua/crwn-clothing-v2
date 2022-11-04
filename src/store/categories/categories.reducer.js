@@ -14,6 +14,7 @@ export const categoriesReducer = (
 
   switch (type) {
     case CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_START:
+      console.log("inside action type start about to return");
       return { ...state, isLoading: true };
 
     case CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_FAILED:

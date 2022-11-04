@@ -27,7 +27,6 @@ export const selectCategoriesMap = createSelector(
 );
 
 //this is now memo-ized
-
 export const selectCategoriesIsLoading = createSelector(
   [selectCategoryReducer],
   (categoriesSlice) => categoriesSlice.isLoading

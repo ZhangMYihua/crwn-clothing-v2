@@ -19,7 +19,7 @@ const composeEnhancer =
 const persistConfig = {
   key: "root",
   storage,
-  blacklist: ["user"]
+  whitelist: ["cart"] //primary benefit
 };
 
 // //all thunks really do is allow actions to be passed as functions
