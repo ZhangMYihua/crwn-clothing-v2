@@ -1,45 +1,12 @@
-const App = () => {
-  return (
-    <div className="categories-container">
-      <div className="category-container">
-        {/* <img /> */}
+import React from 'react';
 
-        <h1> intro </h1>
-        <div className="category-body-container">
-          <h2>Hats</h2>
-          <p>Shop Now</p>
-        </div>
-      </div>
-      <div className="category-container">
-        {/* <img /> */}
-        <div className="category-body-container">
-          <h2>Jackets</h2>
-          <p>Shop Now</p>
-        </div>
-      </div>
-      <div className="category-container">
-        {/* <img /> */}
-        <div className="category-body-container">
-          <h2>Sneakers</h2>
-          <p>Shop Now</p>
-        </div>
-      </div>
-      <div className="category-container">
-        {/* <img /> */}
-        <div className="category-body-container">
-          <h2>Womens</h2>
-          <p>Shop Now</p>
-        </div>
-      </div>
-      <div className="category-container">
-        {/* <img /> */}
-        <div className="category-body-container">
-          <h2>Mens</h2>
-          <p>Shop Now</p>
-        </div>
-      </div>
-    </div>
-  );
+import categories from './categories.json';
+
+import Directory from './components/Directory/Directory.jsx';
+
+const App = () => {
+  return <Directory categories={categories} />;
 };
 
+// into index
 export default App;
