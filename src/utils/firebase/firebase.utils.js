@@ -6,7 +6,8 @@ import {
     GoogleAuthProvider,
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
-    signOut
+    signOut,
+    onAuthStateChanged,
 } from 'firebase/auth';
 import {
     getFirestore,
@@ -15,7 +16,7 @@ import {
     setDoc,
 } from 'firebase/firestore'
 
-//* Your web app's Firebase configuration
+//! Your web app's Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyDyVTa9lEzwra2N0L9AU7pQGnWmJhHdJSA",
     authDomain: "crown-clothing24.firebaseapp.com",
@@ -25,8 +26,8 @@ const firebaseConfig = {
     appId: "1:390758939901:web:c60858262ea70991a2d294"
 };
 
-//* Initialize Firebase
-const firebaseApp = initializeApp(firebaseConfig);
+//! Initialize Firebase
+initializeApp(firebaseConfig);
 
 const googleProvider = new GoogleAuthProvider();
 
@@ -79,4 +80,6 @@ export const signInAuthUserWithEmailAndPassword = async (email, password) => {
     return await signInWithEmailAndPassword(auth, email, password)
 }
 
-export const signOutUser = async () => await signOut(auth)
+export const signOutUser = async () => await signOut(auth);
+
+export const onAuthStateChangedListener = (callback) => onAuthStateChanged(auth, callback)
