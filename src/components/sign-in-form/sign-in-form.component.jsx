@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { auth,signInWithGooglePopup,checkAuthUserWtihEmailPassword,createUserDocumentFromAuth,signInWithGoogleRedirect } from "../../utils/firebase/firebase.utils";
+import { auth,signInWithGooglePopup,signInAuthUserWtihEmailPassword,createUserDocumentFromAuth,signInWithGoogleRedirect } from "../../utils/firebase/firebase.utils";
 import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
 import './sign-in-form.styles.scss'
@@ -27,9 +27,8 @@ const SignInForm = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await checkAuthUserWtihEmailPassword(email,password);
-            const user = response.user
-            console.log(user)
+            const {user} = await signInAuthUserWtihEmailPassword(email,password);
+            
             clearFormFields();
         } catch (error) {
             if (error.code = 'auth/wrong-password'){
@@ -42,12 +41,14 @@ const SignInForm = () => {
 
     useEffect(async () =>{
         const response = await getRedirectResult(auth);
-        console.log(response)
         if (response){
-            const userDocRef = await createUserDocumentFromAuth(response.user);
-            console.log(userDocRef)
+            await createUserDocumentFromAuth(response.user);
         }
     },[]);
+
+    const signInWithGoogle = async () => {
+        await signInWithGooglePopup();   
+      };
 
     return(
         <div className="sign-in-container">
@@ -62,11 +63,13 @@ const SignInForm = () => {
                 <div className="buttons-container">
                     <Button children='Sign In' type="submit"/>
 
-                    <Button type="button" onClick={signInWithGooglePopup} children='Google Sign In' buttonType='google'/>
+                    <Button type="button" onClick={signInWithGoogle} children='Google Sign In' buttonType='google'/>
                 </div>
+                <br/>
+                <Button onClick={signInWithGoogleRedirect} children='Sign in With Google Redirect' buttonType='google'/>
             </form>
            
-            {/* <Button onClick={signInWithGoogleRedirect} children='Sign in With Google Redirect' buttonType='google'/> */}
+            
         </div>
     )
 }

@@ -5,7 +5,9 @@ import { getAuth,
     signInWithPopup, 
     GoogleAuthProvider,
     createUserWithEmailAndPassword,
-    signInWithEmailAndPassword 
+    signInWithEmailAndPassword,
+    signOut,
+    onAuthStateChanged 
     } from 'firebase/auth';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -23,7 +25,8 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const firebaseApp = initializeApp(firebaseConfig);
+// const firebaseApp = initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 
 const googleProvider = new GoogleAuthProvider();
 googleProvider.setCustomParameters({
@@ -41,10 +44,7 @@ export const db = getFirestore();
 export const createUserDocumentFromAuth = async (userAuth, additionalInfo={}) => {
     if (!userAuth) return;
     const userDocRef = doc(db, 'users', userAuth.uid)
-    console.log(userDocRef)
     const userSnapshot = await getDoc(userDocRef)
-    console.log(userSnapshot)
-    console.log(userSnapshot.exists())
 
     if (!userSnapshot.exists()) {
         const {displayName, email } = userAuth;
@@ -68,6 +68,12 @@ export const createAuthUserWithEmailPassword = async (email,password) => {
     return await createUserWithEmailAndPassword(auth, email, password)
 }
 
-export const checkAuthUserWtihEmailPassword = async (email,password) => {
+export const signInAuthUserWtihEmailPassword = async (email,password) => {
     return await signInWithEmailAndPassword(auth,email,password);
+}
+
+export const signOutUser = async () => await signOut(auth);
+
+export const onAuthStateChangedListener = (callback) => {
+    onAuthStateChanged(auth, callback);
 }
