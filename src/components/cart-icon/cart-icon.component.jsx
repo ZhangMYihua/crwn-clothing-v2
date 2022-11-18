@@ -7,11 +7,9 @@ import { CartContext } from '../../contexts/cart.context';
 import './cart-icon.styles.scss';
 
 const CartIcon = () => {
-  const { data, setCartData } = useContext(CartContext);
-
+  const { isOpen, setCartIsOpen } = useContext(CartContext);
   const toogleCartOpen = () => {
-    const { opened } = data;
-    setCartData({...data, opened: !opened});
+    setCartIsOpen(!isOpen);
   };
 
   return (
