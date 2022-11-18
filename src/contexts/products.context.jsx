@@ -12,7 +12,6 @@ export const ProductProvider = ({ children }) => {
 
     useEffect(() => {
         setProducts(SHOP_DATA)
-        console.log(products)
     }, []);
 
     return <ProductsContext.Provider value={value}>{children}</ProductsContext.Provider>
