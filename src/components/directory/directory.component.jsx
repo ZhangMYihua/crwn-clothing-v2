@@ -32,7 +32,7 @@ const Directory = (props) => {
       ]
     return (
         <DirectoryContainer>
-            {props.categories.map(category =>
+            {categories.map(category =>
                 <DirectoryItem category={category} key={category.id}/>
             )}
         </DirectoryContainer>
