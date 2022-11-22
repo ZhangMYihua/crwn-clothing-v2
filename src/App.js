@@ -1,43 +1,24 @@
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Home from './Routes/home/home.component';
+import Navigation from './Routes/Navigation/navigation.component';
+import SignIn from './Routes/Sign-in/sign-in.component';
+
+const Shop = () => {
+	return <h1>Shop component</h1>;
+};
+
 const App = () => {
-  return (
-    <div className='categories-container'>
-      <div className='category-container'>
-        {/* <img /> */}
-        <div className='category-body-container'>
-          <h2>Hats</h2>
-          <p>Shop Now</p>
-        </div>
-      </div>
-      <div className='category-container'>
-        {/* <img /> */}
-        <div className='category-body-container'>
-          <h2>Jackets</h2>
-          <p>Shop Now</p>
-        </div>
-      </div>
-      <div className='category-container'>
-        {/* <img /> */}
-        <div className='category-body-container'>
-          <h2>Sneakers</h2>
-          <p>Shop Now</p>
-        </div>
-      </div>
-      <div className='category-container'>
-        {/* <img /> */}
-        <div className='category-body-container'>
-          <h2>Womens</h2>
-          <p>Shop Now</p>
-        </div>
-      </div>
-      <div className='category-container'>
-        {/* <img /> */}
-        <div className='category-body-container'>
-          <h2>Mens</h2>
-          <p>Shop Now</p>
-        </div>
-      </div>
-    </div>
-  );
+	return (
+		<Routes>
+			{/* nested routes */}
+			<Route path='/' element={<Navigation />}>
+				<Route index element={<Home />} />
+				<Route path='shop' element={<Shop />} />
+				<Route path='sign-in' element={<SignIn />} />
+			</Route>
+		</Routes>
+	);
 };
 
 export default App;
