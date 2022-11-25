@@ -1,0 +1,13 @@
+.category-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 10px;
+    row-gap: 50px;
+}
+.category-title {
+    color: #fff;
+    background-color: #777;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+}
