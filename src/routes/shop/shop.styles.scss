@@ -1,0 +1,6 @@
+.products-container {
+   display: grid ;
+   grid-template-columns: repeat(4, 1fr); //repeat 4x and make the all evenly distributed and equidistant size
+   column-gap: 10px;
+   row-gap: 50px;
+}
