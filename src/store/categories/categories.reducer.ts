@@ -22,7 +22,7 @@ export type CategoriesState = {
 //but in order for our code to be type-safe, we had to extend functionality that would do some type-narrowing for us
 export const categoriesReducer = (
   state = CATEGORIES_INITIAL_STATE,
-  action = {} as AnyAction
+  action: AnyAction
 ): CategoriesState => {
   //each of these actions that come in can be any action at all
 
