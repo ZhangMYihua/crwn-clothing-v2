@@ -58,7 +58,7 @@ export const UserProvider = ({children}) => {
       //sign out no matter what the moment this component mounts
       signOutUser();
 
-      //this allows us to unsubscribe whenever this component umounts;
+      //this allows us to unsubscribe whenever this component unmounts;
       //failure to unsubscribe listeners (ie., stop listening) leads to memory leaks
 
       //the moment this listener mounts, it will check the authentication state
