@@ -1,6 +1,6 @@
 import "./category-item.styles.scss";
 
-const CategoryItem = ({ category: { imageUrl, title } }) => {
+function CategoryItem({ category: { imageUrl, title } }) {
   return (
     <div className="category-container">
       <div
@@ -13,6 +13,6 @@ const CategoryItem = ({ category: { imageUrl, title } }) => {
       </div>
     </div>
   );
-};
+}
 
 export default CategoryItem;
