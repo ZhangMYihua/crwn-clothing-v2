@@ -1,20 +1,19 @@
 import { useState } from "react"
 import FormInput from "../form-input/form-input.component"
-import { createAuthUserWithEmailPassword, createUserDocFromAuth } from "../../utils/firebase/firebase.utils"
+import { signInWithGooglePopup, createUserDocFromAuth, signInAuthUserWithEmailPassword, auth } from "../../utils/firebase/firebase.utils"
 import Button from '../button/button.component'
-import './sign-up-form.styles.scss'
+import './login-form.styles.scss'
 
 const defaultFormFields = {
-  displayName: '',
   email: '',
   password: '',
-  confirmPassword: ''
 }
-const SignUpForm = () => {
+
+const LoginForm = () => {
 
   const [formFields, setFormFields] = useState(defaultFormFields)
   //desturing values from formfields
-  const { displayName, email, password, confirmPassword } = formFields
+  const {  email, password } = formFields
 
   console.log(formFields)
 
@@ -22,29 +21,41 @@ const SignUpForm = () => {
     setFormFields(defaultFormFields)
   }
 
+  const signInWithGoogle = async () => {
+    const { user } = await signInWithGooglePopup()
+    await createUserDocFromAuth(user)
+    // console.log(user)
+  }
+
 
   const handleSubmit = async (event) => {
     //stops form from submitting
       event.preventDefault();
-      //confirm is password matches
-      if(password !== confirmPassword) {
-      //see if we have autheticated that user with the email and password
-        alert('passwords do not match')
-      //create a user document from what it returns
-      return;
-      }
+      
 
       try {
-        const {user} = await createAuthUserWithEmailPassword(email, password)
-        // console.log(response)
-
-        await  createUserDocFromAuth(user, {displayName});
+        const response = await signInAuthUserWithEmailPassword(email, password)
+        console.log(response)
         
         resetFormFields();
         
 
       } catch  (error) {
-        console.log('user creation encountered an error', error)
+
+        switch(error.code) {
+          case 'auth/wrong-password': 
+            alert('incorrect password for email')
+            break;
+          case 'auth/user-not-found' :
+            alert('no user associated with this email')
+            break;
+          default:
+            console.log(error)
+        }
+        // if(error.code === 'auth/wrong/wrong-password') {
+        //   alert('incorrect password for email')
+        // } 
+        
       }
 
   }
@@ -55,15 +66,15 @@ const SignUpForm = () => {
     //using this setter function everytime an input from the form is fired spreading in the form fields object, then passing in the name and value the actually changed, remember the property passed in at the bottom of a setter function will over write it if its in the last object
     setFormFields({ ...formFields, [name]: value })
   }
+
+
   return (
     <div className="sign-up-container">
-      <h2> Don't have an account?</h2>
-      <span> Sign Up with your email and password</span>
+      <h2> Already have an account?</h2>
+      <span> Sign in with email and password</span>
 
       <form onSubmit={handleSubmit}>
         
-
-        <FormInput label='Display Name' required type="text" onChange={handleChange} name='displayName' value={displayName} />
 
 
         <FormInput label='Email'required type="email" onChange={handleChange} name='email' value={email} />
@@ -71,13 +82,14 @@ const SignUpForm = () => {
         <FormInput label="Password"required type="password" onChange={handleChange} name='password' value={password} />
 
 
-        <FormInput label="Confirm Password"required type="password" onChange={handleChange} name='confirmPassword' value={confirmPassword} />
 
-        
-        <Button type="submit"  buttonType='google-sign-in'> Sign Up</Button> 
+        {/* <div className="button-container"> */}
+          <Button type="submit"  > Sign In</Button> 
+          <Button id ='googler'type="button" onClick={signInWithGoogle}  buttonType='google'>Google sign in</Button> 
+        {/* </div> */}
       </form>
     </div>
   )
 }
 
-export default SignUpForm
+export default LoginForm
