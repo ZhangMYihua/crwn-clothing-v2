@@ -9,7 +9,7 @@ import {
   signOut,
   onAuthStateChanged,
 } from 'firebase/auth';
-import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
+import { getFirestore, doc, getDoc, setDoc, collection, writeBatch, query, getDocs } from 'firebase/firestore';
 
 
 const firebaseConfig = {
@@ -36,6 +36,41 @@ export const signInWithGoogleRedirect = () =>
   signInWithRedirect(auth, googleProvider);
 
 export const db = getFirestore();
+
+
+//api 에서 호출하여 오브젝트들을 등록하기때문에 async 로 불러와야한다
+export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
+  const collectionRef = collection(db, collectionKey);
+  const batch = writeBatch(db); //writeBatch() 안에는 db 거의 고정 
+
+  objectsToAdd.forEach((object) => {
+    const docRef = doc(collectionRef, object.title.toLowerCase());
+    batch.set(docRef, object);
+  });
+
+  await batch.commit();
+  console.log("done");
+}
+
+
+//async 메소드 이기때문에 promise 를 받게 되고 중간에 await 부분을 필수적으로 처리하고 내려와야 한다  
+export const getCategoriesAndDocuments = async () => {
+  const collectionRef = collection(db, 'categories'); // collection() 안에 첫번째는 대부분 firebase 의 db 가 들어간다
+  const q = query(collectionRef);
+
+  const querySnapshot = await getDocs(q);
+
+  const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
+
+    const { title, items } = docSnapshot.data(); //object 형식으로 반환될것이다 
+    acc[title.toLowerCase()] = items;
+    return acc;
+
+  }, {});
+
+  return categoryMap;
+
+}
 
 export const createUserDocumentFromAuth = async (
   userAuth,
