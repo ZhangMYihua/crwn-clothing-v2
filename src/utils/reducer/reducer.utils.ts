@@ -24,7 +24,7 @@ export function withMatcher(actionCreator: Function) {
 
 //generic type
 export type ActionWithPayload<T, P> = {
-  type: T;
+  type: T; //this is the action type 
   payload: P;
 };
 
