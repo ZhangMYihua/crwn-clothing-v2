@@ -1,12 +1,16 @@
 import './category-preview.styles.scss'
 
+import { Link } from 'react-router-dom'
+
 import ProductCard from '../product-card/product-card.component'
 
 const CatergoryPreview = ({title, products}) => {  //밑에 h2 안에 span 을 할당해주는것은 h2 자체를 클릭했을떄 넘어가는거보다 텍스트 자체를 클릭해서 넘어가도록 구현하기위함
 return(
     <div className='category-preview-container'>
         <h2>
-            <span className =" title">{title.toUpperCase()}</span>
+            <Link className =" title" to={title}>
+                {title.toUpperCase()}
+            </Link>
         </h2>
         <div className='preview'>
             {

@@ -7,6 +7,8 @@ import { Routes, Route } from 'react-router-dom';
 
 import './shop.styles.scss';
 
+import Category from '../../components/category/category.component';
+
 const Shop = () => {
  
 
@@ -14,6 +16,7 @@ const Shop = () => {
 
     <Routes>
       <Route index element={<CategoriesPreview/>}/>
+      <Route path=":category" element = {<Category/>}/>
     </Routes>
   );
 };
