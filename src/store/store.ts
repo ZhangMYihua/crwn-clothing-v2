@@ -32,7 +32,7 @@ const composeEnhancer =
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
   compose;
 
-const persistConfig = {
+const persistConfig:ExtendedPersistConfig = {
   key: "root",
   storage,
   whitelist: ["cart"] //primary benefit
