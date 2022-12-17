@@ -13,7 +13,7 @@ export const CategoriesContext = createContext({
 export const CategoriesProvider = ({ children }) => {
   const [categoriesMap, setCategoriesMap] = useState([]);
 
-  useEffect(() => {
+  useEffect(() => { //useEffect 뒤에 대부분 [] 를 기입하여 단발성으로 실행되게 만든다
 
     const getCategoriesMap = async () => {
       const categoryMap  = await getCategoriesAndDocuments();

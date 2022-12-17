@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from 'react';
 
-const addCartItem = (cartItems, productToAdd) => {
+const addCartItem = (cartItems, productToAdd) => { //카트에 아이템을 추가했을떄 중복되는 아이디의 아이템이 있으면 퀀티티만 늘려줌
   const existingCartItem = cartItems.find(
     (cartItem) => cartItem.id === productToAdd.id
   );
@@ -17,17 +17,17 @@ const addCartItem = (cartItems, productToAdd) => {
 };
 
 const removeCartItem = (cartItems, cartItemToRemove) => {
-  // find the cart item to remove
+  // 제거할 카트아이템을 선언해주고 카트아이디와 일치시켜준다
   const existingCartItem = cartItems.find(
     (cartItem) => cartItem.id === cartItemToRemove.id
   );
 
-  // check if quantity is equal to 1, if it is remove that item from the cart
+  // 삭제하려면 최소수량이 1이 되어야 하기떄문에 만족하는지 확인
   if (existingCartItem.quantity === 1) {
     return cartItems.filter((cartItem) => cartItem.id !== cartItemToRemove.id);
   }
 
-  // return back cartitems with matching cart item with reduced quantity
+  // remove 한 수량을 적용하여 아이템 퀀터티 리턴
   return cartItems.map((cartItem) =>
     cartItem.id === cartItemToRemove.id
       ? { ...cartItem, quantity: cartItem.quantity - 1 }

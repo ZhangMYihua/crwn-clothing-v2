@@ -25,8 +25,6 @@ const CategoriesPreview = () => {
         }
         )
       }
-    
-
     </Fragment>
   );
 };
