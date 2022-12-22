@@ -10,7 +10,19 @@ const Checkout = () => {
   return (
     <div className="checkout-container">
         <div className="checkout-header">
-            <div>
+            <div className="header-block">
+
+            </div>
+            <div className="header-block">
+
+            </div>
+            <div className="header-block">
+
+            </div>
+            <div className="header-block">
+
+            </div>
+            <div className="header-block">
 
             </div>
         </div>
