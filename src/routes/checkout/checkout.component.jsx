@@ -8,7 +8,7 @@ const Checkout = () => {
   const { cartItems, addItemToCart, removeItemToCart } = useContext(CartContext);
 
   return (
-    <div>
+    <div className="checkout-container">
       <h1>I am the checkout page</h1>
       <div>
         {cartItems.map((cartItem) => {
