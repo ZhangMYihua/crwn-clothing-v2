@@ -9,6 +9,11 @@ const Checkout = () => {
 
   return (
     <div className="checkout-container">
+        <div className="checkout-header">
+            <div>
+
+            </div>
+        </div>
       <h1>I am the checkout page</h1>
       <div>
         {cartItems.map((cartItem) => {
