@@ -41,6 +41,7 @@ const Checkout = () => {
           </div>
         );
       })}
+      <span className="Total">Total: 0</span>
     </div>
   );
 };
