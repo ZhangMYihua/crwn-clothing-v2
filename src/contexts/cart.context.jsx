@@ -1,5 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 
+
+
 const addCartItem = (cartItems, productToAdd) => {
   //find if cartItems contains productToAdd
   const existingCartItem = cartItems.find(
@@ -38,6 +40,10 @@ const removeCartItem = (cartItems, cartItemToRemove) => {
   );
 };
 
+const clearCartItem = (cartItems, cartItemToClear) => {
+
+}
+
 export const CartContext = createContext({
   isCartOpen: false,
   setIsCartOpen: () => {},
@@ -64,8 +70,13 @@ export const CartProvider = ({ children }) => {
   const addItemToCart = (productToAdd) => {
     setCartItems(addCartItem(cartItems, productToAdd));
   };
+
   const removeItemToCart = (cartItemToRemove) => {
     setCartItems(removeCartItem(cartItems, cartItemToRemove));
+  };
+
+  const clearItemToCart = (cartItemToClear) => {
+    setCartItems(clearCartItem(cartItems, cartItemToClear));
   };
 
   const value = {
