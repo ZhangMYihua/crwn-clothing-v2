@@ -7,7 +7,7 @@ import "./checkout-item.scss";
 const CheckoutItem = ({ cartItem }) => {
   const { name, imageUrl, price, quantity } = cartItem;
 
-  const { clearItemFromCart } = useContext(CartContext);
+  const { clearItemFromCart, addItemToCart, removeItemToCart } = useContext(CartContext);
 
   const clearItemHandler = () => clearItemFromCart(cartItem);
 
@@ -17,7 +17,15 @@ const CheckoutItem = ({ cartItem }) => {
         <img src={imageUrl} alt={`${name}`} />
       </div>
       <span className="name">{name}</span>
-      <span className="quantity">{quantity}</span>
+      <span className="quantity">
+        <div className="arrow">
+
+        </div>
+        {quantity}
+        <div>
+
+        </div>
+        </span>
       <span className="price">{price}</span>
       <div className="remove-button" onClick={clearItemHandler}>&#10005;</div>
     </div>
