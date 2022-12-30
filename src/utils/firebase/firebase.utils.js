@@ -43,14 +43,16 @@ export const signInWithGooglePopup = () =>
 export const signInWithGoogleRedirect = () =>
   signInWithRedirect(auth, googleProvider);
 
+// function to get data from the database
 export const db = getFirestore();
 
-// function to get firebase data
+// function to get specific firebase data collection
 export const addCollectionAndDocuments = async (
   collectionKey,
   objectsToAdd
 ) => {
-  
+const collectionRef = collection(db, collectionKey)
+
 };
 
 export const createUserDocumentFromAuth = async (
