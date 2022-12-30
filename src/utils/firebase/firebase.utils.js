@@ -15,7 +15,7 @@ import {
   getDoc,
   setDoc,
   collection,
-  writeBatch
+  writeBatch,
 } from "firebase/firestore";
 
 // Your web app's Firebase configuration
@@ -42,7 +42,16 @@ export const signInWithGooglePopup = () =>
   signInWithPopup(auth, googleProvider);
 export const signInWithGoogleRedirect = () =>
   signInWithRedirect(auth, googleProvider);
+
 export const db = getFirestore();
+
+// function to get firebase data
+export const addCollectionAndDocuments = async (
+  collectionKey,
+  objectsToAdd
+) => {
+  
+};
 
 export const createUserDocumentFromAuth = async (
   userAuth,
