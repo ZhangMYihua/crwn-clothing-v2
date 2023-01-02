@@ -46,13 +46,13 @@ export const signInWithGoogleRedirect = () =>
 // function to get data from the database
 export const db = getFirestore();
 
-// function to get specific firebase data collection
+// function to create a collection and get collection reference
 export const addCollectionAndDocuments = async (
   collectionKey,
   objectsToAdd
 ) => {
-const collectionRef = collection(db, collectionKey)
-
+  const collectionRef = collection(db, collectionKey);
+  const batch = writeBatch(db);
 };
 
 export const createUserDocumentFromAuth = async (
