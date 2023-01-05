@@ -75,6 +75,8 @@ const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
   acc[title.toLowerCase()] = items;
   return acc;
 }, {})
+
+return categoryMap;
 }
 
 export const createUserDocumentFromAuth = async (
