@@ -9,7 +9,14 @@ export const ProductsContext = createContext({
 export const ProductsProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
 
-useEffect(() => {getCategoriesAndDocuments()})
+  useEffect(() => {
+    const getCategoriesMap = async () => {
+      const categoryMap = await getCategoriesAndDocuments();
+      console.log(categoryMap);
+    };
+
+    getCategoriesMap();
+  });
 
   const value = { products };
   return (
