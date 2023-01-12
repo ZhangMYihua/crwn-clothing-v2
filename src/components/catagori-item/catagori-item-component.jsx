@@ -1,20 +1,4 @@
-
-
-// const CatagoriItem=({catagories})=>{
-// return(
-//     <div className="categories-container">
-//     {catagories.map((catagori) => (
-//    <Directory
-//    catagori={catagori}
-//     />
-//     ))}
-//   </div>
-// )
-// }
-// export default CatagoriItem
-
-
-
+import './catagori-item.styles.scss'
 
 const CatagoriItem=({catagori})=>{
 
