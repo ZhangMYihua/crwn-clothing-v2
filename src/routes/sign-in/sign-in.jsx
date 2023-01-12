@@ -6,7 +6,6 @@ const SigIn =()=>{
     const loGoogleUser =async()=>{
         const {user}=await signInWithGooglePopup()
         const userDocref=await  createUserDocumentFromAuth(user)
-      
     }
     return (
         <div>
