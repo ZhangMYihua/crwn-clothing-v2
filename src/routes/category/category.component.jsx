@@ -2,7 +2,6 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
 import { useSelector } from "react-redux";
 
-import { CategoryContext } from '../../contexts/category.context';
 import ProductCard from '../../components/product-card/product-card.component';
 import { selectCategories } from '../../store/category/category.selector';
 
