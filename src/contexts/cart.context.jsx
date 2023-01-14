@@ -1,9 +1,11 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useReducer } from "react";
+
+import { createAction } from "../utils/reducer/reducer.util";
 
 const addCartItem = (cartItems, productToAdd) => {
     const cartItemExist = cartItems.find((cartItem)=>
         cartItem.id === productToAdd.id
-    )
+    );
 
     if (cartItemExist) {
         return cartItems.map(cartItem => {
@@ -39,31 +41,89 @@ export const CartContext = createContext({
     setIsCartOpen: ()=>{},
     cartItems: [],
     addItemToCart: ()=>{},
+    removeItemFromCart: ()=>{},
+    clearItemFromCart: ()=>{},
     cartItemCount: 0,
     cartTotal:0
 })
 
-export const CartProvider = ({ children }) => {
-    const [isCartOpen, setIsCartOpen] = useState(false);
-    const [cartItems, setCartItems] = useState([]);
-    const [cartItemCount, setCartItemCount] = useState(0);
-    const [cartTotal, setCartTotal] = useState(0);
+const INITIAL_STATE = {
+    isCartOpen: false,
+    cartItems: [],
+    cartItemCount: 0,
+    cartTotal:0
+}
 
-    useEffect( () => {
-        setCartItemCount(cartItems.reduce((count,item)=>{return count+=item.quantity},0))
-        setCartTotal(cartItems.reduce( (total, item) => {return total += item.quantity*item.price},0 ))
-    }, [cartItems] )
+export const CART_ACTION_TYPES = {
+    SET_IS_CART_OPEN : "SET_IS_CART_OPEN",
+    SET_CART_ITEM : "SET_CART_ITEM",
+    SET_CART_COUNT: 'SET_CART_COUNT',
+    SET_CART_TOTAL: 'SET_CART_TOTAL',
+}
+
+const cartReducer = (state, action) => {
+    const { type,payload } = action
+    switch(type){
+        case CART_ACTION_TYPES.SET_IS_CART_OPEN:
+            return {
+                ...state, 
+                isCartOpen: !state.isCartOpen
+            }
+        case CART_ACTION_TYPES.SET_CART_COUNT:
+            return {
+                ...state,
+                cartItemCount: payload
+            }
+        case CART_ACTION_TYPES.SET_CART_TOTAL:
+            return {
+                ...state,
+                cartTotal: payload
+            }
+        case CART_ACTION_TYPES.SET_CART_ITEM:
+            return{
+                ...state,
+                ...payload,
+            }
+        default:
+            throw new Error(`Unhandled Type ${type} in cartReducer`);
+    }
+}
+
+export const CartProvider = ({ children }) => {
+    // USE STATE WAY OF DOING IT
+    // const [cartItems, setCartItems] = useState([]);
+    // const [cartItemCount, setCartItemCount] = useState(0);
+    // const [cartTotal, setCartTotal] = useState(0);
+    const [isCartOpen, setIsCartOpen] = useState(false);
+
+    //REDUCER WAY OF DOING IT
+    const [state, dispatch] = useReducer(cartReducer, INITIAL_STATE)
+    const { cartItems, cartItemCount, cartTotal } = state
+
+    const updateCartItemReducer = (cartItems) => {
+        const newCartItemCount = cartItems.reduce((count,item)=>{return count+=item.quantity},0)
+        const newCartTotal = cartItems.reduce( (total, item) => {return total += item.quantity*item.price},0)
+        const payload = {
+            cartItems,
+            cartItemCount: newCartItemCount,
+            cartTotal: newCartTotal
+        }
+        dispatch(createAction(CART_ACTION_TYPES.SET_CART_ITEM,payload));
+    }
 
     const addItemToCart = (productToAdd) => {
-        setCartItems(addCartItem(cartItems, productToAdd))
+        const updatedCart = addCartItem(cartItems, productToAdd)
+        updateCartItemReducer(updatedCart)
     }
 
     const clearItemFromCart = (itemToRemove) => {
-        setCartItems(clearItemCart(cartItems,itemToRemove))
+        const updatedCart = clearItemCart(cartItems,itemToRemove)
+        updateCartItemReducer(updatedCart)
     }
 
-    const removeItemFromCart = (itemToChange, val) => {
-        setCartItems(removeCartItem(cartItems,itemToChange,val))
+    const removeItemFromCart = (itemToChange) => {
+        const updatedCart = removeCartItem(cartItems,itemToChange)
+        updateCartItemReducer(updatedCart)
     }
 
     const value = {isCartOpen, setIsCartOpen,cartItems, addItemToCart, cartItemCount, removeItemFromCart, clearItemFromCart, cartTotal};
