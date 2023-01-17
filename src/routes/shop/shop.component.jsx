@@ -9,7 +9,7 @@ const Shop = () => {
   const { categoriesMap } = useContext(CategoriesContext);
 
   return (
-    <Fragment>
+    <div className="shop-container">
       {Object.keys(categoriesMap).map((title) => (
         <Fragment key={title}>
           <h2>{title}</h2>
@@ -18,7 +18,7 @@ const Shop = () => {
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
-        </Fragment>
+        </div>
       ))}
     </Fragment>
   );
