@@ -1,7 +1,3 @@
-import { useContext } from 'react';
-
-import { CartContext } from '../../contexts/cart.context';
-
 import {CartItemContainer, ItemDetails} from './cart-item.styles.jsx';
 
 const CartItem = ({ item }) => {
