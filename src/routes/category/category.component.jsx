@@ -18,7 +18,7 @@ const Category = () => {
 
   return (
     <div className="category-container">
-      {products.map((product) => (
+      {products && products.map((product) => (
         <ProductCard key={product.id} product={product} />
       ))}
     </div>
