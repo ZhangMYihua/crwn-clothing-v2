@@ -791,7 +791,7 @@ export default CardList
 //...
 import CardList from './components/card-list/card-list.component'
 //...
-<CardList />
+;<CardList />
 //...
 ```
 
@@ -1234,21 +1234,21 @@ The Virtual DOM is a javascript representation of the DOM
 ### 66. React and React DOM
 
 ```html
-  <!-- #root content gets replaced with third (bottom) script -->
-  <div id="root">React is not rendered</div>
-  
-  <script src="https://unpkg.com/react@18.0.0-rc.0/umd/react.development.js"></script>
-  <script src="https://unpkg.com/react-dom@18.0.0-rc.0/umd/react-dom.development.js"></script>
+<!-- #root content gets replaced with third (bottom) script -->
+<div id="root">React is not rendered</div>
 
-  <!-- Pure React (written without JSX) -->
-  <script>
-    const App = () => {
-      return React.createElement('div', {}, [
-        React.createElement('h1', {class: 'title'}, 'React IS rendered')
-      ])
-    
-    ReactDOM.render(React.createElement(App), document.getElementById('root'))
-  </script>
+<script src="https://unpkg.com/react@18.0.0-rc.0/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18.0.0-rc.0/umd/react-dom.development.js"></script>
+
+<!-- Pure React (written without JSX) -->
+<script>
+  const App = () => {
+    return React.createElement('div', {}, [
+      React.createElement('h1', {class: 'title'}, 'React IS rendered')
+    ])
+
+  ReactDOM.render(React.createElement(App), document.getElementById('root'))
+</script>
 ```
 
 Basicly this is all React does...
@@ -1275,7 +1275,11 @@ const App = () => {
   return React.createElement('div', {}, [
     React.createElement('h1', { class: 'title' }, 'React IS rendered'),
     React.createElement(Person, { name: 'Jesus', occupation: 'Savior' }, null),
-    React.createElement(Person, { name: 'Abraham', occupation: 'prophet' }, null),
+    React.createElement(
+      Person,
+      { name: 'Abraham', occupation: 'prophet' },
+      null
+    ),
     React.createElement(Person, { name: 'Moses', occupation: 'prophet' }, null)
   ])
 }
@@ -1294,7 +1298,7 @@ React.createElement(
   // element to be created
   'h1',
   // attributes / props
-  {class: 'title'},
+  { class: 'title' },
   // what are the children inside
   []
 )
@@ -1305,8 +1309,8 @@ React.createElement(
 ```jsx
 const Person = props => {
   return React.createElement('div', {}, [
-    React.createElement('h2', {key: 1}, props.name),
-    React.createElement('p', {key: 2}, props.occupation)
+    React.createElement('h2', { key: 1 }, props.name),
+    React.createElement('p', { key: 2 }, props.occupation)
   ])
 }
 
@@ -1315,18 +1319,23 @@ const App = () => {
     React.createElement(
       'h1',
       { className: 'title', key: 2 },
-      'React IS rendered'),
+      'React IS rendered'
+    ),
     React.createElement(
-      Person, { name: 'Jesus', occupation: 'Savior', key: 4 },
-      null),
+      Person,
+      { name: 'Jesus', occupation: 'Savior', key: 4 },
+      null
+    ),
     React.createElement(
       Person,
       { name: 'Abraham', occupation: 'prophet', key: 5 },
-      null),
+      null
+    ),
     React.createElement(
       Person,
       { name: 'Moses', occupation: 'prophet', key: 6 },
-      null)
+      null
+    )
   ])
 }
 
@@ -1338,7 +1347,8 @@ root.render(React.createElement(App))
 ### 69. DOM Paint Flashing
 
 To enable:
- - [x] menu > more tools > rendering > enable Paint flashing
+
+- [x] menu > more tools > rendering > enable Paint flashing
 
 When elements are being mounted and unmounted the paint is flashed, showing where it's being re-rendered.
 
@@ -1346,3 +1356,22 @@ In React only the portions relevant will be modied.
 
 ## Section 4: Capstone Project: Intro & Setup
 
+[Docs (includes v18.2.0)](https://reactjs.org/)
+[Beta Docs](https://beta.reactjs.org/learn)
+
+### 73. Github Strategy
+
+Forked, then Cloned repo from course.
+
+- updated React v18.2.0
+- created master branch
+  - he has main
+
+### 74. The Long Road Ahead
+
+- explains how we will learn from the course
+
+### 75. Project Overview
+
+![final Project](../img/final-project.png)
+For more details, see [video](https://www.udemy.com/course/complete-react-developer-zero-to-mastery/learn/lecture/15100008#questions)
