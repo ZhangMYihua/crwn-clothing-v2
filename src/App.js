@@ -1,43 +1,40 @@
-const App = () => {
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { Routes, Route } from 'react-router-dom';
+import {
+  onAuthStateChangedListener,
+  createUserDocumentFromAuth,
+} from './utils/firebase/firebase';
+import { setCurrentUser } from './store/user/user.action';
+
+import { Nav } from './routes/nav/Nav';
+import { Home } from './routes/home/Home';
+import { Auth } from './routes/auth/Auth';
+import { Shop } from './routes/shop/Shop';
+import { Checkout } from './routes/checkout/Checkout';
+
+export const App = () => {
+  // this dispatch never changes. There is only one dispatch in redux. Don't need to pass into dependency array but will do it to silence linting
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const unsubscribe = onAuthStateChangedListener((user) => {
+      if (user) {
+        createUserDocumentFromAuth(user);
+      }
+      dispatch(setCurrentUser(user));
+    });
+    return unsubscribe;
+  }, [dispatch]);
+
   return (
-    <div className='categories-container'>
-      <div className='category-container'>
-        {/* <img /> */}
-        <div className='category-body-container'>
-          <h2>Hats</h2>
-          <p>Shop Now</p>
-        </div>
-      </div>
-      <div className='category-container'>
-        {/* <img /> */}
-        <div className='category-body-container'>
-          <h2>Jackets</h2>
-          <p>Shop Now</p>
-        </div>
-      </div>
-      <div className='category-container'>
-        {/* <img /> */}
-        <div className='category-body-container'>
-          <h2>Sneakers</h2>
-          <p>Shop Now</p>
-        </div>
-      </div>
-      <div className='category-container'>
-        {/* <img /> */}
-        <div className='category-body-container'>
-          <h2>Womens</h2>
-          <p>Shop Now</p>
-        </div>
-      </div>
-      <div className='category-container'>
-        {/* <img /> */}
-        <div className='category-body-container'>
-          <h2>Mens</h2>
-          <p>Shop Now</p>
-        </div>
-      </div>
-    </div>
+    <Routes>
+      <Route path="/" element={<Nav />}>
+        <Route index element={<Home />} />
+        <Route path="auth" element={<Auth />} />
+        <Route path="shop/*" element={<Shop />} />
+        <Route path="checkout" element={<Checkout />} />
+      </Route>
+    </Routes>
   );
 };
-
-export default App;
