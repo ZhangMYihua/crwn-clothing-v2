@@ -1,10 +1,18 @@
-
-import CategoryMenu from "./Components/Categories-items/CategoryMenu"
+import { Route, Routes } from 'react-router-dom'
+import HomePage from './Routes/Home/HomePage'
+import ShopComponent from './Routes/ShopComponent/ShopComponent'
+import NavigationComponent from './Routes/Navigation/NavigationComponent'
 
 const App = () => {
-  
   return (
-    <CategoryMenu />
+    <>
+      <Routes>
+        <Route path="/" element={<NavigationComponent />}>
+          <Route index element={<HomePage />} />
+          <Route path="shop" element={<ShopComponent />} />
+        </Route>
+      </Routes>
+    </>
   )
 }
 
