@@ -9,12 +9,13 @@ function NavigationComponent() {
   return (
     <Fragment>
       <div className="navigation">
-        <Link classNam="logo-container" to="/">
-          <Logo classNam="logo" />
+        <Link className="logo-container" to="/">
+          <Logo className="logo" />
         </Link>
-        <div classNam="nav-links-container">
-          <Link to='/'>Home</Link>
-          <Link to='shop'>Shop</Link>
+        <div className="nav-links-container">
+          <Link className="nav-link" to='/'>Home</Link>
+          <Link className="nav-link" to='shop'>Shop</Link>
+          <Link className="nav-link" to='signIn'>sign-in</Link>
         </div>
       </div>
       <Outlet />
