@@ -1,4 +1,4 @@
-import './Category.styles.scss'
+import './CategoryStyles.scss'
 
 function Category({id, title, imageUrl}) {
   return (
