@@ -1,7 +1,7 @@
 import React from 'react'
-import './FormInputComponent.scss'
+import './FormInputStyles.scss'
 
-function FormInputStyles({ label, ...otherProps }) {
+function FormInputComponent({ label, ...otherProps }) {
   return (
     <div className="group">
       {label && <label>{label}</label>}
@@ -10,4 +10,4 @@ function FormInputStyles({ label, ...otherProps }) {
   )
 }
 
-export default FormInputStyles
+export default FormInputComponent

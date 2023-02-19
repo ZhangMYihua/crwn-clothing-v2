@@ -15,7 +15,7 @@ function NavigationComponent() {
         <div className="nav-links-container">
           <Link className="nav-link" to='/'>Home</Link>
           <Link className="nav-link" to='shop'>Shop</Link>
-          <Link className="nav-link" to='signIn'>sign-in</Link>
+          <Link className="nav-link" to='signIn'>Sign-in</Link>
         </div>
       </div>
       <Outlet />
