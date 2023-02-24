@@ -8,19 +8,31 @@
   .logo-container {
     height: 100%;
     width: 70px;
-    padding: 25px;
+    padding: 15px 0px 10px 30px;
   }
 
-  .nav-links-container {
+  .navlinkBar{
     width: 50%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    padding-right: 20px;
 
     .nav-link {
-      padding: 10px 15px;
+      padding: 10px 15px 0px 15px;
       cursor: pointer;
+      font-size: 23px;
+      font-weight: 1000;
+    
     }
+
+    
+    .logocart{
+    display: flex;
+    align-items: center;
+    justify-content:flex-end; 
+  }
+  
   }
 }
