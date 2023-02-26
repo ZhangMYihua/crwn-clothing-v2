@@ -1,5 +1,7 @@
 import React from 'react'
+
 import { useState } from 'react'
+import { useContext } from 'react'
 
 import FormInputComponent from '../FormInput/FormInputComponents'
 import ButtonFormComponents from '../ButtonForm/ButtonFormComponents'
@@ -7,7 +9,7 @@ import ButtonFormComponents from '../ButtonForm/ButtonFormComponents'
 import { signInWithGooglePopup } from '../../utility/firebase/FirebaseComponent'
 import { createUserDocumentFromAuth } from '../../utility/firebase/FirebaseComponent'
 import { signAuthInWithEmailAndPassword } from '../../utility/firebase/FirebaseComponent'
-import { async } from '@firebase/util'
+import { UserContext } from '../../Kontext/FontextContext'
 
 function SignInFormComponents() {
   const defaultForm = {
@@ -23,19 +25,19 @@ function SignInFormComponents() {
   const [field, setField] = useState(defaultForm)
   const { email, password } = field
 
+  const { setCurrentUser } = useContext(UserContext)
+
   const useHandler = (event) => {
     const { name, value } = event.target
     setField({ ...field, [name]: value })
-    console.log()
   }
 
   const handlerSubmit = async (event) => {
     event.preventDefault()
     try {
       const result = signAuthInWithEmailAndPassword(email, password)
-      console.log(result)
+      setCurrentUser(result)
     } catch (eroor) {
-      console.log(eroor)
       switch (eroor.code) {
         case 'auth/user-not-found':
           alert('user ne najden')

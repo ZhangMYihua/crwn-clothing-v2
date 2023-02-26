@@ -1,14 +1,24 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { BrowserRouter } from 'react-router-dom'
+import { UserProvider } from './Kontext/FontextContext'
+import { ProductsProvider } from './Kontext/ShopItemContext'
+import { OpenCloseProvider } from './Kontext/OpenCloseCardContext'
+
 import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
-import { BrowserRouter } from 'react-router-dom'
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <UserProvider>
+        <ProductsProvider>
+          <OpenCloseProvider>
+            <App />
+          </OpenCloseProvider>
+        </ProductsProvider>
+      </UserProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
