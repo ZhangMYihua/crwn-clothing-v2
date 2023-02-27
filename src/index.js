@@ -4,6 +4,7 @@ import {BrowserRouter} from 'react-router-dom';
 
 import App from './App';
 import {UserProvider} from './components/contexts/user.context';
+import {ProductsProvider} from './components/contexts/products.context';
 
 import './index.scss';
 
@@ -13,7 +14,9 @@ render(
   <React.StrictMode>
     <BrowserRouter>
       <UserProvider>
-        <App />
+        <ProductsProvider>
+          <App />
+        </ProductsProvider>
       </UserProvider>
     </BrowserRouter>
   </React.StrictMode>,
