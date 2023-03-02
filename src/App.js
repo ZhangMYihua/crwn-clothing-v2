@@ -1,44 +1,28 @@
+import { Routes,Route,Outlet } from 'react-router-dom';
+import Navegation from './routes/navegation/navegation.component.jsx';
+import Home from './routes/home/home.component.jsx';
 
-import CategoryMenu from './components/categories-menu/categories-menu-component.jsx';
-import './categories.styles.scss'
+
+
+
 
 
 const App = () => {
-
-  const categories = [
-
-    {
-      "id": 1,
-      "title": "hats",
-      "imageUrl": "https://i.ibb.co/cvpntL1/hats.png"
-    },
-    {
-      "id": 2,
-      "title": "jackets",
-      "imageUrl": "https://i.ibb.co/px2tCc3/jackets.png"
-    },
-    {
-      "id": 3,
-      "title": "sneakers",
-      "imageUrl": "https://i.ibb.co/0jqHpnp/sneakers.png"
-    },
-    {
-      "id": 4,
-      "title": "womens",
-      "imageUrl": "https://i.ibb.co/GCCdy8t/womens.png"
-    },
-    {
-      "id": 5,
-      "title": "mens",
-      "imageUrl": "https://i.ibb.co/R70vBrQ/men.png"
-    },
   
-  ]
+ return (
 
-  return (
+  <Routes>
 
-    <CategoryMenu categories={categories}/>
-  );
+   <Route path='/' element={<Navegation/>}>
+    <Route index={true} element={<Home/>} />
+    <Route path='/shop' element ={<h1>Hello Shop</h1>}/>
+   </Route>
+   
+
+  </Routes>
+ 
+ 
+ );
 };
 
 export default App;
