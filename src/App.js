@@ -1,20 +1,22 @@
-import { Route, Routes } from 'react-router-dom'
-import HomePage from './Routes/Home/HomePage'
-import ShopComponent from './Routes/ShopComponent/ShopComponent'
-import NavigationComponent from './Routes/Navigation/NavigationComponent'
-import AuthenktikationComponent from './Routes/Authenktication/AuthenktikationComponent'
+import { Routes, Route } from 'react-router-dom';
+
+import Home from './routes/home/home.component';
+import Navigation from './routes/navigation/navigation.component';
+import Authentication from './routes/authentication/authentication.component';
+import Shop from './routes/shop/shop.component';
+import Checkout from './routes/checkout/checkout.component';
+
 const App = () => {
   return (
-    <>
-      <Routes>
-        <Route path="/" element={<NavigationComponent />}>
-          <Route index element={<HomePage />} />
-          <Route path="shop" element={<ShopComponent />} />
-          <Route path="signIn" element={<AuthenktikationComponent />} />
-        </Route>
-      </Routes>
-    </>
-  )
-}
+    <Routes>
+      <Route path='/' element={<Navigation />}>
+        <Route index element={<Home />} />
+        <Route path='shop/*' element={<Shop />} />
+        <Route path='auth' element={<Authentication />} />
+        <Route path='checkout' element={<Checkout />} />
+      </Route>
+    </Routes>
+  );
+};
 
-export default App
+export default App;
