@@ -4,3 +4,19 @@ export const CART_ACTION_TYPES = {
   SET_CART_COUNT: 'cart/SET_CART_COUNT',
   SET_CART_TOTAL: 'cart/SET_CART_TOTAL',
 };
+
+
+export type CartItem = {
+  id : number;
+  name: string;
+  imageUrl: string;
+  price: number;
+  quantity:number;
+}
+
+
+
+export type CartItemsState = {
+  isCartOpen: boolean;
+  cartItems: CartItem[];
+};
