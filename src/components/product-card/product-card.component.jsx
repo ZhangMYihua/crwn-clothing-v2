@@ -18,7 +18,6 @@ const ProductCard = ({ product }) => {
   const cartItems = useSelector(selectCartItems);
 
   const addProductToCart = () => dispatch(addItemToCart(cartItems, product));
-
   return (
     <ProductCartContainer>
       <img src={imageUrl} alt={`${name}`} />
