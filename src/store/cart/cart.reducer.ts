@@ -1,36 +1,22 @@
 import { AnyAction } from "redux";
 
-import { CartItemsState } from "./cart.types";
+import { CartState } from "./cart.types";
 
 import {
     setIsCartOpen,
-    removeItemFromCart,
-    clearItemFromCart,
-    addItemToCart,
+    setCartItems,
 } from "./cart.action";
 
-export const CART_INITIAL_STATE: CartItemsState = {
+export const CART_INITIAL_STATE: CartState = {
     isCartOpen: false,
     cartItems: [],
 };
 
 export const cartReducer = (
     state = CART_INITIAL_STATE,
-    action = {} as AnyAction
-): CartItemsState => {
-    if (addItemToCart.match(action)) {
-        return {
-            ...state,
-            cartItems: action.payload,
-        };
-    }
-    if (removeItemFromCart.match(action)) {
-        return {
-            ...state,
-            cartItems: action.payload,
-        };
-    }
-    if (clearItemFromCart.match(action)) {
+    action : AnyAction
+): CartState => {
+    if (setCartItems.match(action)) {
         return {
             ...state,
             cartItems: action.payload,

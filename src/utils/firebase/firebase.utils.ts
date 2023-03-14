@@ -19,6 +19,8 @@ import {
   query,
   getDocs,
 } from 'firebase/firestore';
+import { Category} from '../../store/categories/category.types';
+import { User } from '../../store/user/user.types';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDDU4V-_QV3M8GyhC9SVieRTDM4dbiT0Yk',
@@ -28,6 +30,7 @@ const firebaseConfig = {
   messagingSenderId: '626766232035',
   appId: '1:626766232035:web:506621582dab103a4d08d6',
 };
+
 
 const firebaseApp = initializeApp(firebaseConfig);
 
@@ -46,9 +49,9 @@ export const signInWithGoogleRedirect = () =>
 export const db = getFirestore();
 
 export const addCollectionAndDocuments = async (
-  collectionKey,
-  objectsToAdd,
-  field
+  collectionKey:string,
+  objectsToAdd:Category[],
+  field:string
 ) => {
   const collectionRef = collection(db, collectionKey);
   const batch = writeBatch(db);
@@ -71,7 +74,7 @@ export const getCategoriesAndDocuments = async () => {
 };
 
 export const createUserDocumentFromAuth = async (
-  userAuth,
+  userAuth:User,
   additionalInformation = {}
 ) => {
   if (!userAuth) return;
@@ -91,21 +94,21 @@ export const createUserDocumentFromAuth = async (
         createdAt,
         ...additionalInformation,
       });
-    } catch (error) {
-      console.log('error creating the user', error.message);
+    } catch (error:any) {
+      console.log('error creating the user',error.message);
     }
   }
 
   return userSnapshot;
 };
 
-export const createAuthUserWithEmailAndPassword = async (email, password) => {
+export const createAuthUserWithEmailAndPassword = async (email:string, password:string) => {
   if (!email || !password) return;
 
   return await createUserWithEmailAndPassword(auth, email, password);
 };
 
-export const signInAuthUserWithEmailAndPassword = async (email, password) => {
+export const signInAuthUserWithEmailAndPassword = async (email:string, password:string) => {
   if (!email || !password) return;
 
   return await signInWithEmailAndPassword(auth, email, password);
