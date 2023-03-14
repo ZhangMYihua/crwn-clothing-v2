@@ -4,7 +4,8 @@ import {
     getAuth,
     signInWithPopup,
     signInWithRedirect,
-     GoogleAuthProvider
+     GoogleAuthProvider,
+     createUserWithEmailAndPassword
  } from 'firebase/auth';
 
 // To use Firebase 
@@ -28,22 +29,26 @@ const firebaseConfig = {
 
   const firebaseApp = initializeApp(firebaseConfig);
 
-  const provider = new GoogleAuthProvider();
+  const googleProvider = new GoogleAuthProvider();
 
-  provider.setCustomParameters({
+  googleProvider.setCustomParameters({
 
     prompt:"select_account"
   });
 
   export const auth = getAuth();
 
-  export const singnWhitGoooglePopup = () => signInWithPopup(auth,provider);
+  export const singnWhitGoooglePopup = () => signInWithPopup(auth,googleProvider);
+
+  export  const signInWithGoogleRedirect = () => signInWithRedirect(auth,googleProvider);
 
 // To implement Firestore DB!
 
 const db = getFirestore();
 
 export const createUserDocumentFromAuth = async (userAuth) => {
+
+  if(!userAuth) return;
 // doc use 3 arguments 1- database (db), 2-collections ,3- identifier (UNIQUE IDENTIFIER {uid})
 const userDocRef = doc(db,'users',userAuth.uid);
 
@@ -68,10 +73,18 @@ console.log(userDocRef);
     return userDocRef
 }
 
-
 }
 
 
+//  How to implement Sing In whit Email and Pasword!!
+ 
+export const createAuthUserWhitEmailAndPassword = async (user,password) => {
 
+  // if (!user || !password) return;
+
+  return await createAuthUserWhitEmailAndPassword(auth,user,password);
+  
+
+ }
 
 
