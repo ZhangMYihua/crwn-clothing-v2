@@ -73,7 +73,7 @@ const SingUpForm = ()=>{
         
         <FormInput label="Confirm Password" type="password" required onChange={handleChange} name="confirmPassword" value={confirmPassword}/>
 
-        <Button  buttonType='inverted' type="submit">Sing UP</Button>
+        <Button  buttonType='default' type="submit">Sing UP</Button>
     </form>
   </div>
 
