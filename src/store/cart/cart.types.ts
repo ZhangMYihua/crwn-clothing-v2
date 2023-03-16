@@ -12,6 +12,6 @@ export type CartItem = CategoryItem & {
 };
 
 export type CartState = {
-    isCartOpen: boolean;
-    cartItems: CartItem[];
+    readonly isCartOpen: boolean;
+    readonly cartItems: CartItem[];
 };

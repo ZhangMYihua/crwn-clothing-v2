@@ -1,3 +1,10 @@
-import { User } from "firebase/auth";
+import { createSelector } from "reselect";
 
-export const selectCurrentUser = (state:any):User => state.user.currentUser;
+import { UserState } from "./user.reducer";
+
+export const selectUserReducer = (state: any): UserState => state.user;
+
+export const selectCurrentUser = createSelector(
+    selectUserReducer,
+    (user) => user.currentUser
+);
