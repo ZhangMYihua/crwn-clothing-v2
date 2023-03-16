@@ -89,8 +89,8 @@ export type UserData = {
 
 export const createUserDocumentFromAuth = async (
     userAuth: User,
-    additionalInformation = {} as AdditionalInformation
-): Promise<void | QueryDocumentSnapshot<UserData>> => {
+    additionalInformation: AdditionalInformation = {} as AdditionalInformation
+): Promise<QueryDocumentSnapshot<UserData> | void> => {
     if (!userAuth) return;
 
     const userDocRef = doc(db, "users", userAuth.uid);
