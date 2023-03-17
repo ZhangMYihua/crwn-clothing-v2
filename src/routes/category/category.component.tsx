@@ -12,25 +12,25 @@ import {
 
 import { CategoryContainer, Title } from "./category.styles";
 
-type CategoryParams = {
+type CategoryRoutesParams = {
     category: string;
 };
 
 const Category = () => {
-    const { category } = useParams<CategoryParams>();
+    const { category } = useParams<
+        keyof CategoryRoutesParams
+    >() as CategoryRoutesParams;
     const categoriesMap = useSelector(selectCategoriesMap);
     const isLoading = useSelector(selectCategoriesIsLoading);
-    const [products, setProducts] = useState(
-        category && categoriesMap[category]
-    );
+    const [products, setProducts] = useState(categoriesMap[category]);
 
     useEffect(() => {
-        setProducts(category && categoriesMap[category]);
+        setProducts(categoriesMap[category]);
     }, [category, categoriesMap]);
 
     return (
         <Fragment>
-            <Title>{category && category.toUpperCase()}</Title>
+            <Title>{category.toUpperCase()}</Title>
             {isLoading ? (
                 <Spinner />
             ) : (
