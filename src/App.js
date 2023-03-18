@@ -6,6 +6,7 @@ const App = () => {
         <div className='category-body-container'>
           <h2>Hats</h2>
           <p>Shop Now</p>
+          <p>AM MODIFICAT AICI CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC</p>
         </div>
       </div>
       <div className='category-container'>
