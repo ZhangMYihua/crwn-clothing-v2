@@ -1,3 +1,4 @@
+import { wait } from '@testing-library/user-event/dist/utils';
 import {initializeApp}from 'firebase/app';
 // To use Sing In whit Google!
 import {
@@ -7,6 +8,8 @@ import {
      GoogleAuthProvider,
      createUserWithEmailAndPassword,
      signInWithEmailAndPassword,
+     signOut,
+     onAuthStateChanged
  } from 'firebase/auth';
 
 // To use Firebase 
@@ -37,13 +40,26 @@ const firebaseConfig = {
     prompt:"select_account"
   });
 
+  // Sign Up whit Google*****************************************
+
   export const auth = getAuth();
 
   export const singnWhitGoooglePopup = () => signInWithPopup(auth,googleProvider);
 
   export  const signInWithGoogleRedirect = () => signInWithRedirect(auth,googleProvider);
 
-// To implement Firestore DB!
+
+  // Context and Sing Out**************************************
+
+  export const signOutUser = async () => await signOut(auth);
+
+  export const onAuthStateChangedListener = (callback) => onAuthStateChanged(auth,callback)
+
+
+
+
+
+// To implement FireStore DB!
 
 const db = getFirestore();
 
@@ -82,7 +98,7 @@ console.log(userDocRef);
 }
 
 
-//  How to implement Sing In whit Email and Pasword!!
+//  How to implement Sing In whit Email and Password!!
  
 export const createAuthUserWhitEmailAndPassword = async (user,password) => {
 
@@ -99,4 +115,5 @@ export const createAuthUserWhitEmailAndPassword = async (user,password) => {
   
 
  }
+
 

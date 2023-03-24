@@ -5,6 +5,8 @@ import Button from "../button/button.component";
 import './sing-in-form.styles.scss';
 
 
+
+
 const defaultFormFields = {
     email:"",
     password:"",
@@ -13,6 +15,8 @@ const SingInForm = ()=>{
 
     const [formFields, setFormFields] = useState(defaultFormFields);
     const {email,password} = formFields;
+    
+    // const {setCurrentUser} =useContext(UserContext);
 
     console.log(formFields);
 
@@ -22,9 +26,8 @@ const SingInForm = ()=>{
 
     const singInWhitGoogle = async () => {
       
-        const {user} = await singnWhitGoooglePopup();
-       
-          await createUserDocumentFromAuth(user);
+     await singnWhitGoooglePopup();
+   
    }
 
     const handleSubmit = async (eventh) =>{
@@ -32,8 +35,8 @@ const SingInForm = ()=>{
        
         
         try {
-           const response = singInAuthUserWhitEmailAndPassword(email,password);
-           console.log(response);
+           const {user} = await singInAuthUserWhitEmailAndPassword(email,password);
+       
             resetFromFields();
         }catch (error) {
             switch(error.code){
@@ -72,7 +75,7 @@ const SingInForm = ()=>{
 
        <div className="buttons-container">
        <Button  buttonType='default' type="submit">Sing In </Button>
-        <Button  tupe="button" buttonType='google' onClick={singInWhitGoogle}> Google sing In </Button>
+        <Button  tupe="button" buttonType='google' onClick={singInWhitGoogle}> Google sign In </Button>
        </div>
     </form>
   </div>
