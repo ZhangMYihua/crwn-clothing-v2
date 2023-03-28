@@ -19,7 +19,6 @@ type ProductCardProps = {
 };
 
 const ProductCard: FC<ProductCardProps> = ({ product }) => {
-  console.log(product)
   const { name, price, imageUrl } = product;
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
