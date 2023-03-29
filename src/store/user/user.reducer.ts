@@ -1,7 +1,5 @@
 import { AnyAction } from 'redux';
 
-import { USER_ACTION_TYPES } from './user.types';
-
 import {
   signInFailed,
   signUpFailed,
@@ -18,7 +16,7 @@ export type UserState = {
   readonly error: Error | null;
 };
 
-const INITIAL_STATE: UserState = {
+export const INITIAL_STATE: UserState = {
   currentUser: null,
   isLoading: false,
   error: null,

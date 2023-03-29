@@ -1,4 +1,3 @@
-import React from 'react';
 import * as reactRedux from 'react-redux';
 import { screen, fireEvent } from '@testing-library/react';
 import Navigation from '../navigation.component';
