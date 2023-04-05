@@ -1,5 +1,10 @@
-import { Fragment, useContext} from 'react';
+import { Fragment, useContext,useState} from 'react';
 import {Outlet , Link} from 'react-router-dom';
+
+import CartIcon from '../../components/cart-icon/cart.icon.component';
+import CardDropdown from '../../components/card-dropdown/card-dropdown.component';
+
+import { CartContext } from '../../context/cart.context';
 import { UserContext } from '../../context/user.context';
 import { signOutUser } from '../../utils/firebase/firebase.utils';
 
@@ -10,12 +15,8 @@ import './navegation.styles.scss';
 const Navegation = () => {
 
     const {currentUser} = useContext(UserContext);
-
-    // setCurrentUser
-  // const signOutHandler = async () => {
-  //   await signOutUser();
-  //   setCurrentUser(null);
-  // }
+    const {isCartOpen} = useContext(CartContext);
+  
 
     return(
     <Fragment>
@@ -34,13 +35,14 @@ const Navegation = () => {
         Sing In
       </Link>
 
-      )
-
-      }
-
+      )}
      
-      </div>
+        <CartIcon className='nav-link'/>
 
+      </div>
+     
+        { isCartOpen &&  <CardDropdown/> }
+        
       </div>
       <Outlet />
     </Fragment>
