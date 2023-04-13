@@ -1,10 +1,12 @@
-import { createContext, useState} from "react";
+import { createContext, useState, useEffect} from "react";
 
 const addCartItem = (cartItems,productToAdd) => {
 
 //find if cartItems contain productToAdd.
     const existingProduct = cartItems.find((cartItem)=> cartItem.id === productToAdd.id );
     
+
+
 // if found increment quantity.
 
  if (existingProduct) {
@@ -13,6 +15,7 @@ const addCartItem = (cartItems,productToAdd) => {
     return cartItems.map((cartItem) => 
         cartItem.id === productToAdd.id ?
 // this mean that we  have a brand new object but we spreading trough all of the old properties  but now just adding 1 to the "quantity"
+        
          {...cartItem,quantity: cartItem.quantity + 1} 
  // If don't match just return the cartItem don't improve it...
         : cartItem
@@ -33,6 +36,8 @@ export const CartContext = createContext({
     setIsCartOpen:() => {},
     cartItems:[],
     addItemsToCart: () => {},
+    cartCounts: 0,
+
 
 
 
@@ -43,13 +48,20 @@ export const CartProvider = ({children}) => {
 
     const [isCartOpen,setIsCartOpen]= useState(false);
     const [cartItems,setCartItems] = useState([]);
+    const [cartCounts, setCartCounts] = useState(0);
+
+    useEffect(() => {
+        const newCartCount = cartItems.reduce((total,cartItem)=> total + cartItem.quantity , 0)
+
+            setCartCounts(newCartCount);    
+    },[cartItems])
 
     const addItemsToCart = (productToAdd) => {
         setCartItems(addCartItem(cartItems,productToAdd));
 
     }
 
-    const value = {isCartOpen,setIsCartOpen, addItemsToCart,cartItems};
+    const value = {isCartOpen,setIsCartOpen, addItemsToCart,cartItems, cartCounts};
 
     return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 
