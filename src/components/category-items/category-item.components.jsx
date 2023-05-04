@@ -2,11 +2,11 @@ import './category-item.styles.scss';
 
 const CategoryItem = ({category}) => {
 
-   const { imageUrl,title} = category
+   const { imageUrl,title,id} = category
 
 return (
 
-<div className="category-container" >
+<div key={id} className="category-container" >
     {/* backgroundImage- make a Destructuring to add a string to another string */}
         <div className="background-image" style = {{backgroundImage:`url(${imageUrl})`}}/>
         <div className="category-body-container" >
