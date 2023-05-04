@@ -32,7 +32,8 @@ const SignUpForm = () => {
         console.log(formFields);
     }
 
-    const useless = () => {
+    const useless = (a,b) => {
+        if (a>b)
         return 32
     }
     return (
