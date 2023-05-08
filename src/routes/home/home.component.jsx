@@ -1,6 +1,6 @@
 
-import CategoryMenu from '../../components/categories-menu/categories-menu-component.jsx';
-import '../../components/categories-menu/categories-menu-styles.scss';
+import Directory from '../../components/Directory/directory.component.jsx';
+import '../../components/Directory/directory.styles.scss';
 
 
 const Home = () => {
@@ -37,7 +37,7 @@ const Home = () => {
 
   return (
 
-    <CategoryMenu categories={categories}/>
+    <Directory categories={categories}/>
   );
 };
 
