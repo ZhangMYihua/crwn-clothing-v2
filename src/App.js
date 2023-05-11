@@ -1,9 +1,9 @@
-import { Routes,Route,Outlet } from 'react-router-dom';
-import Navegation from './routes/navegation/navegation.component.jsx';
+import { Routes,Route } from 'react-router-dom';
+import Navigation from './routes/navigation/navigation.component.jsx';
 import Home from './routes/home/home.component.jsx';
 import Shop from './routes/shop/shop.component.jsx';
 import Authentication from './routes/authentication/authentication.component.jsx';
-import Checkout from './routes/checkout/checkout.componet.jsx';
+import Checkout from './routes/checkout/component.jsx';
 
 
 
@@ -14,7 +14,7 @@ const App = () => {
 
   <Routes>
 
-   <Route path='/' element={<Navegation/>}>
+   <Route path='/' element={<Navigation/>}>
     <Route index={true} element={<Home/>} />
     <Route path='shop/*' element ={<Shop/>}/>
     <Route path='auth' element ={<Authentication/>}/>

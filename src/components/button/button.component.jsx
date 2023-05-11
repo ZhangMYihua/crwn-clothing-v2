@@ -1,10 +1,7 @@
 
 import {BaseButton} from "./button.styles"
-// default buttons
 
-// inverted buttons
-
-// Google.sing.in buttons
+// I comment the instructor way of doing this to have more practice in JS but it's the wrong way of doing cause Docs have change.
 
 // export  const BUTTON_TYPE_CLASSES = {
 //         base: 'base',

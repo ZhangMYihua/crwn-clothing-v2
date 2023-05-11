@@ -1,5 +1,5 @@
-import { Fragment, useContext,useState} from 'react';
-import {Outlet , Link} from 'react-router-dom';
+import { Fragment, useContext} from 'react';
+import {Outlet } from 'react-router-dom';
 
 import CartIcon from '../../components/cart-icon/cart.icon.component';
 import CardDropdown from '../../components/card-dropdown/card-dropdown.component';
@@ -9,10 +9,10 @@ import { UserContext } from '../../context/user.context';
 import { signOutUser } from '../../utils/firebase/firebase.utils';
 
 import { ReactComponent as CrwnLogo } from '../../assets/crown.svg';
-import './navegation.styles.scss';
+import {LogoContainer,NavigationContainer,NavLinksContainer, NavLink} from './navigation.styles.jsx'
 
 
-const Navegation = () => {
+const Navigation = () => {
 
     const {currentUser} = useContext(UserContext);
     const {isCartOpen} = useContext(CartContext);
@@ -20,30 +20,30 @@ const Navegation = () => {
 
     return(
     <Fragment>
-      <div className='navigation'>
-      <Link className='logo-container' to="/">
+      <NavigationContainer>
+      <LogoContainer to="/">
       <CrwnLogo className='logo'/>
-      </Link>
-      <div className='nav-links-container '>
-      <Link className='nav-link' to="/shop">
+      </LogoContainer>
+      <NavLinksContainer>
+      <NavLink to="/shop">
         Shop
-      </Link>
+      </NavLink>
       {currentUser? (
-        <span className='nav-link' onClick={signOutUser}>Sign Out</span>
+        <NavLink as='span' onClick={signOutUser}>Sign Out</NavLink>
       ) : (
-        <Link className='nav-link' to="/auth">
+        <NavLink to="/auth">
         Sing In
-      </Link>
+      </NavLink>
 
       )}
      
-        <CartIcon className='nav-link'/>
+        <CartIcon />
 
-      </div>
+      </NavLinksContainer>
      
         { isCartOpen &&  <CardDropdown/> }
         
-      </div>
+      </NavigationContainer>
       <Outlet />
     </Fragment>
     )
@@ -51,4 +51,4 @@ const Navegation = () => {
     
     }
 
-    export default Navegation
+    export default Navigation
