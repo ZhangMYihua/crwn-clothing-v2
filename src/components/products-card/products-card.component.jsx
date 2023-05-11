@@ -27,7 +27,7 @@ const ProductCard = ({product}) => {
 
 
 </div>
-    <Button buttonType='inverted' onClick={addProductToCard} > Add to card</Button>
+    <Button $inverted onClick={addProductToCard} > Add to card</Button>
 
 </div>
 

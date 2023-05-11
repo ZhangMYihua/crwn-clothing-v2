@@ -75,7 +75,7 @@ const SingInForm = ()=>{
 
        <div className="buttons-container">
        <Button  buttonType='default' type="submit">Sing In </Button>
-        <Button  type="button" buttonType='google' onClick={singInWhitGoogle}> Google sign In </Button>
+        <Button $google type="button"  onClick={singInWhitGoogle}> Google sign In </Button>
        </div>
     </form>
   </div>
