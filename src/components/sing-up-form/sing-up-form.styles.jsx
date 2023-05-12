@@ -1,5 +1,6 @@
+import { styled } from "styled-components";
 
-.sing-up-container {
+export const SingUpContainer =styled.div`
     display: flex;
     flex-direction: column;
     width: 380px;
@@ -8,5 +9,4 @@
         margin: 10 px 0;
     }
 
-
-}
+`;

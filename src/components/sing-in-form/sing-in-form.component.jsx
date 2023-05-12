@@ -2,7 +2,7 @@ import { useState } from "react";
 import { singnWhitGoooglePopup,createUserDocumentFromAuth,singInAuthUserWhitEmailAndPassword } from "../../utils/firebase/firebase.utils";
 import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
-import './sing-in-form.styles.scss';
+import {SingUpContainer, ButtonsContainer} from  './sing-in-form.styles.jsx';
 
 
 
@@ -63,9 +63,9 @@ const SingInForm = ()=>{
 
  return(
 
-  <div className="sing-up-container">
+  <SingUpContainer>
     <h2>Already have a account </h2>
-  <span>Sing In whit your email and password</span>
+    <span>Sing In whit your email and password</span>
     <form onSubmit={handleSubmit}>
     
         <FormInput label="Email" type="email" required onChange={handleChange} name="email" value={email}/>
@@ -73,12 +73,12 @@ const SingInForm = ()=>{
       
         <FormInput label="Password" type="password" required onChange={handleChange} name="password"  value={password}/>
 
-       <div className="buttons-container">
+       <ButtonsContainer>
        <Button  buttonType='default' type="submit">Sing In </Button>
         <Button $google type="button"  onClick={singInWhitGoogle}> Google sign In </Button>
-       </div>
+       </ButtonsContainer>
     </form>
-  </div>
+  </SingUpContainer>
 
  )
 

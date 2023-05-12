@@ -3,7 +3,7 @@ import { createAuthUserWhitEmailAndPassword,createUserDocumentFromAuth } from ".
 import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
 // import { UserContext } from "../../context/user.context";
-import './sing-up-form.styles.scss';
+import {SingUpContainer} from './sing-up-form.styles.jsx';
 
 
 const defaultFormFields = {
@@ -60,7 +60,7 @@ const SingUpForm = ()=>{
 
  return(
 
-  <div className="sing-up-container">
+  <SingUpContainer>
     <h2>Don't have a account? </h2>
   <span>Sing Up whit your email and password</span>
     <form onSubmit={handleSubmit}>
@@ -77,7 +77,7 @@ const SingUpForm = ()=>{
 
         <Button  buttonType='default' type="submit">Sing UP</Button>
     </form>
-  </div>
+  </SingUpContainer>
 
  )
 
