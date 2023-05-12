@@ -13,7 +13,6 @@ const DirectoryItem = ({ category }) => {
 
   return (
     <DirectoryItemContainer onClick={onNavigateHandler}>
-      {/* backgroundImage- make a Destructuring to add a string to another string */}
       <BackgroundImage image={imageUrl} />
       <Body>
         <h2>{title}</h2>
