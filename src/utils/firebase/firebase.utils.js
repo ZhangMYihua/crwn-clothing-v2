@@ -20,16 +20,18 @@ import {
   getDocs,
 } from 'firebase/firestore';
 
+
 const firebaseConfig = {
-  apiKey: 'AIzaSyDDU4V-_QV3M8GyhC9SVieRTDM4dbiT0Yk',
-  authDomain: 'crwn-clothing-db-98d4d.firebaseapp.com',
-  projectId: 'crwn-clothing-db-98d4d',
-  storageBucket: 'crwn-clothing-db-98d4d.appspot.com',
-  messagingSenderId: '626766232035',
-  appId: '1:626766232035:web:506621582dab103a4d08d6',
+  apiKey: "AIzaSyCQK7uGol-6U8l3FYJJfw9uWv-zXplrXQg",
+  authDomain: "crwn-clothing-5fc60.firebaseapp.com",
+  projectId: "crwn-clothing-5fc60",
+  storageBucket: "crwn-clothing-5fc60.appspot.com",
+  messagingSenderId: "524058877785",
+  appId: "1:524058877785:web:5bc7184ce1ce446f96f648"
 };
 
-const firebaseApp = initializeApp(firebaseConfig);
+
+ export const app = initializeApp(firebaseConfig);
 
 const googleProvider = new GoogleAuthProvider();
 
