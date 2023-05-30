@@ -7,7 +7,6 @@ import { store } from "./store/store";
 
 import App from "./App";
 import { CartProvider } from "./context/cart.context";
-import { CategoriesProvider } from "./context/categories.context";
 
 import "./index.scss";
 
@@ -15,11 +14,9 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <CategoriesProvider>
-          <CartProvider>
-            <App />
-          </CartProvider>
-        </CategoriesProvider>
+        <CartProvider>
+          <App />
+        </CartProvider>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>,

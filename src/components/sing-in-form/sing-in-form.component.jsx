@@ -1,7 +1,6 @@
 import { useState } from "react";
 import {
   singWhitGooglePopup,
-  createUserDocumentFromAuth,
   singInAuthUserWhitEmailAndPassword,
 } from "../../utils/firebase/firebase.utils";
 import FormInput from "../form-input/form-input.component";
@@ -15,10 +14,6 @@ const defaultFormFields = {
 const SingInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
-
-  // const {setCurrentUser} =useContext(UserContext);
-
-  // console.log(formFields);
 
   const resetFromFields = () => {
     setFormFields(defaultFormFields);
