@@ -6,7 +6,7 @@ const Directory = ({categories}) => {
   return (
     <div className="categories-container">
       {categories.map((i) => (
-        <CategoryItem category={i} />
+        <CategoryItem category={i} key = {i.id} />
       ))}
     </div>
   );
