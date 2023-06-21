@@ -1,4 +1,4 @@
-import { createAction } from "../../utils/firebase/reducer/reducer.utils";
+import { createAction } from "../../utils/reducer/reducer.utils";
 import { USER_ACTION_TYPES } from "./user.types";
 
 export const setCurrentUser = (user) =>
