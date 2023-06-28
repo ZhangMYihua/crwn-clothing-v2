@@ -1,7 +1,6 @@
 import { useState } from "react";
 import {
   signInWithGooglePopup,
-  createUserDocumentFromAuth,
   signInAuthWithEmailAndPassword,
 } from "../../utils/Firebase/firebase.utils";
 import Button from "../button/button.component";
@@ -9,7 +8,6 @@ import Button from "../button/button.component";
 import "./Sign-in.style.scss";
 
 import FormInput from "../form-input/form-input.component";
-
 const defaultFormFields = {
   email: "",
   password: "",
@@ -19,32 +17,32 @@ const SignIn = () => {
   const [formFields, setformFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
-  
-
   const resetFormFields = () => {
     setformFields(defaultFormFields);
   };
 
   const signInWithGoogle = async () => {
-    const { user } = await signInWithGooglePopup();
-    await createUserDocumentFromAuth(user);
+    await signInWithGooglePopup();
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await signInAuthWithEmailAndPassword(email , password);
-      console.log(response)
+      await signInAuthWithEmailAndPassword(email, password);
+
       resetFormFields();
     } catch (error) {
-
-      switch(error.code){
-        case 'auth/wrong-password': alert('Incorrect password'); break;
-        case 'auth/user-not-found': alert('no user associated with this email'); break;
-        default: console.log(error) 
+      switch (error.code) {
+        case "auth/wrong-password":
+          alert("Incorrect password");
+          break;
+        case "auth/user-not-found":
+          alert("no user associated with this email");
+          break;
+        default:
+          console.log(error);
       }
-     
     }
 
     return;
@@ -85,7 +83,7 @@ const SignIn = () => {
         <div className="buttons-container">
           {" "}
           <Button type="submit">Sign In</Button>
-          <Button type= "button"  onClick={signInWithGoogle} buttonType="google">
+          <Button type="button" onClick={signInWithGoogle} buttonType="google">
             Google Sign In
           </Button>
         </div>
