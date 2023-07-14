@@ -29,10 +29,26 @@ const persistConfig = {
 
 const perisitedReducer = persistReducer(persistConfig, rootReducer);
 
-const middleWares = [logger];
+// const middleWares = [logger];
 
-const composedEnhancer = compose(applyMiddleware(...middleWares));
+// Will only work in development mode
+const middleWares = [process.env.NODE_ENV === "development" && logger].filter(
+  Boolean
+);
 
-export const store = createStore(perisitedReducer, undefined, composedEnhancer);
+// IF IN DEVELOPMENT MODE USE COMPOSE OF REDEX DEVTOOLS EXTENSION OF CHROME , IF NOT USE NORMAL REDUX COMPOSE
+const composedEnhancer =
+  (process.env.NODE_ENV === "development" &&
+    window &&
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
+  compose;
+
+const composedEnhancers = composedEnhancer(applyMiddleware(...middleWares));
+
+export const store = createStore(
+  perisitedReducer,
+  undefined,
+  composedEnhancers
+);
 
 export const persistor = persistStore(store);
