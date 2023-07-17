@@ -42,7 +42,7 @@ const firebaseConfig = {
         email,
         createdAt,
       });
-    } 
+    } catch (error){
         console.log('error creating user', error.message);
       }
     }
