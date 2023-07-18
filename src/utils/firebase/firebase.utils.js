@@ -33,7 +33,7 @@ const firebaseConfig = {
     console.log(userSnapShot.exists());
 
     if(!userSnapShot.exists()){
-      const [displayName, email] = userAuth;
+      const {displayName, email} = userAuth;
       const createdAt = new Date();
 
     try {
