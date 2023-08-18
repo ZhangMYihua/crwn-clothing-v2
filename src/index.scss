@@ -1,7 +1,9 @@
 body {
   margin: 0;
   font-family:'Open Sans Condensed', sans-serif;
-
+  padding: 20px 40px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 code {

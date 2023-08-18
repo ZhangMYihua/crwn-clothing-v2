@@ -4,6 +4,7 @@ import FormInput from "../form-input/form-input.component.jsx";
 import './sign-in-form.styles.scss'
 import Button from "../button/button.component.jsx";
 
+
 const defaultformFields = {
     email: '',
     password: '',
@@ -15,11 +16,12 @@ const SignInForm = () => {
     const [formFields, setFormFields] = useState(defaultformFields);
     const {email,password,} = formFields;
     
+
     // console.log(formFields);
 
     const signInWIthGoogle = async () => {
-        const {user} = await signInWithGooglePopup();
-        createUserDocumentFromAuth(user);
+       await signInWithGooglePopup();
+        
     };
 
     const resetFormFields = () =>{
@@ -31,9 +33,9 @@ const SignInForm = () => {
     
         
         try {
-            const response = await signInAuthUserWithEmailAndPassword(email,password);
-            console.log(response);
+            await signInAuthUserWithEmailAndPassword(email,password);
             resetFormFields();
+      
 
         }catch (error){
             switch(error.code){
