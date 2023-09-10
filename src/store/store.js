@@ -2,6 +2,8 @@ import { compose, createStore, applyMiddleware } from "redux";
 import logger from "redux-logger";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import thunk from "redux-thunk";
+
 
 // Root Reducer
 import { rootReducer } from "./root-reducer";
@@ -24,7 +26,7 @@ import { rootReducer } from "./root-reducer";
 const persistConfig = {
   key: "root",
   storage,
-  blacklist: ["user"],
+  whitelist: ["cart"],
 };
 
 const perisitedReducer = persistReducer(persistConfig, rootReducer);
@@ -32,11 +34,19 @@ const perisitedReducer = persistReducer(persistConfig, rootReducer);
 // const middleWares = [logger];
 
 // Will only work in development mode
-const middleWares = [process.env.NODE_ENV === "development" && logger].filter(
+const middleWares = [process.env.NODE_ENV === "development" && logger , thunk].filter(
   Boolean
 );
 
-// IF IN DEVELOPMENT MODE USE COMPOSE OF REDEX DEVTOOLS EXTENSION OF CHROME , IF NOT USE NORMAL REDUX COMPOSE
+
+//REDUX THUNK MIDDLEWARE -- this is just an explaination not usable code
+// const thunkMiddleware = (store) => (next) => (action) =>{
+//   if(typeof(action) === 'function'){
+//     action(dispatch)
+//   }
+// }
+
+// IF IN DEVELOPMENT MODE USE COMPOSE OF REDUX DEVTOOLS EXTENSION OF CHROME , IF NOT USE NORMAL REDUX COMPOSE
 const composedEnhancer =
   (process.env.NODE_ENV === "development" &&
     window &&
