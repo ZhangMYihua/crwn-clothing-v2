@@ -100,41 +100,50 @@ export const signOutUser = async () => await signOut(auth);
 export const onAuthStateChangedListener = (callback) =>
   onAuthStateChanged(auth, callback);
 
+//==================== Redux-Saga ========================
 
-  // ================Adding collection in Database ===============
+export const getCurrentUser = () => {
+  return new Promise((res, rej) => {
+    const unsubscribe = onAuthStateChanged(auth, (userAuth) => {
+      unsubscribe();
+      res(userAuth);
+    } , rej);
+  });
+};
 
-  export const addCollectionAndDocuments = async (collectionKey , objectsToAdd) => {
-    const collectionRef = collection(db , collectionKey);
-    const batch = writeBatch(db);
+// ================Adding collection in Database ===============
 
-    objectsToAdd.forEach( (object) => {
-      const docRef = doc(collectionRef , object.title.toLowerCase()) ;
-      batch.set(docRef , object);
-    });
+export const addCollectionAndDocuments = async (
+  collectionKey,
+  objectsToAdd
+) => {
+  const collectionRef = collection(db, collectionKey);
+  const batch = writeBatch(db);
 
-    await batch.commit();
-    console.log('done')
+  objectsToAdd.forEach((object) => {
+    const docRef = doc(collectionRef, object.title.toLowerCase());
+    batch.set(docRef, object);
+  });
 
-  }
+  await batch.commit();
+  console.log("done");
+};
 
-  /// ======================= Getting data from Firestore ==============
+/// ======================= Getting data from Firestore ==============
 
-  export const getCategoriesAndDocuments = async() => {
-    const collectionRef = collection(db, 'categories');
-    const q = query(collectionRef);
+export const getCategoriesAndDocuments = async () => {
+  const collectionRef = collection(db, "categories");
+  const q = query(collectionRef);
 
-    const querySnapshot  = await getDocs(q);
-    // const categoryMap = querySnapshot.docs.reduce((acc , docSnapshot) => {
-    //   const {title , items} = docSnapshot.data();
-    //   acc[title.toLowerCase()] = items;
-    //   return acc;
+  const querySnapshot = await getDocs(q);
+  // const categoryMap = querySnapshot.docs.reduce((acc , docSnapshot) => {
+  //   const {title , items} = docSnapshot.data();
+  //   acc[title.toLowerCase()] = items;
+  //   return acc;
 
-    // } , {})
+  // } , {})
 
-    // return categoryMap;
+  // return categoryMap;
 
-    return querySnapshot.docs.map(docSnapshot => docSnapshot.data());
-    
-
-  }
-  
+  return querySnapshot.docs.map((docSnapshot) => docSnapshot.data());
+};

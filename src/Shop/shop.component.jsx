@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import "./shop.styles.scss";
 import CategoriesPreview from "../routes/categories-preview/categories-preview.component";
 import Category from "../routes/category/category.components";
-import { fetchCategoriesAsync } from "../store/categories/category.action";
+import { fetchCategoriesStart } from "../store/categories/category.action";
 // import { getCategoriesAndDocuments } from "../utils/Firebase/firebase.utils";
 // import { setCategories } from "../store/categories/category.action";
 
@@ -25,7 +25,7 @@ const Shop = () => {
 
 
 
-    dispatch(fetchCategoriesAsync())
+    dispatch(fetchCategoriesStart())
   }, []);
 
 
