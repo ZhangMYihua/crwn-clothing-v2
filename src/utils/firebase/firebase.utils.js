@@ -1,4 +1,5 @@
 import { initializeApp } from 'firebase/app';
+
 import {
   getAuth,
   signInWithRedirect,
@@ -9,18 +10,10 @@ import {
   signOut
 } from 'firebase/auth';
 import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
-
-const firebaseConfig = {
-  apiKey: 'AIzaSyAjzKrq0sVNAC8VeUaMxNH0W52k7jag_v8',
-  authDomain: 'crwn-clothing-v1-0.firebaseapp.com',
-  projectId: 'crwn-clothing-v1-0',
-  storageBucket: 'crwn-clothing-v1-0.appspot.com',
-  messagingSenderId: '392579841467',
-  appId: '1:392579841467:web:b13c99df1e6f527e93189e'
-};
+const FIRE_BASE_CONFIG = process.env.REACT_APP_FIREBASECONFIG;
+const firebaseConfig = FIRE_BASE_CONFIG;
 
 const firebaseApp = initializeApp(firebaseConfig);
-console.log(firebaseApp);
 
 const googleProvider = new GoogleAuthProvider();
 
