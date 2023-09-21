@@ -5,10 +5,9 @@ import Button from '../button/';
 
 import {
   signInWithGooglePopup,
-  createUserDocumentFromAuth,
   signInAuthUserWithEmailAndPassword
 } from '../../utils/firebase/firebase.utils';
-
+// createUserDocumentFromAuth,
 import './sign-in-form.styles.scss';
 
 const defaultFormFields = {
