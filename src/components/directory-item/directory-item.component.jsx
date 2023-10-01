@@ -3,10 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import {
   BackgroundImage,
   Body,
-  DirectoryItemContainer,
+  DirectoryItemContainer
 } from './directory-item.styles';
 
-const DirectoryItem = ({ category }) => {
+export const DirectoryItem = ({ category }) => {
   const { imageUrl, title, route } = category;
   const navigate = useNavigate();
 
@@ -22,5 +22,3 @@ const DirectoryItem = ({ category }) => {
     </DirectoryItemContainer>
   );
 };
-
-export default DirectoryItem;

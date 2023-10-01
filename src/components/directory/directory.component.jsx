@@ -1,4 +1,4 @@
-import DirectoryItem from '../directory-item/directory-item.component';
+import DirectoryItem from '../directory-item/';
 
 import { DirectoryContainer } from './directory.styles';
 
