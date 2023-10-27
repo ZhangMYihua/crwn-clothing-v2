@@ -1,6 +1,9 @@
+import './sign-up-form.styles.scss'
 import { useState } from "react";
+import FormInput from "../form-input/form-input.component";
+import Button from '../button/button.component';
 
-import { createAuthWithEmailAndPassword } from "../../utils/firebase/firebase.utils";
+import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from "../../utils/firebase/firebase.utils";
 
 
 const defaultformFileds = {
@@ -16,6 +19,10 @@ const SingUpForm = () =>{
 
     const {displayName, email, password, confirmedPassword} = formFields
 
+    const resetFormFileds = ()=>{
+        setFormFields(defaultformFileds)
+    }
+
     const handleChange = (event)=>{
         const {name, value} = event.target;
 
@@ -23,41 +30,50 @@ const SingUpForm = () =>{
 
     }
 
-    const handleSubmit = async (event)=>{
+    const handleSubmit = async (event) => {
         event.preventDefault();
-
-        
-        if(password!==confirmedPassword){
-            alert("passwords don't match")
+    
+        if (password !== confirmedPassword) {
+          alert('passwords do not match');
+          return;
         }
+    
+        try {
+          const {user} = await createAuthUserWithEmailAndPassword(
+            email,
+            password
+          ); 
+            await createUserDocumentFromAuth(user, {displayName})
+            resetFormFileds();
 
-
-        try{
-            const response = await createAuthWithEmailAndPassword(email, password);
-            console.log(response)
-        }catch(err){
-            console.log('user created encoutered an error', err)
+        } catch (error) {
+          if (error.code === 'auth/email-already-in-use') {
+            alert('Cannot create user, email already in use');
+          } else {
+            console.log('user creation encountered an error', error);
+          }
         }
-
-        
-    }
+      };
 
     return (
-        <div>
-            <h1>Sign Up with your email and password</h1>
+        <div className="sign-up-container">
+            <h2>Don't have an account ?</h2>
+            <span>Sign Up with your email and password</span>
             <form onSubmit={handleSubmit}>
-                <label>Display Name</label>
-                <input name="displayName" type="text" required onChange={handleChange} value={displayName} />
-                <label>Email</label>
-                <input name="email" type="email" required onChange={handleChange} value={email} />
-                <label>Password</label>
-                <input name="password" type="password" required onChange={handleChange} value={password} />
-                <label>Confirm Password</label>
-                <input name="confirmedPassword" type="password" required onChange={handleChange} value={confirmedPassword} />
-                <button type="submit">Sign Up</button>
+                <FormInput 
+                label="Display Name" name="displayName" 
+                type="text" 
+                required 
+                onChange={handleChange} 
+                value={displayName} 
+                />
+                <FormInput label="Email" name="email" type="email" required onChange={handleChange} value={email} />
+                <FormInput label="Password" name="password" type="password" required onChange={handleChange} value={password} />
+                <FormInput label="Confirm Password" name="confirmedPassword" type="password" required onChange={handleChange} value={confirmedPassword} />
+                <Button buttonType='default' type="submit">Sign Up</Button>
             </form>
         </div>
     )
-}
+}  
 
 export default SingUpForm;
