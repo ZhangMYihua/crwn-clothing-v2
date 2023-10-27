@@ -1,8 +1,10 @@
-import Category from '../category-container/catergory component/Category-component'
-import categoriesData from "./categories-data.js";
+import Category from '../category-container/catergory component/Category-component';
+import categoriesData from "./categories-data";
+import './directory.styles.scss';
 
 const Directory = () => {
   const categories = categoriesData;
+  
 
   return (
     <div className="categories-container">
