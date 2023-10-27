@@ -12,7 +12,7 @@ const defaultformFileds = {
     password: '',
     confirmedPassword: '',
 }
-const SingUpForm = () =>{
+const SignUpFrom = () =>{
 
 
     const [formFields, setFormFields] = useState(defaultformFileds)
@@ -72,8 +72,8 @@ const SingUpForm = () =>{
                 <FormInput label="Confirm Password" name="confirmedPassword" type="password" required onChange={handleChange} value={confirmedPassword} />
                 <Button buttonType='default' type="submit">Sign Up</Button>
             </form>
-        </div>
+        </div> 
     )
 }  
 
-export default SingUpForm;
+export default SignUpFrom;
