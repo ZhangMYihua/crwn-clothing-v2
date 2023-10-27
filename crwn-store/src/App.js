@@ -1,40 +1,22 @@
 import React from "react";
-
+import './styles.scss'
+import Category from '../src/components/category-container/Category'
+import categoriesData from "./categories-data";
 
 function App() {
 
-  const categories = [{
-    id: 1,
-    title: 'Hats'
-  }, 
-  {
-    id: 2,
-    title: 'Shoes'
-  },
-  {
-    id: 3,
-    title: 'Jeans'
-  },
-  {
-    id: 4,
-    title: 'Womens'
-  },
-  {
-    id: 5,
-    title: 'Mens'
-  }];
+  const categories = categoriesData;
 
   return (
     <div className="App">
       <div className="categories-container">
-        {categories.map(({ id, title }) => (
-          <div className="category-container" key={id}>
-            {/* <img /> */}
-            <div className="text-container">
-              <h2>{title}</h2>
-              <p>Shop now</p>
-            </div>
-          </div>
+        {categories.map(({ id, title, imageUrl }) => (
+          <Category 
+            id={id}
+            title={title}
+            img={imageUrl}
+            key={id}
+          />
         ))}
          
       </div>
