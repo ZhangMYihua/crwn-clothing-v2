@@ -15,7 +15,8 @@ const SignInForm = () =>{
 
     const [formFields, setFormFields] = useState(defaultformFileds)
 
-    const { email, password} = formFields
+    const { email, password} = formFields;
+
 
     const resetFormFileds = ()=>{
         setFormFields(defaultformFileds)
@@ -28,18 +29,24 @@ const SignInForm = () =>{
 
     }
 
+    const signInWithGoogle = async()=>{
+            await signInWithGooglePopup();
+         
+       } 
+
     const handleSubmit = async (event) => {
         event.preventDefault();
 
         try{
 
-            const {user} = await signInAuthUserWithEmailAndPassword(email, password);
+            await signInAuthUserWithEmailAndPassword(email, password);
+
 
             resetFormFileds();
         }catch(err){
             switch(err.code){
                 case 'auth/invalid-login-credentials':
-                    alert('wrong credentials')
+                    console.log('wrong credentials')
                 console.log('Wrong Credentials', err);
                 break;
                 case 'auth/user-not-found':
@@ -55,11 +62,7 @@ const SignInForm = () =>{
         
       };
 
-      const signInWithGoogle = async()=>{
-          console.log('hello')
-        const {user} = await signInWithGooglePopup();
-         await createUserDocumentFromAuth(user)
-       } 
+      
 
     return (
         <div className="sign-in-container">
