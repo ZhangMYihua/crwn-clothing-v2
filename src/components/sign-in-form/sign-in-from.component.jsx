@@ -1,4 +1,4 @@
-import './sign-in-form.styles.scss'
+import { ButtonContainer, SignInContainer } from "./sign-in-form.styles";
 import { useState } from "react";
 import FormInput from "../form-input/form-input.component";
 import Button from '../button/button.component';
@@ -65,18 +65,18 @@ const SignInForm = () =>{
       
 
     return (
-        <div className="sign-in-container">
+        <SignInContainer>
             <h2>Already have an account ?</h2>
             <span>Sign In with your email and password</span>
             <form onSubmit={handleSubmit}>
                 <FormInput label="Email" name="email" type="email" required onChange={handleChange} value={email} />
                 <FormInput label="Password" name="password" type="password" required onChange={handleChange} value={password} />
-                <div className='buttons-container'>
+                <ButtonContainer>
                     <Button type="submit">Sign in</Button>
                     <Button type='button' buttonType='google' onClick={signInWithGoogle}>Sign in with google</Button>
-                </div>
+                </ButtonContainer>
             </form>
-        </div> 
+        </SignInContainer> 
     )
 }  
 

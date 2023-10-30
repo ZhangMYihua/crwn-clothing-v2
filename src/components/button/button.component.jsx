@@ -1,5 +1,4 @@
-import './button.styles.scss'
-
+import { StyledButton } from "./button.styles";
 const BUTTON_TYPES_CLASSES = {
     google: 'google-sign-in',
     inverted: 'inverted',
@@ -8,9 +7,9 @@ const BUTTON_TYPES_CLASSES = {
 const Button = ({children, buttonType, onClick}) =>{
 
     return(
-        <button onClick={onClick} className={`button-container ${BUTTON_TYPES_CLASSES[buttonType]}`}>
+        <StyledButton onClick={onClick} className={`${BUTTON_TYPES_CLASSES[buttonType]}`}>
             {children}
-        </button>
+        </StyledButton>
     )
 }
 

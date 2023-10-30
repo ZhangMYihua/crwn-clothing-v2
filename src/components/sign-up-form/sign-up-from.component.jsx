@@ -1,4 +1,4 @@
-import './sign-up-form.styles.scss'
+import { SignUpContainer, Header } from "./sign-up-form.styles";
 import { useState } from "react";
 import FormInput from "../form-input/form-input.component";
 import Button from '../button/button.component';
@@ -63,8 +63,8 @@ const SignUpFrom = () =>{
       };
 
     return (
-        <div className="sign-up-container">
-            <h2>Don't have an account ?</h2>
+        <SignUpContainer>
+            <Header>Don't have an account ?</Header>
             <span>Sign Up with your email and password</span>
             <form onSubmit={handleSubmit}>
                 <FormInput 
@@ -79,7 +79,7 @@ const SignUpFrom = () =>{
                 <FormInput label="Confirm Password" name="confirmedPassword" type="password" required onChange={handleChange} value={confirmedPassword} />
                 <Button buttonType='default' type="submit">Sign Up</Button>
             </form>
-        </div> 
+        </SignUpContainer> 
     )
 }  
 

@@ -1,5 +1,7 @@
-.button-container {
-    min-width: 165px;
+import styled from 'styled-components';
+
+export const StyledButton = styled.button`
+min-width: 165px;
     width: auto;
     height: 50px;
     letter-spacing: 0.5px;
@@ -43,5 +45,9 @@
         border: none;
       }
     }
-  }
+`
+
+
+
+
   
