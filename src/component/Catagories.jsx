@@ -2,7 +2,6 @@ import React from 'react'
 import cat from "./../categories.json"
 import "./CatagoriesStyle.styles.scss"
 export const Catagories = () => {
-    console.log(cat);
   return (
     
     <div className='categories-container'>

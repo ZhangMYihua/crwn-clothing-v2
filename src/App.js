@@ -1,10 +1,24 @@
-import { Catagories } from "./component/Catagories";
+import { Nav } from "./routess/navBar/Nav";
+import { Home } from "./routess/home/Home";
+import { BrowserRouter, Route,Routes } from "react-router-dom";
+import { Shop } from "./routess/Shop";
+import { SignIn } from "./routess/sign-in/SignIn";
 const App = () => {
   return (
-    <div className='app'>
-      <Catagories/>
-      
-    </div>
+    <BrowserRouter>
+    <Nav/>
+    <Routes>
+    <Route path='/' element={<Nav/>}/>
+
+    <Route index element={<Home/>}/>
+    <Route path="/shop" element={<Shop/>}/>
+    <Route path="/sign-in" element={<SignIn/>}/>
+
+    </Routes>
+    </BrowserRouter>
+
+    
+
   );
 };
 

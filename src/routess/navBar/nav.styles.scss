@@ -1,0 +1,38 @@
+.navigation {
+    height: 70px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    background-color: rgb(232, 229, 224);
+    box-shadow:
+    inset 0 -3em 3em rgb(227, 226, 225),
+    0 0 0 2px white,
+    0.3em 0.3em 1em rgba(232, 229, 224);
+  
+    .logo-container {
+      height: 100%;
+      width: 70px;
+      margin: 10px 30px ;
+      
+    }
+  
+    .nav-links-container {
+      width: 50%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+  
+      .nav-link {
+        padding: 8px 20px;
+        cursor: pointer;
+        border: 1px solid black;
+        margin: 10px 20px;
+      }
+      .n1{
+        margin-left: 10px;
+    }
+    }
+    
+  }
