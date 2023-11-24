@@ -5,11 +5,12 @@ import { initializeApp } from "firebase/app";
 // https://firebase.google.com/docs/web/setup#available-libraries
 import  {
     getAuth,
-   
     signInWithPopup,
     GoogleAuthProvider,
     createUserWithEmailAndPassword,
-    signInWithEmailAndPassword
+    signInWithEmailAndPassword,
+    signOut,
+    onAuthStateChanged
 } from 'firebase/auth'
 import {
   getFirestore,
@@ -44,9 +45,7 @@ const createUserDocumentFromAuth=async(userAuth,aditionalInfo)=>{
   const userDocRef=doc(db,'users',userAuth.uid)
   const snapshot=await getDoc(userDocRef)
   const {displayName,email}=userAuth;
-  console.log(snapshot);
   const createdAt=new Date();
-  console.log(snapshot.exists());
   if(!snapshot.exists()){
     try{
       await setDoc(userDocRef,{
@@ -55,7 +54,6 @@ const createUserDocumentFromAuth=async(userAuth,aditionalInfo)=>{
         createdAt,
         ...aditionalInfo
       })
-      console.log("hi");
     }catch(er){
       console.log("error creating user",er);
     }
@@ -72,8 +70,18 @@ const createAuthWithEmailAndPassword=async(email,password)=>{
 }
 export{createAuthWithEmailAndPassword}
 
+
 const signInAuthUserWithEmailAndPassword=async(email,password)=>{
   if(!email||!password)return;
   return await signInWithEmailAndPassword(auth,email,password)
 }
 export{signInAuthUserWithEmailAndPassword}
+
+
+const signOutUser=async()=>{
+  await signOut(auth)
+}
+export{signOutUser}
+
+
+export const onAuthStateChangedLisstener=(callback)=>onAuthStateChanged(auth,callback)

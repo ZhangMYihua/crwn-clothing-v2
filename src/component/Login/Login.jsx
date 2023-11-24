@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import { formInput as FormInput } from '../Form-input/formInput';
 import Button from '../Button/Button';
-import { signInWithGooglePopup ,createUserDocumentFromAuth} from '../../utils/firebase/FireBase.utils';
+import { signInWithGooglePopup } from '../../utils/firebase/FireBase.utils';
 import  "./login.scss"
 import { signInAuthUserWithEmailAndPassword } from '../../utils/firebase/FireBase.utils';
-
 export const Login = () => {
     const defaultData={ 
         "email":"",
@@ -12,19 +11,15 @@ export const Login = () => {
     }
 
     const [formData,setformData] =useState(defaultData);
+
     const{password,email}=formData;
     const handleChange=(e)=>{
         const{name ,value}=e.target;
         setformData({...formData, [name] :value})
-      
-
-
     }
 
-
     const signInwithGoogleUser=async()=>{
-        const {user}=await signInWithGooglePopup();
-        await createUserDocumentFromAuth(user)
+        await signInWithGooglePopup();
         
     }
 
@@ -33,8 +28,8 @@ export const Login = () => {
         e.preventDefault();
         console.log("entered handle sub");
         try{
-        await signInAuthUserWithEmailAndPassword(email,password)
-         setformData(defaultData);
+          await signInAuthUserWithEmailAndPassword(email,password)
+          setformData(defaultData);
          
         }catch(er){
             switch(er.code){
@@ -81,7 +76,7 @@ export const Login = () => {
    
       <div className="buttons-container">
       <Button type='submit'>Sign In</Button>
-      <Button buttonType="button" onClick={signInwithGoogleUser}>Google Sign In</Button>
+      <Button type="button" buttonType="google" onClick={signInwithGoogleUser}>Google Sign In</Button>
       </div>
     </form>
     </div>

@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { createAuthWithEmailAndPassword, createUserDocumentFromAuth } from '../../utils/firebase/FireBase.utils';
 import { formInput as FormInput } from '../Form-input/formInput';
 import Button from '../Button/Button';
-
 export const SignUp = () => {
     const defaultData={
         "displayName":"",

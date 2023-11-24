@@ -1,7 +1,7 @@
 import { Nav } from "./routess/navBar/Nav";
 import { Home } from "./routess/home/Home";
 import { BrowserRouter, Route,Routes } from "react-router-dom";
-import { Shop } from "./routess/Shop";
+import { Shop } from "./routess/shop/Shop";
 import { Auth } from "./routess/authentication/Auth";
 const App = () => {
   return (

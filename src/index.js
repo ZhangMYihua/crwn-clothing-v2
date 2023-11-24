@@ -1,13 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+
+
 import './index.scss';
 import App from './App';
+import { UserProvider } from './contexts/user.context';
+import { ProductProvider } from './contexts/productContext';
+import { CartProvider } from './contexts/Cart.context';
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <React.StrictMode>
- 
-    <App />
-  
+    <UserProvider>
+      <ProductProvider>
+        <CartProvider>
+          <App />
+        </CartProvider>
+      </ProductProvider>
+    </UserProvider>
   </React.StrictMode>
 );
 
