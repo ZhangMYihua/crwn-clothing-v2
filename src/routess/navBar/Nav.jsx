@@ -6,8 +6,9 @@ import {ReactComponent as CrwnLogo} from "../../Assets/crown.svg"
 import { UserContext } from '../../contexts/user.context'
 import { signOutUser } from '../../utils/firebase/FireBase.utils'
 import CartIcon from '../../component/cart-icon/CartIcon'
-import CartDropdown from '../../component/cart-dropdown/CartDropDown'
 import { CartContext } from '../../contexts/Cart.context'
+import CartDropdown from "../../component/cart-dropdown/CartDropDown"
+
 
 export const Nav = () => {
   const{currentUser}=useContext(UserContext)

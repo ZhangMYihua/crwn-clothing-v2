@@ -1,0 +1,40 @@
+.checkoutCompCont{
+   hr{
+    width: 93%;
+    margin-left: 0;
+   }
+    .singleProductsCont{
+        
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        justify-content: center;
+        
+        img{
+            width: 62%;
+            height: 84%;
+        }
+        .quantity{
+            display: flex;
+           margin-left: 1px;
+
+            span{
+               margin-right: 10px;
+               
+                font-size: 20px;
+                cursor: pointer;
+            }
+        }
+        span{
+            margin: auto 2px;
+            justify-content: center;
+            
+        }
+        .rem{
+            font-weight: 600;
+            margin-left: 14%;
+            cursor: pointer;
+
+        }
+    }
+   
+}
