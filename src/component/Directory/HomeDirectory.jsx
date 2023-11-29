@@ -3,7 +3,7 @@ const HomeDirectory = ({categories}) => {
     
   return (
     <div className='categories-container'>
-         
+      
       {categories.map((category) => (
         <CategoryItems key={category.id} category={category} />
       ))}

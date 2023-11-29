@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 import { useEffect } from "react";
-import { createUserDocumentFromAuth, onAuthStateChangedLisstener ,signOutUser} from "../utils/firebase/FireBase.utils";
+import { createUserDocumentFromAuth, onAuthStateChangedLisstener } from "../utils/firebase/FireBase.utils";
 export const UserContext=createContext({
     currentUser: null,
     setCurrentUser:()=>null
@@ -16,10 +16,7 @@ const UserProvider=({children})=>{
             createUserDocumentFromAuth(user)
             }
             setCurrentUser(user)
-            
-           
         });
-        console.log("hi1");
         return unsubscribe
     },[]);
     return <UserContext.Provider value={value}>{children}</UserContext.Provider>

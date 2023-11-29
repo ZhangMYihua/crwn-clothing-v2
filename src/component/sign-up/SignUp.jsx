@@ -26,7 +26,6 @@ export const SignUp = () => {
 
     const handleSubmit=async(e)=>{
         e.preventDefault();
-        console.log("entered handle sub");
         if(password!==confirmPassword){
             alert("password do not match");
             return;

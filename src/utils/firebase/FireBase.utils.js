@@ -12,6 +12,8 @@ import  {
     signOut,
     onAuthStateChanged
 } from 'firebase/auth'
+
+
 import {
   getFirestore,
   doc,
@@ -24,6 +26,8 @@ import {
 
 } from "firebase/firestore"
 // Your web app's Firebase configuration
+
+
 const firebaseConfig = {
   apiKey: "AIzaSyBr1HFlEFjhRokk1epSSVz6cVvxUFyXj-k",
   authDomain: "fashionsitedb.firebaseapp.com",
@@ -62,7 +66,7 @@ const createUserDocumentFromAuth=async(userAuth,aditionalInfo)=>{
     }catch(er){
       console.log("error creating user",er);
     }
-  }
+  }  
   return userDocRef;
 
 }
@@ -103,14 +107,12 @@ export const  addCollectionAndDocument=async(collectionkey,objectsToAdd)=>{
 
   });
   await batch.commit();
-  console.log("done");
 }
 
 export const getCategoriesAndDocuments=async()=>{
   const collectionRef=collection(db,'categories')
   const q=query(collectionRef);
   const querySnapShot=await getDocs(q);
-  console.log(querySnapShot);
   const categoryMap=querySnapShot.docs.reduce((acc,docsnaps)=>{
     const {title,items}=docsnaps.data();
     acc[title.toLowerCase()]=items;
