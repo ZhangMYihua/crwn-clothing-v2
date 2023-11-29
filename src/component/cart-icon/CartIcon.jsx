@@ -1,6 +1,6 @@
 import {ReactComponent as Bagicon} from "../../Assets/shopping-bag.svg"
 import "./cart-icon.styles.scss"
-import { useContext, useEffect, useState } from "react"
+import { useContext } from "react"
 import { CartContext } from "../../contexts/Cart.context"
 const CartIcon = () => {
   const {isCartOpen,setIsCartOpen,cartCount}=useContext(CartContext)

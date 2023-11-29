@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import "./nav.styles.scss"
 import { Fragment,useContext} from 'react'
 import { Outlet ,Link} from 'react-router-dom'
