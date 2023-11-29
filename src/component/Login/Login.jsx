@@ -4,7 +4,10 @@ import Button from '../Button/Button';
 import { signInWithGooglePopup } from '../../utils/firebase/FireBase.utils';
 import  "./login.scss"
 import { signInAuthUserWithEmailAndPassword } from '../../utils/firebase/FireBase.utils';
+import { useNavigate } from 'react-router-dom';
+
 export const Login = () => {
+  const navigate=useNavigate();
     const defaultData={ 
         "email":"",
         "password":""
@@ -20,7 +23,7 @@ export const Login = () => {
 
     const signInwithGoogleUser=async()=>{
         await signInWithGooglePopup();
-        
+        navigate("/")
     }
 
 
@@ -30,7 +33,7 @@ export const Login = () => {
         try{
           await signInAuthUserWithEmailAndPassword(email,password)
           setformData(defaultData);
-         
+          navigate("/")
         }catch(er){
             switch(er.code){
                 case "auth/user-not-found":
@@ -43,9 +46,7 @@ export const Login = () => {
                 default:
                     console.log(er);
             }
-        
-        }
-        
+        }  
     }
   return (
    

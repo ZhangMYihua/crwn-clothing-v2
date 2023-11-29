@@ -21,7 +21,7 @@ return (
       </div>
      
     </div>
-    )):""}
+    )):(<span>Your cart is empty</span>)}
     </div>
     <Link to="/checkout">
     <button  className='gotocheckout'>GO TO CHECKOUT</button>

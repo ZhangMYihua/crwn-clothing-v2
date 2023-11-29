@@ -2,6 +2,10 @@ import React, { useState } from 'react'
 import { createAuthWithEmailAndPassword, createUserDocumentFromAuth } from '../../utils/firebase/FireBase.utils';
 import { formInput as FormInput } from '../Form-input/formInput';
 import Button from '../Button/Button';
+import { useNavigate } from 'react-router-dom';
+
+
+
 export const SignUp = () => {
     const defaultData={
         "displayName":"",
@@ -11,6 +15,7 @@ export const SignUp = () => {
     }
     const [formData,setformData] =useState(defaultData);
     const{password,confirmPassword,displayName,email}=formData;
+    const navigate=useNavigate();
 
     const handleChange=(e)=>{
         const{name ,value}=e.target;
@@ -30,6 +35,7 @@ export const SignUp = () => {
         const {user}=await createAuthWithEmailAndPassword(email,password)
         await createUserDocumentFromAuth(user,{displayName})
         setformData(defaultData);
+        navigate("/")
         }catch(er){
             if(er.code==='auth/email-already-in-use'){
                 alert("cannot create user,email already exist")
