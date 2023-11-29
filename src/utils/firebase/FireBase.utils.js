@@ -43,7 +43,7 @@ const provider=new GoogleAuthProvider();
 provider.setCustomParameters({
     prompt:"select_account"
 });
-console.log(app);
+console.log(app.automaticDataCollectionEnabled);
 export const auth=getAuth();
 const signInWithGooglePopup= () => signInWithPopup(auth,provider);
 export {signInWithGooglePopup};
