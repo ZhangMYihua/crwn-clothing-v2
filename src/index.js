@@ -4,22 +4,20 @@ import ReactDOM from 'react-dom/client';
 
 import './index.scss';
 import App from './App';
-import { UserProvider } from './contexts/user.context';
-import { CategoriesProvider } from './contexts/Categories.context';
-import { CartProvider } from './contexts/Cart.context';
 
-
+import { Provider } from 'react-redux';
+import store from './store/store';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <React.StrictMode>
-    <UserProvider>
-      <CategoriesProvider>
-        <CartProvider>
+      
+       
+          <Provider store={store}>
           <App />
-        </CartProvider>
-      </CategoriesProvider>
-    </UserProvider>
+          </Provider>
+    
+      
   </React.StrictMode>
 );
 

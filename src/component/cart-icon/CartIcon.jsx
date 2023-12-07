@@ -1,10 +1,12 @@
 import {ReactComponent as Bagicon} from "../../Assets/shopping-bag.svg"
 import "./cart-icon.styles.scss"
-import { useContext } from "react"
-import { CartContext } from "../../contexts/Cart.context"
+
+import { useSelector,useDispatch } from "react-redux"
+import { setIsCartOpen } from "../../slices/cartSlice"
 const CartIcon = () => {
-  const {isCartOpen,setIsCartOpen,cartCount}=useContext(CartContext)
-  const handleClick=()=>setIsCartOpen(!isCartOpen);
+  const dispatch=useDispatch();
+  const {cartCount,isCartOpen}=useSelector((state)=>state.cart)
+  const handleClick=()=>dispatch(setIsCartOpen(!isCartOpen));
   
  
   return (

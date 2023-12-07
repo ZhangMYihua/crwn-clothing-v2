@@ -5,6 +5,9 @@ import { signInWithGooglePopup } from '../../utils/firebase/FireBase.utils';
 import  "./login.scss"
 import { signInAuthUserWithEmailAndPassword } from '../../utils/firebase/FireBase.utils';
 import { useNavigate } from 'react-router-dom';
+// import  { useEffect } from 'react';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { setCurrentUser } from '../../slices/userSlice'; 
 
 export const Login = () => {
   const navigate=useNavigate();
@@ -45,13 +48,15 @@ export const Login = () => {
                 default:
                     console.log(er);
             }
-        }  
+        }
+         
     }
+    
   return (
    
     <div className='sign-up-container'>
     <h2>Already have an account</h2>
-    <span>Sign in with your email and password</span>
+    <span>Sign in with your  email and password</span>
 
     <form onSubmit={handleSubmit}>
 

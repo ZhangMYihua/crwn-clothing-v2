@@ -1,10 +1,10 @@
 import React from 'react';
 import "./cart-dropdown.style.scss";
-import { useContext } from 'react';
-import { CartContext } from '../../contexts/Cart.context';
+import { useSelector } from 'react-redux/es/hooks/useSelector';
 import {Link} from "react-router-dom"
 const CartDropdown = () =>{
-  const {cartItems}=useContext(CartContext);
+  const {cartItems}=useSelector((state)=>state.cart);
+
 
 return (
   
@@ -20,7 +20,7 @@ return (
       </div>
      
     </div>
-    )):(<span>Your cart is empty</span>)}
+    )):(<h4>Your cart is empty</h4>)}
     </div>
     <Link to="/checkout">
     <button  className='gotocheckout'>GO TO CHECKOUT</button>

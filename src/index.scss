@@ -1,6 +1,6 @@
 body {
-  margin: 2px;
-  font-family:'Open Sans Condensed',sans-serif;
+  margin: 0;
+  font-family: 'Open Sans Condensed', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -9,6 +9,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
 a {
   text-decoration: none;
   color: black;

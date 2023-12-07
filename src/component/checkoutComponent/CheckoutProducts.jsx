@@ -1,20 +1,33 @@
-import React, { useContext } from 'react'
 import './checkOutcomp.scss'
-import { CartContext } from '../../contexts/Cart.context';
-
-
+import { useSelector,useDispatch } from 'react-redux';
+import { addItemToCart,removeItem ,reduceItemQuantity} from '../../slices/cartSlice';
 
 const CheckoutProducts = (product) => {
+  const {cartItems}=useSelector((state)=>state.cart);
+  const dispatch=useDispatch();
+  const AddAndIncQuantity=(cartItems,product)=>{
+    const existingItem = cartItems.find(item => item.id === product.id);
+
+  if (existingItem) {
+    // If the item already exists in the cart, create a new object with updated quantity
+    return cartItems.map(item =>
+      item.id === product.id
+        ? { ...item, quantity: item.quantity + 1 }
+        : item
+    );
+  } else {
+    // If the item is not in the cart, add it with quantity 1
+    return [...cartItems, { ...product,quantity:1}]
+}}
     const{imageUrl,name,quantity,price}=product.product;
-    const{AddItemToCart,CartItemReduce,removeItem}=useContext(CartContext)
     const handleInc=()=>{
-        AddItemToCart(product.product)
+        dispatch(addItemToCart(AddAndIncQuantity(cartItems,product.product)))
     }
     const HandleDec=()=>{
-        CartItemReduce(product.product)
+      dispatch(reduceItemQuantity(product.product))
     }
     const HandleRemove=()=>{
-        removeItem(product.product)
+      dispatch(removeItem(product.product))
     }
   return (
     <div className='checkoutCompCont'>

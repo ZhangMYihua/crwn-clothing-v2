@@ -1,18 +1,18 @@
 import "./nav.styles.scss"
-import { Fragment,useContext} from 'react'
+import { Fragment} from 'react'
 import { Outlet ,Link} from 'react-router-dom'
 import {ReactComponent as CrwnLogo} from "../../Assets/crown.svg"
-import { UserContext } from '../../contexts/user.context'
 import { signOutUser } from '../../utils/firebase/FireBase.utils'
 import CartIcon from '../../component/cart-icon/CartIcon'
-import { CartContext } from '../../contexts/Cart.context'
 import CartDropdown from "../../component/cart-dropdown/CartDropDown"
-
+import { useSelector,useDispatch } from "react-redux"
+import { setIsCartOpen } from "../../slices/cartSlice"
 
 export const Nav = () => {
-  const{currentUser}=useContext(UserContext)
-  const {isCartOpen}=useContext(CartContext)
- 
+  const {currentUser}=useSelector((state)=>state.user);
+  const { isCartOpen} = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+
   return (
   
     <Fragment>
@@ -33,7 +33,7 @@ export const Nav = () => {
           </Link>
           )
           }
-          <div > <CartIcon /></div>
+          <div onClick={()=>dispatch(setIsCartOpen(!isCartOpen))} > <CartIcon /></div>
          
           {isCartOpen&&<CartDropdown />}
        
