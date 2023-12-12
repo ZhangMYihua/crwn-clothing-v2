@@ -1,42 +1,42 @@
+import { Nav } from "./routess/navBar/Nav";
+import { Home } from "./routess/home/Home";
+import { BrowserRouter, Route,Routes } from "react-router-dom";
+import { Shop } from "./routess/shop/Shop";
+import { Auth } from "./routess/authentication/Auth";
+import { CheckOutPage } from "./routess/checkOutPage/CheckOutPage";
+import { useEffect } from "react";
+import { setUser } from "./slices/userSlice";
+import { useDispatch } from "react-redux";
+import { createUserDocumentFromAuth, onAuthStateChangedLisstener } from "./utils/firebase/FireBase.utils";
 const App = () => {
+  const dispatch=useDispatch();
+  useEffect(()=>{
+       
+    const unsubscribe= onAuthStateChangedLisstener((user)=>{
+        if(user){
+        createUserDocumentFromAuth(user)
+        }
+        dispatch(setUser(user))
+    });
+    return unsubscribe
+},[dispatch]);
+
+
   return (
-    <div className='categories-container'>
-      <div className='category-container'>
-        {/* <img /> */}
-        <div className='category-body-container'>
-          <h2>Hats</h2>
-          <p>Shop Now</p>
-        </div>
-      </div>
-      <div className='category-container'>
-        {/* <img /> */}
-        <div className='category-body-container'>
-          <h2>Jackets</h2>
-          <p>Shop Now</p>
-        </div>
-      </div>
-      <div className='category-container'>
-        {/* <img /> */}
-        <div className='category-body-container'>
-          <h2>Sneakers</h2>
-          <p>Shop Now</p>
-        </div>
-      </div>
-      <div className='category-container'>
-        {/* <img /> */}
-        <div className='category-body-container'>
-          <h2>Womens</h2>
-          <p>Shop Now</p>
-        </div>
-      </div>
-      <div className='category-container'>
-        {/* <img /> */}
-        <div className='category-body-container'>
-          <h2>Mens</h2>
-          <p>Shop Now</p>
-        </div>
-      </div>
-    </div>
+    <BrowserRouter>
+    <Nav/>
+    <Routes>
+    <Route path='/' element={<Nav/>}/>
+
+    <Route index element={<Home/>}/>
+    <Route path="/shop/*" element={<Shop/>}/>
+    <Route path="/auth" element={<Auth/>}/>
+    <Route path="/checkout" element={<CheckOutPage/>}/>
+    </Routes>
+    </BrowserRouter>
+
+    
+
   );
 };
 
