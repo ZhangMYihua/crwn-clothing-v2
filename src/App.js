@@ -13,7 +13,6 @@ const App = () => {
         <div className='category-body-container'>
           <h2>Jackets</h2>
           <p>Shop Now</p>
-          <p>hello</p>
         </div>
       </div>
       <div className='category-container'>
