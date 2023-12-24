@@ -1,3 +1,6 @@
+Nizar Oubbali
+Git and Github
+
 # How to fork and clone
 One quick note about cloning this project. If you wish to make commits and push your own code, you'll need to fork the project first. Forking allows you to have your own copy of this repository by adding a duplicate version in your own profile!
 
