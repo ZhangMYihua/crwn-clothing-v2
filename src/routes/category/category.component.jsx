@@ -12,6 +12,7 @@ import {
 
 import { CategoryContainer, Title } from './category.styles';
 
+
 const Category = () => {
   const { category } = useParams();
   const categoriesMap = useSelector(selectCategoriesMap);
@@ -21,6 +22,8 @@ const Category = () => {
   useEffect(() => {
     setProducts(categoriesMap[category]);
   }, [category, categoriesMap]);
+
+
 
   return (
     <Fragment>
