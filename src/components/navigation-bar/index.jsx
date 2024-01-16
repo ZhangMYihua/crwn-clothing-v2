@@ -8,6 +8,7 @@ const NavigationBar = () => {
         <Link to={'/'} className={styles.logoContainer}><CrwnLogo /></Link> 
         <div className={styles.navLinksContainer}>
           <Link className={styles.navLink} to={'shop'}>Shop</Link> 
+          <Link className={styles.navLink} to={'signup'}>Signup</Link> 
           <Signin />
         </div>
       </div>

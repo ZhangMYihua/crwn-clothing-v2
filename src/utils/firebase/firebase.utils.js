@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app'
-import { getAuth, signInWithRedirect, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
+import { getAuth, signInWithRedirect, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword } from 'firebase/auth'
 import { getFirestore, doc, getDoc, setDoc} from 'firebase/firestore'
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -17,18 +17,21 @@ const firebaseConfig = {
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
 
-const provider = new GoogleAuthProvider()
-provider.setCustomParameters({
+const providerGoogle = new GoogleAuthProvider()
+
+providerGoogle.setCustomParameters({
   prompt: "select_account"
 })
 
 export  const auth = getAuth()
 
-export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
-
+export const signInWithGooglePopup = () => signInWithPopup(auth, providerGoogle);
+export const signInWithGoogleWithRedirect = () => signInWithRedirect(auth, providerGoogle);
 export const db = getFirestore();
 
-export const createUserDocumentFromAuth = async (userAuth) => {
+export const createUserDocumentFromAuth = async (userAuth, additonnalInformation = {displayName: 'mike'}) => {
+  if(!userAuth)return;
+
   const userDocRef = doc(db, 'users', userAuth.uid)
 
   const userSnapshot = await getDoc(userDocRef);
@@ -37,11 +40,15 @@ export const createUserDocumentFromAuth = async (userAuth) => {
     const {displayName, email} = userAuth
     const createdAt = new Date()
     try {
-      await setDoc(userDocRef, {displayName, email, createdAt})
+      await setDoc(userDocRef, {displayName, email, createdAt, ...additonnalInformation})
     } catch (error) {
       console.error('error creatin user ', error.message)
     }
-
   }
   return userDocRef
+}
+
+export const creatAuthUserWithEmailAndPassword = async (email, password) => {
+  if(!email || !password)return
+ return await createUserWithEmailAndPassword(auth, email, password)
 }
