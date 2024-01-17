@@ -1,42 +1,18 @@
+import { Routes, Route } from 'react-router-dom';
+import Home from './routes/home';
+import NavigationBar from './components/navigation-bar';
+import SignupFrom from './components/signup';
+
 const App = () => {
   return (
-    <div className='categories-container'>
-      <div className='category-container'>
-        {/* <img /> */}
-        <div className='category-body-container'>
-          <h2>Hats</h2>
-          <p>Shop Now</p>
-        </div>
-      </div>
-      <div className='category-container'>
-        {/* <img /> */}
-        <div className='category-body-container'>
-          <h2>Jackets</h2>
-          <p>Shop Now</p>
-        </div>
-      </div>
-      <div className='category-container'>
-        {/* <img /> */}
-        <div className='category-body-container'>
-          <h2>Sneakers</h2>
-          <p>Shop Now</p>
-        </div>
-      </div>
-      <div className='category-container'>
-        {/* <img /> */}
-        <div className='category-body-container'>
-          <h2>Womens</h2>
-          <p>Shop Now</p>
-        </div>
-      </div>
-      <div className='category-container'>
-        {/* <img /> */}
-        <div className='category-body-container'>
-          <h2>Mens</h2>
-          <p>Shop Now</p>
-        </div>
-      </div>
-    </div>
+    <Routes>
+      <Route path='/' element={<NavigationBar />}>
+        <Route index={true}  element={<Home />} />
+        <Route path='shop' element={<h1>Shop</h1>} />
+        <Route path='signup' element={<SignupFrom />} />
+      </Route>
+ 
+    </Routes>
   );
 };
 
