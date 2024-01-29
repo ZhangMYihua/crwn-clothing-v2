@@ -29,7 +29,7 @@ const Home = () => {
     },
   ];
 
-  return <Directory categories={categories} />;
+  return <Directory clasName="home" categories={categories} />;
 };
 
 export default Home;
