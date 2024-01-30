@@ -6,6 +6,7 @@ import {
   createUserDocumentFromAuth,
   // signInwithGoogleRedirect,
 } from "../../../utils/firbase/firebaseutils";
+import SignUpForm from "../Sign-up-form/SignUpForm";
 function Login() {
   // useEffect(() => {
   //   const fetchData = async () => {
@@ -34,13 +35,18 @@ function Login() {
   };
 
   return (
-    <div>
-      <h1>Sign in page</h1>
-      <button onClick={logGoogleUser}>sign in with google pop up </button>
-      {/* <button onClick={signInwithGoogleRedirect}>
+    <>
+      <div>
+        <h1>Sign in page</h1>
+        <button onClick={logGoogleUser}>sign in with google pop up </button>
+        {/* <button onClick={signInwithGoogleRedirect}>
         sign in with google redirect
       </button> */}
-    </div>
+      </div>
+      <div>
+        <SignUpForm />
+      </div>
+    </>
   );
 }
 
