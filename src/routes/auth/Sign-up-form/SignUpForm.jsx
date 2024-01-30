@@ -1,5 +1,10 @@
 import React, { useState } from "react";
 
+import {
+  createAuthUserWithEmailAndPassword,
+  createUserDocumentFromAuth,
+} from "../../../utils/firbase/firebaseutils";
+
 const defaultFormField = {
   displayName: "",
   email: "",
@@ -11,18 +16,48 @@ function SignUpForm() {
   const [formFields, setformFields] = useState(defaultFormField);
   const { displayName, confirmPassword, email, password } = formFields;
 
-    console.log("formField", formFields);
-    
+  const resetFormFields = () => {
+    setformFields(defaultFormField);
+  };
   const handleChange = (event) => {
     const { name, value } = event.target;
     setformFields({ ...formFields, [name]: value });
     console.log("name= ", name);
     console.log("value= ", value);
   };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    //check if the password equal confirm password
+
+    if (password !== confirmPassword) {
+      alert("passwords do not match");
+      return;
+    }
+    //createAuthUserWithEmailAndPassword
+    try {
+      const res = await createAuthUserWithEmailAndPassword(
+        email,
+        password,
+        displayName
+      );
+      const { user } = res;
+      //createUserDocumentFromAuth;
+
+      await createUserDocumentFromAuth(user, { displayName });
+      resetFormFields();
+    } catch (error) {
+      if (error.code === "auth/email-already-in-use") {
+        alert("cannot create user with email already in use ");
+      }
+      console.log("error throught user creation", error);
+    }
+  };
   return (
     <div>
       <h1>signup form with email and password</h1>
-      <form onSubmit={() => {}}>
+      <form onSubmit={handleSubmit}>
         <label>Display name</label>
         <input
           type="text"
