@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-
+import "./signup-form.stylr.scss";
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
 } from "../../../utils/firbase/firebaseutils";
 import FormInput from "../../../components/form-input/FormInputComp";
+import Button from "../../../components/button/Button";
 
 const defaultFormField = {
   displayName: "",
@@ -63,8 +64,9 @@ function SignUpForm() {
     }
   };
   return (
-    <div>
-      <h1>signup form with email and password</h1>
+    <div className="sign-up-container">
+      <h2>Don't have an account?</h2>
+      <span>Sign up with your email and password</span>
       <form onSubmit={handleSubmit}>
         <FormInput
           label="Display name"
@@ -130,7 +132,13 @@ function SignUpForm() {
           name="confirmPassword"
           value={confirmPassword}
         /> */}
-        <button type="submit">sign up with email and password </button>
+        <Button
+          type="submit"
+          // buttonType="inverted"
+        >
+          Sign Up
+        </Button>
+        {/* <button type="submit">sign up with email and password </button> */}
       </form>
     </div>
   );
