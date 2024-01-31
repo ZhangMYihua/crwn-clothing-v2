@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./signin-form.stylr.scss";
 import {
+  SignInWithEmailAndPassword,
   createUserDocumentFromAuth,
   signInWithGooglePopup,
 } from "../../../utils/firbase/firebaseutils";
@@ -35,9 +36,12 @@ function SignInForm() {
 
     //createAuthUserWithEmailAndPassword
     try {
-      resetFormFields();
-      alert("user loged in ");
+      const response = await SignInWithEmailAndPassword(email, password);
+      alert(`user email ${response.user.email} loged in sussefuly`);
     } catch (error) {
+      if (error.code === "auth/invalid-credential") {
+        alert("the email or the password are not correct ");
+      }
       console.log("error throught user creation", error);
     }
   };
