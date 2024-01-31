@@ -4,6 +4,7 @@ import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
 } from "../../../utils/firbase/firebaseutils";
+import FormInput from "../../../components/form-input/FormInputComp";
 
 const defaultFormField = {
   displayName: "",
@@ -45,7 +46,14 @@ function SignUpForm() {
       const { user } = res;
       //createUserDocumentFromAuth;
 
-      await createUserDocumentFromAuth(user, { displayName });
+      const createdUser = await createUserDocumentFromAuth(user, {
+        displayName,
+      });
+      // alert(
+      //   `user ${createdUser.displayName} created succsefuly`,
+      //   createdUser.displayName
+      // );
+      console.log("created document", createdUser);
       resetFormFields();
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
@@ -58,40 +66,70 @@ function SignUpForm() {
     <div>
       <h1>signup form with email and password</h1>
       <form onSubmit={handleSubmit}>
-        <label>Display name</label>
-        <input
+        <FormInput
+          label="Display name"
           type="text"
           required
           onChange={handleChange}
           name="displayName"
           value={displayName}
         />
-
-        <label>Email</label>
+        {/* <label>Display name</label>
         <input
+          type="text"
+          required
+          onChange={handleChange}
+          name="displayName"
+          value={displayName}
+        /> */}
+        <FormInput
+          label="Email"
           type="email"
           required
           onChange={handleChange}
           name="email"
           value={email}
         />
-        <label>Password</label>
+        {/* <label>Email</label>
         <input
+          type="email"
+          required
+          onChange={handleChange}
+          name="email"
+          value={email}
+        /> */}
+        <FormInput
+          label="Password"
           type="password"
           required
           onChange={handleChange}
           name="password"
           value={password}
         />
-        <label>Confirm Password</label>
+        {/* <label>Password</label>
         <input
+          type="password"
+          required
+          onChange={handleChange}
+          name="password"
+          value={password}
+        /> */}
+        <FormInput
+          label="Confirm Password"
           type="password"
           required
           onChange={handleChange}
           name="confirmPassword"
           value={confirmPassword}
         />
-
+        {/* <label>Confirm Password</label>
+        <input
+          type="password"
+          required
+          onChange={handleChange}
+          name="confirmPassword"
+          value={confirmPassword}
+        /> */}
         <button type="submit">sign up with email and password </button>
       </form>
     </div>
