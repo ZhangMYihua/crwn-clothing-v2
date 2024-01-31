@@ -1,13 +1,14 @@
 .button-container {
-  min-width: 165px;
+  min-width: 200px;
   width: auto;
   height: 50px;
   letter-spacing: 0.5px;
   line-height: 50px;
   padding: 0 35px 0 35px;
+  margin: 0 20px;
   font-size: 15px;
-  background-color: black;
-  color: white;
+  // background-color: #00ffff;
+  color: rgb(15, 15, 15);
   text-transform: uppercase;
   font-family: "Open Sans Condensed";
   font-weight: bolder;
@@ -19,7 +20,7 @@
   &:hover {
     background-color: white;
     color: black;
-    border: 1px solid black;
+    // border: 1px solid black;
   }
 
   &.google-sign-in {
