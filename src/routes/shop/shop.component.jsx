@@ -3,15 +3,17 @@ import CategoriesPreview from '../categories-preview/categories-preview.componet
 import Category from '../category/category.component';
 
 
-import './shop.styles.scss';
+import {ShopPageContainer} from './shop.styles';
 
 const Shop = () => {
     
     return (
-        <Routes>
-          <Route index element={<CategoriesPreview/>} />
-          <Route path=':category' element={<Category/>} />
-        </Routes>
+        <ShopPageContainer>
+          <Routes>
+            <Route index element={<CategoriesPreview/>} />
+            <Route path=':category' element={<Category/>} />
+          </Routes>
+        </ShopPageContainer>
         );
       };
 
