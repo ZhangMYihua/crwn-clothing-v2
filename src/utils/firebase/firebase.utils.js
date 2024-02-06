@@ -1,18 +1,14 @@
-import { wait } from "@testing-library/user-event/dist/utils";
 import { initializeApp } from "firebase/app";
-// To use Sing In whit Google!
 import {
   getAuth,
-  signInWithPopup,
   signInWithRedirect,
+  signInWithPopup,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
-
-// To use Firebase
 import {
   getFirestore,
   doc,
@@ -24,7 +20,6 @@ import {
   getDocs,
 } from "firebase/firestore";
 
-// To implement Sing In whit Google!
 const firebaseConfig = {
   apiKey: "AIzaSyDJysv-cUOayYtrdS5WLOtlGNc51N7CJWc",
   authDomain: "crw-clothing-db-ea99a.firebaseapp.com",
@@ -42,30 +37,18 @@ googleProvider.setCustomParameters({
   prompt: "select_account",
 });
 
-// Sign Up whit Google*****************************************
-
 export const auth = getAuth();
-
-export const singWhitGooglePopup = () => signInWithPopup(auth, googleProvider);
-
+export const signInWithGooglePopup = () =>
+  signInWithPopup(auth, googleProvider);
 export const signInWithGoogleRedirect = () =>
   signInWithRedirect(auth, googleProvider);
 
-// Context and Sing Out**************************************
+export const db = getFirestore();
 
-export const signOutUser = async () => await signOut(auth);
-
-export const onAuthStateChangedListener = (callback) =>
-  onAuthStateChanged(auth, callback);
-
-// To implement FireStore DB!
-
-const db = getFirestore();
-
-// *********Adding Collections**************
 export const addCollectionAndDocuments = async (
   collectionKey,
-  objectsToAdd
+  objectsToAdd,
+  field
 ) => {
   const collectionRef = collection(db, collectionKey);
   const batch = writeBatch(db);
@@ -76,45 +59,28 @@ export const addCollectionAndDocuments = async (
   });
 
   await batch.commit();
-  console.log("Done!");
+  console.log("done");
 };
-
-// *********get Collections from Firestore**************
 
 export const getCategoriesAndDocuments = async () => {
   const collectionRef = collection(db, "categories");
-
   const q = query(collectionRef);
 
   const querySnapshot = await getDocs(q);
-  return querySnapshot.docs.map((docSnapShot) => docSnapShot.data());
-
-  // .reduce((acc, docSnapShot) => {
-  //   const { title, items } = docSnapShot.data();
-  //   acc[title.toLowerCase()] = items;
-  //   return acc;
-  // }, {});
-
-  // return categoryMap;
+  return querySnapshot.docs.map((docSnapshot) => docSnapshot.data());
 };
-
-// create User*************************
 
 export const createUserDocumentFromAuth = async (
   userAuth,
-  additionalInformation
+  additionalInformation = {}
 ) => {
   if (!userAuth) return;
-  // doc use 3 arguments 1- database (db), 2-collections ,3- identifier (UNIQUE IDENTIFIER {uid})
+
   const userDocRef = doc(db, "users", userAuth.uid);
 
-  // console.log(userDocRef);
+  const userSnapshot = await getDoc(userDocRef);
 
-  const userSnapDoc = await getDoc(userDocRef);
-  // console.log(userSnapDoc);
-  // console.log(userSnapDoc.exists());
-
-  if (!userSnapDoc.exists()) {
+  if (!userSnapshot.exists()) {
     const { displayName, email } = userAuth;
     const createdAt = new Date();
 
@@ -128,17 +94,37 @@ export const createUserDocumentFromAuth = async (
     } catch (error) {
       console.log("error creating the user", error.message);
     }
-
-    return userDocRef;
   }
+
+  return userSnapshot;
 };
 
-//  How to implement Sing In whit Email and Password!!
+export const createAuthUserWithEmailAndPassword = async (email, password) => {
+  if (!email || !password) return;
 
-export const createAuthUserWhitEmailAndPassword = async (user, password) => {
-  return await createUserWithEmailAndPassword(auth, user, password);
+  return await createUserWithEmailAndPassword(auth, email, password);
 };
 
-export const singInAuthUserWhitEmailAndPassword = async (user, password) => {
-  return await signInWithEmailAndPassword(auth, user, password);
+export const signInAuthUserWithEmailAndPassword = async (email, password) => {
+  if (!email || !password) return;
+
+  return await signInWithEmailAndPassword(auth, email, password);
+};
+
+export const signOutUser = async () => await signOut(auth);
+
+export const onAuthStateChangedListener = (callback) =>
+  onAuthStateChanged(auth, callback);
+
+export const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = onAuthStateChanged(
+      auth,
+      (userAuth) => {
+        unsubscribe();
+        resolve(userAuth);
+      },
+      reject
+    );
+  });
 };

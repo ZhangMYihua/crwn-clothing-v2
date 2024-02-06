@@ -1,19 +1,22 @@
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux';
+
 import {
   selectCartItems,
   selectCartTotal,
-} from "../../store/cart/cart.selector";
-import CheckoutItem from "../../components/checkout-item/checkout-item.component";
+} from '../../store/cart/cart.selector';
+
+import CheckoutItem from '../../components/checkout-item/checkout-item.component';
+
 import {
   CheckoutContainer,
   CheckoutHeader,
   HeaderBlock,
-  TotalSpan,
-} from "./checkout.styles.jsx";
+  Total,
+} from './checkout.styles';
 
 const Checkout = () => {
   const cartItems = useSelector(selectCartItems);
-  const totalPrice = useSelector(selectCartTotal);
+  const cartTotal = useSelector(selectCartTotal);
 
   return (
     <CheckoutContainer>
@@ -34,13 +37,10 @@ const Checkout = () => {
           <span>Remove</span>
         </HeaderBlock>
       </CheckoutHeader>
-
-      {cartItems.map((item) => (
-        <CheckoutItem key={item.id} CartItem={item} />
+      {cartItems.map((cartItem) => (
+        <CheckoutItem key={cartItem.id} cartItem={cartItem} />
       ))}
-
-      <br />
-      <TotalSpan> Total: ${totalPrice}</TotalSpan>
+      <Total>Total: ${cartTotal}</Total>
     </CheckoutContainer>
   );
 };

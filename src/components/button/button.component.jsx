@@ -1,35 +1,25 @@
+import {
+  BaseButton,
+  GoogleSignInButton,
+  InvertedButton,
+} from './button.styles';
 
-import {BaseButton} from "./button.styles"
+export const BUTTON_TYPE_CLASSES = {
+  base: 'base',
+  google: 'google-sign-in',
+  inverted: 'inverted',
+};
 
-// I comment the instructor way of doing this to have more practice in JS but it's the wrong way of doing cause Docs have change.
+const getButton = (buttonType = BUTTON_TYPE_CLASSES.base) =>
+  ({
+    [BUTTON_TYPE_CLASSES.base]: BaseButton,
+    [BUTTON_TYPE_CLASSES.google]: GoogleSignInButton,
+    [BUTTON_TYPE_CLASSES.inverted]: InvertedButton,
+  }[buttonType]);
 
-// export  const BUTTON_TYPE_CLASSES = {
-//         base: 'base',
-//         google: 'google-sign-in',
-//         inverted: 'inverted',
-//     }
-    
+const Button = ({ children, buttonType, ...otherProps }) => {
+  const CustomButton = getButton(buttonType);
+  return <CustomButton {...otherProps}>{children}</CustomButton>;
+};
 
-// const getButton = ( buttonType = BUTTON_TYPE_CLASSES.base) => 
-// ({
-//  [BUTTON_TYPE_CLASSES.base]: BaseButton,
-//  [BUTTON_TYPE_CLASSES.google]: GoogleSingInButton,
-//  [BUTTON_TYPE_CLASSES.inverted]: InvertedButton,
-// }[buttonType])
-
-
-
-
-const Button = ({children, buttonType,...otherProps})=>{
-
-    //  const CustomsButton = () => getButton(buttonType);
-
- return(
-    <BaseButton {...otherProps}>{children}</BaseButton>
- )
-
-
-
-}
-
-export default Button
+export default Button;

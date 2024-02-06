@@ -1,17 +1,20 @@
 import { useState } from "react";
-import {
-  singWhitGooglePopup,
-  singInAuthUserWhitEmailAndPassword,
-} from "../../utils/firebase/firebase.utils";
+import { useDispatch } from "react-redux";
+import { singInAuthUserWhitEmailAndPassword } from "../../utils/firebase/firebase.utils";
 import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
 import { SingUpContainer, ButtonsContainer } from "./sing-in-form.styles.jsx";
+import {
+  googleSignInStart,
+  emailSignInStart,
+} from "../../store/user/user.action.js";
 
 const defaultFormFields = {
   email: "",
   password: "",
 };
 const SingInForm = () => {
+  const dispatch = useDispatch();
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
@@ -20,17 +23,14 @@ const SingInForm = () => {
   };
 
   const singInWhitGoogle = async () => {
-    await singWhitGooglePopup();
+    dispatch(googleSignInStart());
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const { user } = await singInAuthUserWhitEmailAndPassword(
-        email,
-        password
-      );
+      dispatch(emailSignInStart(email, password));
 
       resetFromFields();
     } catch (error) {
