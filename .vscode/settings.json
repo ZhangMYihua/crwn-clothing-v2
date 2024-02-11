@@ -1,0 +1,6 @@
+{
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "eslint.codeActionsOnSave.rules": null,
+  "editor.tabCompletion": "on"
+}
