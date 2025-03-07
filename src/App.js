@@ -6,7 +6,7 @@ const App = () => {
     },
     {
       id: 2,
-      title: 'Jackets',
+      title: 'Jacket',
     },
     {
       id: 3,
