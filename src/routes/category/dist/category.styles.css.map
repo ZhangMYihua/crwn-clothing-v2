@@ -1,0 +1,1 @@
+{"version":3,"names":[],"mappings":"","sources":["category.styles.scss"],"sourcesContent":[".category-container {\r\n  display: grid;\r\n  grid-template-columns: repeat(4, 1fr);\r\n  column-gap: 20px;\r\n  row-gap: 50px;\r\n}\r\n.category-title {\r\n  text-align: center;\r\n  font-size: 38px;\r\n  margin-bottom: 25px;\r\n}\r\n"],"file":"category.styles.css"}

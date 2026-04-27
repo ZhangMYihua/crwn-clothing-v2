@@ -1,0 +1,1 @@
+{"version":3,"names":[],"mappings":"","sources":["shop.style.scss"],"sourcesContent":[".products-container {\r\n  display: grid;\r\n  grid-template-columns: repeat(4, 1fr);\r\n  column-gap: 10px;\r\n  row-gap: 40px;\r\n}\r\n"],"file":"shop.style.css"}

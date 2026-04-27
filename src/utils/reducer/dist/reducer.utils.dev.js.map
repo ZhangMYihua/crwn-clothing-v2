@@ -1,0 +1,1 @@
+{"version":3,"sources":["reducer.utils.js"],"names":["createAction","type","payload"],"mappings":";;;;;;;AAAO,IAAMA,YAAY,GAAG,SAAfA,YAAe,CAACC,IAAD,EAAOC,OAAP;AAAA,SAAoB;AAAED,IAAAA,IAAI,EAAJA,IAAF;AAAQC,IAAAA,OAAO,EAAPA;AAAR,GAApB;AAAA,CAArB","sourcesContent":["export const createAction = (type, payload) => ({ type, payload });\r\n"],"file":"reducer.utils.dev.js"}

@@ -1,0 +1,1 @@
+{"version":3,"sources":["user.types.js"],"names":["USER_ACTION_TYPES","SET_CURRENT_USER"],"mappings":";;;;;;AAAO,IAAMA,iBAAiB,GAAG;AAC/BC,EAAAA,gBAAgB,EAAE;AADa,CAA1B","sourcesContent":["export const USER_ACTION_TYPES = {\r\n  SET_CURRENT_USER: 'user/SET_CURRENT_USER',\r\n};\r\n"],"file":"user.types.dev.js"}

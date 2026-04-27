@@ -1,0 +1,1 @@
+{"version":3,"sources":["App.js"],"names":["App","Home"],"mappings":";;;;;;;AAAA;;;;AAEA,IAAMA,GAAG,GAAG,SAANA,GAAM,GAAM;AAChB,SAAOC,aAAP;AACD,CAFD;;eAIeD,G","sourcesContent":["import Home from './routes/home/home.component';\r\n\r\nconst App = () => {\r\n  return Home;\r\n};\r\n\r\nexport default App;\r\n"],"file":"App.dev.js"}

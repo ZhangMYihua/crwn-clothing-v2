@@ -1,0 +1,1 @@
+{"version":3,"sources":["categories.styles.scss"],"names":[],"mappings":"AAAA,sBACE,MAAO,KACP,QAAS,KACT,UAAW,KACX,gBAAiB","file":"categories.styles.min.css","sourcesContent":[".categories-container {\r\n  width: 100%;\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  justify-content: space-between;\r\n}\r\n"]}

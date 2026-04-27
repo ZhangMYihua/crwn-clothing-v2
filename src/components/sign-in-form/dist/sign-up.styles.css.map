@@ -1,0 +1,1 @@
+{"version":3,"names":[],"mappings":"","sources":["sign-up.styles.scss"],"sourcesContent":[".sign-up-container {\r\n  display: flex;\r\n  flex-direction: column;\r\n  width: 380px;\r\n\r\n  h2 {\r\n    margin: 10px 0;\r\n  }\r\n}\r\n"],"file":"sign-up.styles.css"}
